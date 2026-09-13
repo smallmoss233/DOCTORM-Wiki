@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOD WIKI | DOCTOR M</title>
+    <link rel="stylesheet" href="wiki.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked@11/marked.min.js"></script>
+    <link rel="icon" type="image/png" href="assets/wiki-icon.png">
+</head>
+<body>
+
+<!-- ★ 自发光背景图 -->
+<div class="wiki-bg">
+    <img src="assets/wiki-dg.png" alt="" aria-hidden="true">
+</div>
+
+<div class="wiki-app">
+    <!-- 左侧 -->
+    <aside class="wiki-sidebar">
+        <div class="wiki-brand">
+            <!-- ★ 换成本地图标 -->
+            <img class="wiki-brand-icon" src="assets/wiki-icon.png" alt="DOCTOR M">
+            <div class="wiki-brand-text">
+                <div class="wiki-brand-title">DOCTOR M - WIKI</div>
+                <div class="wiki-brand-sub">一款AIT扩展模组！</div>
+            </div>
+        </div>
+
+        <nav class="wiki-nav" id="wiki-nav"></nav>
+
+        <div class="wiki-footer">
+            <a href="index.html">← 返回主站</a>
+        </div>
+    </aside>
+
+    <main class="wiki-main">
+        <article class="wiki-content" id="wiki-content">
+            <div class="wiki-loading">加载中…</div>
+        </article>
+    </main>
+
+    <!-- ★ 右侧目录 -->
+    <aside class="wiki-toc" id="wiki-toc">
+        <div class="wiki-toc-title">本页目录</div>
+        <nav class="wiki-toc-nav" id="wiki-toc-nav"></nav>
+    </aside>
+    </main>
+</div>
+
+<script src="wiki.js"></script>
+</body>
+</html>
