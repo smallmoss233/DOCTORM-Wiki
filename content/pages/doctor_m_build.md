@@ -1,6 +1,6 @@
 # DOCTOR M 塔迪斯建造指令 / `/doctor_m build`
 
-![doctor_m_build.png](../../assets/images/doctor_m_build.png)
+![doctor_m_build.png](assets/images/doctor_m_build.png)
 
 > **类型：** 管理指令  
 > **权限：** 需要权限等级 2（OP）  

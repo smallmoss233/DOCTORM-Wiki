@@ -1,6 +1,6 @@
 # 二把手中文指令 / Handles 中文支持
 
-![Handles.png](../../assets/images/Handles.png)
+![Handles.png](assets/images/Handles.png)
 
 > **类型：** 聊天指令扩展  
 > **适用物品：** 二把手（Handles）  

@@ -1,6 +1,6 @@
 # 追踪器 / Tracer
 
-![tracer.png](../../assets/images/tracer.png)
+![tracer.png](assets/images/tracer.png)
 
 > **类型：** 探测装置 / 塔迪斯控制台扩展  
 > **来源：** DOCTOR M  

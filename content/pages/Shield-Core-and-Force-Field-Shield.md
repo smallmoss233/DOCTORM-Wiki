@@ -74,7 +74,7 @@ DOCTOR M 提供了两件配套的防御装备，它们协同工作：
 
 ## 护盾生成器 / Shield Generator
 
-![shield_core.png](../../assets/images/shield_core.png)
+![shield_core.png](assets/images/shield_core.png)
 
 一件被动饰品，放在饰品槽里默默替你挡拳。
 
@@ -104,7 +104,7 @@ DOCTOR M 提供了两件配套的防御装备，它们协同工作：
 
 ## 力场盾牌 / Force Field Shield
 
-![force_field_shield.png](../../assets/images/force_field_shield.png)
+![force_field_shield.png](assets/images/force_field_shield.png)
 
 一件主动手持装置，举着时会生成力场抵御怪物 / 弹射物靠近。
 

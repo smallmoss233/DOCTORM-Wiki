@@ -29,7 +29,7 @@
 
 ### 宇航服氧气
 
-![htf.png](../../assets/images/htf.png)
+![htf.png](assets/images/htf.png)
 
 **宇航服胸甲**是太空探索的核心装备——它自带一个氧气储备槽，供你在无氧环境下呼吸。
 
@@ -44,7 +44,7 @@
 
 ### 屏幕 HUD
 
-![guihud.png](../../assets/images/guihud.png)
+![guihud.png](assets/images/guihud.png)
 
 佩戴宇航服头盔 + 胸甲时，屏幕左上角显示两个信息：
 
@@ -83,7 +83,7 @@
 
 ## 氧气罐
 
-![oxygen_tank.png](../../assets/images/oxygen_tank.png)
+![oxygen_tank.png](assets/images/oxygen_tank.png)
 
 **氧气罐**是可携带的氧气储备，用来给宇航服补氧。
 
@@ -160,7 +160,7 @@
 
 ### 氧气补充机
 
-![oxygen_charger_front.png](../../assets/images/oxygen_charger_front.png)
+![oxygen_charger_front.png](assets/images/oxygen_charger_front.png)
 
 **氧气补充机**是一台可以瞬间给氧气装备充满氧气的方块。
 
@@ -175,7 +175,7 @@
 
 ### 水下制氧机
 
-![underwater_oxygen_generator_front.png](../../assets/images/underwater_oxygen_generator_front.png)
+![underwater_oxygen_generator_front.png](assets/images/underwater_oxygen_generator_front.png)
 
 **水下制氧机**有两种工作模式。
 

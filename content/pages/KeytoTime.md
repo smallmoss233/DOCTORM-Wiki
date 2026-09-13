@@ -1,6 +1,6 @@
 # 时间钥匙 / Key to Time
 
-![key_to_time.png](../../assets/images/key_to_time.png)
+![key_to_time.png](assets/images/key_to_time.png)
 
 > **类型：** 神器  
 > **来源：** DOCTOR M  

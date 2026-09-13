@@ -1,6 +1,6 @@
 # 玩具匠的锤子 / Toymaker's Hammer
 
-![toymaker_hammer.png](../../assets/images/toymaker_hammer.png)
+![toymaker_hammer.png](assets/images/toymaker_hammer.png)
 
 > **类型：** 神级道具
 > **来源：** DOCTOR M / AIT

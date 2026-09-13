@@ -1,6 +1,6 @@
 # 拉斯隆之钥 / Key of Rassilon
 
-![key_of_rassilon.png](../../assets/images/key_of_rassilon.png)
+![key_of_rassilon.png](assets/images/key_of_rassilon.png)
 
 > **类型：** 多功能工具 / 塔迪斯钥匙 / 授权器  
 > **来源：** DOCTOR M  

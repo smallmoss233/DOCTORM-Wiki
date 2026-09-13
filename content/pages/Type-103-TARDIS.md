@@ -1,6 +1,6 @@
 # 103 型塔迪斯 / Type-103 TARDIS
 
-![103tarids.png](../../assets/images/103tarids.png)
+![103tarids.png](assets/images/103tarids.png)
 
 > **类型：** 人形塔迪斯 / 中立生物  
 > **实体 ID：** `doctor_m:103_tardis`  

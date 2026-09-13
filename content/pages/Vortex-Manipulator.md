@@ -1,6 +1,6 @@
 # 涡旋操纵器 / Vortex Manipulator
 
-![vortex_manipulator.png](../../assets/images/vortex_manipulator.png)
+![vortex_manipulator.png](assets/images/vortex_manipulator.png)
 
 > **类型：** 腕带式传送设备  
 > **来源：** DOCTOR M

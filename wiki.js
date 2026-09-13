@@ -278,3 +278,41 @@ async function renderModrinthChangelog(container) {
         container.innerHTML = `<div class="wiki-error">更新日志加载失败：${e.message}</div>`;
     }
 }
+
+/* ============================================================
+   移动端抽屉
+   ============================================================ */
+(function () {
+    const sidebar = document.getElementById('wiki-sidebar');
+    const mask = document.getElementById('wiki-mobile-mask');
+    const toggle = document.querySelector('.wiki-mobile-toggle');
+    const closeBtn = document.querySelector('.wiki-sidebar-close');
+
+    if (!sidebar) return;
+
+    function openDrawer() {
+        sidebar.classList.add('open');
+        mask?.classList.add('show');
+        document.body.classList.add('wiki-drawer-open');
+    }
+
+    function closeDrawer() {
+        sidebar.classList.remove('open');
+        mask?.classList.remove('show');
+        document.body.classList.remove('wiki-drawer-open');
+    }
+
+    toggle?.addEventListener('click', openDrawer);
+    closeBtn?.addEventListener('click', closeDrawer);
+    mask?.addEventListener('click', closeDrawer);
+
+    // 点击导航链接后自动关闭抽屉
+    document.getElementById('wiki-nav')?.addEventListener('click', (e) => {
+        if (e.target.closest('.wiki-page-link')) closeDrawer();
+    });
+
+    // 窗口变宽时自动关闭抽屉，避免状态残留
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 800) closeDrawer();
+    });
+})();

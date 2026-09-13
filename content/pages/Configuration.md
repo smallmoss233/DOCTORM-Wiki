@@ -1,6 +1,6 @@
 # 配置系统 / Configuration
 
-![Configuration.png](../../assets/images/Configuration.png)
+![Configuration.png](assets/images/Configuration.png)
 
 **DOCTOR M** 提供了**近百项可配置项**，覆盖模组绝大部分功能。伤害数值、能力参数、燃料消耗、搜索范围……几乎所有能想到的数值都能改。
 

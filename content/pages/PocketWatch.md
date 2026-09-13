@@ -1,6 +1,6 @@
 # 怀表 / Pocket Watch
 
-![pocket_watch.png](../../assets/images/pocket_watch.png)  ![pocket_watch_open.png](../../assets/images/pocket_watch_open.png)
+![pocket_watch.png](assets/images/pocket_watch.png)  ![pocket_watch_open.png](assets/images/pocket_watch_open.png)
 
 > **类型：** 保命道具 / 时间领主相关物品  
 > **物品 ID：** `doctor_m:pocket_watch`  

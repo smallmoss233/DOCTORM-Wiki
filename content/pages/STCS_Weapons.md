@@ -154,7 +154,7 @@ STCS 武器的 Tooltip 会显示以下信息：
 
 ## STC-07H “巨妖” — 重装型
 
-![stch.png](../../assets/images/stch.png)
+![stch.png](assets/images/stch.png)
 
 **三把中最重、最慢，但防御和伤害最强的一把。**
 
@@ -185,7 +185,7 @@ STCS 武器的 Tooltip 会显示以下信息：
 
 ## STC-08A “天图” — 标准型
 
-![stca.png](../../assets/images/stca.png)
+![stca.png](assets/images/stca.png)
 
 **各方面平衡，是三把中最通用的一把。**
 
@@ -216,7 +216,7 @@ STCS 武器的 Tooltip 会显示以下信息：
 
 ## STC-09L “游侠” — 突袭型
 
-![stcl.png](../../assets/images/stcl.png)
+![stcl.png](assets/images/stcl.png)
 
 **三把中最轻、最快，靠机动性取胜。**
 
