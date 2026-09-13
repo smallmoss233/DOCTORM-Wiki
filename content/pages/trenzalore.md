@@ -1,5 +1,7 @@
 # 特兰泽洛 / Trenzalore
 
+![Trenzalore.png](../../assets/images/Trenzalore.png)
+
 > **类型：** 维度  
 > **维度 ID：** `doctor_m:trenzalore`  
 > **显示名称：** §3特兰泽洛  

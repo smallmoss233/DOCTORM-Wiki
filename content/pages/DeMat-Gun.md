@@ -1,5 +1,7 @@
 # 去物质枪 / De-Mat Gun
 
+![dmg.png](assets/images/dmg.png)
+
 > **类型：** 时间领主科技 / 单发高后果能量武器  
 > **来源：** DOCTOR M  
 > **授权方式：** 拉斯隆之钥  

@@ -1,5 +1,7 @@
 # 时间钥匙 / Key to Time
 
+![key_to_time.png](../../assets/images/key_to_time.png)
+
 > **类型：** 神器  
 > **来源：** DOCTOR M  
 > **相关进度：** 宇宙的拥有者  

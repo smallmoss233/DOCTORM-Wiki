@@ -1,5 +1,7 @@
 # 土卫六-泰坦 / Titan
 
+![titan.png](../../assets/images/titan.png)
+
 > **类型：** 太空维度  
 > **维度 ID：** `doctor_m:titan`  
 > **显示名称：** 土卫六-泰坦  

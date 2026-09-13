@@ -1,5 +1,7 @@
 # 特莉波卡的镰刀 / Tlipoca's Scythe
 
+![tlipoca_scythe.png](../../assets/images/tlipoca_scythe.png)
+
 > **类型：** 彩蛋武器 / 终极收割武器  
 > **来源：** 尤格索托斯的庭院
 > **获取方式：** 隐藏，需自行探索  

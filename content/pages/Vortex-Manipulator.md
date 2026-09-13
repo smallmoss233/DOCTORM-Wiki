@@ -1,6 +1,8 @@
 # 涡旋操纵器 / Vortex Manipulator
 
-> **类型：** 手持式传送设备  
+![vortex_manipulator.png](../../assets/images/vortex_manipulator.png)
+
+> **类型：** 腕带式传送设备  
 > **来源：** DOCTOR M
 > **获取方式：** 103 型塔迪斯交易  
 > **相关进度：** 非比寻常的科技  

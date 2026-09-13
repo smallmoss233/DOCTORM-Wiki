@@ -1,7 +1,9 @@
 # 玩具匠的锤子 / Toymaker's Hammer
 
-> **类型：** 神级道具 / 塔迪斯复制工具  
-> **来源：** DOCTOR M  
+![toymaker_hammer.png](../../assets/images/toymaker_hammer.png)
+
+> **类型：** 神级道具
+> **来源：** DOCTOR M / AIT
 > **相关配置：** `toymakerHammerCopyChunkRadius`、`toymakerHammerCopyEntities` 等  
 > **相关结构：** 塔迪斯
 

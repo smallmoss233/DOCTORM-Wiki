@@ -1,6 +1,6 @@
 # STCS 系列 / STCS Weapons
 
-> **类型：** 能量武器系统  
+> **类型：** 能量武器
 > **来源：** DOCTOR M  
 > **相关物品：** STC-07H“巨妖”、STC-08A“天图”、STC-09L“游侠”  
 > **相关配置：** `stcsMinEnergyCost`、`stcsAoeRadius`  
@@ -154,6 +154,8 @@ STCS 武器的 Tooltip 会显示以下信息：
 
 ## STC-07H “巨妖” — 重装型
 
+![stch.png](../../assets/images/stch.png)
+
 **三把中最重、最慢，但防御和伤害最强的一把。**
 
 > §7STC-08A 支援型，更重，更慢，但强防御与伤害。
@@ -183,6 +185,8 @@ STCS 武器的 Tooltip 会显示以下信息：
 
 ## STC-08A “天图” — 标准型
 
+![stca.png](../../assets/images/stca.png)
+
 **各方面平衡，是三把中最通用的一把。**
 
 > §7STCS 系列标准型号 STC-08A，各方面平衡，是 STC-09L 和 STC-07H 使用的标准平台，备受好评。
@@ -211,6 +215,8 @@ STCS 武器的 Tooltip 会显示以下信息：
 ---
 
 ## STC-09L “游侠” — 突袭型
+
+![stcl.png](../../assets/images/stcl.png)
 
 **三把中最轻、最快，靠机动性取胜。**
 
