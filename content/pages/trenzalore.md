@@ -2,7 +2,7 @@
 
 ![Trenzalore.png](assets/images/Trenzalore.png)
 
-> **类型：** 维度  
+> **类型：** 星球
 > **维度 ID：** `doctor_m:trenzalore`  
 > **显示名称：** §3特兰泽洛  
 > **加入版本：** v2.1 — 过去的历史...与尚未发生的...  

@@ -1,6 +1,6 @@
 # STP 无缝传送 / Seamless Teleport
 
-> **类型：** 渲染 / 传送系统  
+> **类型：** 技术 / 渲染 / 传送
 > **来源：** 移植自 AIT 的废弃分支 [Seamless Teleport](https://github.com/amblelabs/ait/tree/DrTheodor/seamless-teleport)  
 > **配置项：** `seamlessTeleportEnabled`  
 > **默认状态：** 开启  
@@ -14,7 +14,7 @@
 
 在原版 Minecraft 中，当玩家跨越维度时，客户端会触发一次完整的 `ClientWorld` 重建，期间会显示加载地形界面。STP 的目标就是让这个过程**尽可能无感**——玩家不会看到加载屏幕，画面会尽量平滑地过渡到目标维度。
 
-STP 并非 DOCTOR M 原创，而是从 **AIT（Adventures in Time）** 的废弃分支 [Seamless Teleport](https://github.com/amblelabs/ait/tree/DrTheodor/seamless-teleport) 中移植回来的。原分支由 DrTheodor 开发，DOCTOR M 在此基础上做了适配、优化与稳定性修复。
+STP 并非 DOCTOR M 从零开始研究，而是从 **AIT（Adventures in Time）** 的废弃分支 [Seamless Teleport](https://github.com/amblelabs/ait/tree/DrTheodor/seamless-teleport) 中逆向研究原理并重新实现。原分支由 DrTheodor 开发，DOCTOR M 在此基础上做了适配、优化与稳定性修复。
 
 ---
 
@@ -26,7 +26,6 @@ STP 目前在以下场景中生效：
 |---|---|
 | **塔迪斯门进出** | 玩家从塔迪斯外部走进内部，或从内部走到外部。 |
 | **塔迪斯碰撞传送** | 玩家碰到塔迪斯外框或门口时触发的传送。 |
-| **音速起子遥控进塔迪斯** | 使用音速起子传送到塔迪斯内部。 |
 | **涡旋操纵器传送** | 使用涡旋操纵器进行维度跳跃。 |
 | **时间钥匙跨维度传送** | 时间钥匙相关的跨维度传送。 |
 
@@ -168,12 +167,4 @@ STP 不是“强制走自己的流程”。如果任何一步失败，都会回�
 
 ## 冷知识 / 备注
 
-- STP 移植自 AIT 的废弃分支，原分支链接见更新日志。
-- STP 默认预加载半径为 1，即 3×3 = 9 个区块。
-- 同一中心 5 秒内的重复预加载请求会复用已有任务。
-- STP 会在世界切换时通知其他模组，这对 AIT 音效和渲染很重要。
-- STP 重建玩家时会继承位置、视角、朝向和渲染插值，避免第一帧跳变。
-- STP 关闭后不会“半残”，所有传送都会干净地回退到原版。
-- 沉浸式传送门与 STP 冲突，装 IP 的玩家建议关闭 STP。
-- STP 的提示信息只会在同时装了 IP 且 STP 开启时出现。
-- 配置界面里关闭 STP 后，下次传送立即走原版流程。
+- STP 在 AIT 1.2.0 beta 时期曾有过一个测试版本，SmallMoss很喜欢那个功能，这就是为什么现在它出现在了 DOCTOR M 里。

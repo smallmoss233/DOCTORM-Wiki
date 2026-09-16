@@ -2,11 +2,11 @@
 
 ![tracer.png](assets/images/tracer.png)
 
-> **类型：** 探测装置 / 塔迪斯控制台扩展  
-> **来源：** DOCTOR M  
+> **类型：** 时间钥匙相关 / 心灵感应增强
+> **来源：** DOCTOR WHO
 > **获取方式：** 博士之墓  
 > **相关配置：** `tracerScanRange`、`tracerTelepathicScanRange`、`tracerStructureSearchRadius` 等  
-> **相关物品：** 时间钥匙、心灵感应电路、塔迪斯
+> **相关物品：** 时间钥匙
 
 ---
 
