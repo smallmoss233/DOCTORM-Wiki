@@ -1,3 +1,4 @@
+<!-- lang:zh-CN -->
 # 拉斯隆之钥 / Key of Rassilon
 
 ![key_of_rassilon.png](assets/images/key_of_rassilon.png)
@@ -91,3 +92,98 @@
 ## 冷知识
 
 - 拉斯隆之钥在 DOCTOR M 的前身 DWI 当中非常的丑，DOCTOR M 时期拉斯隆之钥的建模被重新制作了
+
+<!-- lang:en -->
+# Key of Rassilon / 拉斯隆之钥
+
+![key_of_rassilon.png](assets/images/key_of_rassilon.png)
+
+> **Type:** Multi-tool / TARDIS key / Authorizer  
+> **Source:** DOCTOR WHO  
+> **Related advancement:** The Sacred Key  
+> **Related item:** De-Mat Gun
+
+---
+
+## Overview
+
+In *Doctor Who*, the Key of Rassilon is the symbol of the Time Lords' supreme authority, held only by the President. In DOCTOR M, it serves two roles at once: a key and an authorizer.
+
+> None but Rassilon, and never a Time Lord President, has ever held the Key of Rassilon…
+
+---
+
+## Uses
+
+### 1. TARDIS Key
+
+As a TARDIS key, the Key of Rassilon works like any other AIT key — you can **open/close doors and lock them**.
+
+> The most extravagant TARDIS key in the universe.
+
+### 2. Authorizer
+
+It can **toggle the authorization state** of items that support it. Currently supported:
+
+| Item | Effect |
+|---|---|
+| **De-Mat Gun** | Authorizes / revokes firing permission. |
+
+It was designed as a safety mechanism for the **De-Mat Gun** — the gun can only fire once authorized.
+
+---
+
+## Authorization Procedure
+
+| Step | Description |
+|---|---|
+| 1 | Hold the item to authorize (e.g. the De-Mat Gun) in your **off-hand**. |
+| 2 | Hold the Key of Rassilon in your **main hand**. |
+| 3 | **Sneak + Right-click** to toggle the authorization state. |
+
+You can also **swap main and off hand** — it works just as well with the Key of Rassilon in the off-hand and the target item in the main hand.
+
+### Feedback
+
+- **On authorization**: authorization sound plays + orange particles appear around the target item.
+- **On revocation**: revocation sound plays + a small number of orange particles.
+
+Once the De-Mat Gun is authorized, its item tooltip shows a **green "activated"** label; when not authorized it shows a **red "not activated"** label.
+
+---
+
+## Synergy with the De-Mat Gun
+
+The Key of Rassilon is the **authorization tool** for the De-Mat Gun. The full authorization flow is:
+
+```text
+Hold the De-Mat Gun in the off-hand → Hold the Key of Rassilon in the main hand → Sneak + Right-click → Toggle the authorization state
+```
+
+On success, you'll see:
+
+```text
+De-Mat Gun activated!
+```
+
+Attempting to fire while unauthorized will show:
+
+```text
+De-Mat Gun not activated!
+```
+
+> 💡 The De-Mat Gun is itself a high-consequence weapon, and the Key of Rassilon acts as its authorizer, imposing a mandatory layer of restriction on it.
+
+---
+
+## Related Advancement
+
+| Advancement | Title | Description |
+|---|---|---|
+| `advancement.doctor_m.key_of_rassilon` | The Sacred Key | None but Rassilon, and never a Time Lord President, has ever held the Key of Rassilon. |
+
+---
+
+## Trivia
+
+- The Key of Rassilon was extremely ugly back in DWI, DOCTOR M's predecessor. Its model was remade during the DOCTOR M era.

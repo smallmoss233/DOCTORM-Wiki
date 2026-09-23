@@ -1,8 +1,9 @@
+<!-- lang:zh-CN -->
 # 去物质枪 / De-Mat Gun
 
 ![dmg.png](assets/images/dmg.png)
 
-> **类型：** 时间领主科技 / 单发高后果能量武器  
+> **类型：** 时间领主科技
 > **来源：** DOCTOR WHO
 > **授权方式：** 拉斯隆之钥  
 > **相关进度：** 过去的，古老的，黑暗的，被迫捡起来的
@@ -138,3 +139,145 @@
 ## 冷知识
 
 - 去物质枪是《神秘博士》中时间领主的终极的武器——能够从时间本身中抹除目标。
+
+<!-- lang:en -->
+# De-Mat Gun / 去物质枪
+
+![dmg.png](assets/images/dmg.png)
+
+> **Type:** Time Lord technology
+> **Source:** DOCTOR WHO  
+> **Authorization:** Key of Rassilon  
+> **Related advancement:** The past, the ancient, the dark, forced to be picked up
+
+---
+
+## Overview
+
+The **De-Mat Gun** is a single-shot, high-consequence energy weapon built on Time Lord technology.
+
+It doesn't deal damage the traditional way — it **erases** its target. There is no muzzle flash and no report when you pull the trigger, only a pale flash of light and the unsettling silence that follows. Whatever that light touches doesn't die; it simply **ceases to exist**.
+
+> ⚠️ **Warning:** This is the Time Lords' ultimate weapon. Against players it performs a **character wipe**; against bosses it performs a **total erasure of existence**.
+
+A piece of advice from the Time Lords:
+
+> Destroy this gun. Destroy every record of it. Do not let its power beguile your mind…
+
+---
+
+## Obtaining
+
+### Blueprint Crafting
+
+| Material | Amount |
+|---|---|
+| Superionic Core Rod | ×4 |
+| Photon Accelerator | 6~8 |
+| Dematerialization Shift Circuit | ×1 |
+| Artron Energy Fluid Connector | ×1 |
+| Data Fluid Connector | ×1 |
+| Vortex Fluid Connector | ×1 |
+| Artron Energy Mercury Connector | ×1 |
+| Data Mercury Connector | ×1 |
+| Vortex Mercury Connector | ×1 |
+| Artron Energy Collector Unit | 1~2 |
+| Netherite Ingot | 5~8 |
+| Stone Button | ×1 |
+| Redstone | 8~12 |
+| Charged Zeiton Crystal | ×1 |
+| Plasma Material | 10~20 |
+| Artron Energy Cable | 15~18 |
+| Hyper-Resonator | 10~12 |
+| Beacon | ×1 |
+
+### Key of Rassilon Authorization
+
+The De-Mat Gun must be authorized before it can fire.
+
+| Step | Action |
+|---|---|
+| 1 | Hold the De-Mat Gun in your **off-hand**. |
+| 2 | Hold the Key of Rassilon in your **main hand**. |
+| 3 | **Sneak + Right-click** to toggle the authorization state. |
+
+On success, you'll see:
+
+```text
+De-Mat Gun activated!
+```
+
+Attempting to fire while unauthorized will show:
+
+```text
+De-Mat Gun not activated!
+```
+
+---
+
+## Weapon Stats
+
+| Attribute | Value |
+|---|---|
+| **Max ammo** | Unlimited |
+| **Effective range** | Unlimited |
+| **Cooldown** | 60 ticks (3 seconds) |
+| **ADS spread** | 0.15 |
+| **Hip-fire spread** | 1.2 |
+
+---
+
+## Firing Mechanics
+
+When fired, the gun emits an **instantaneous ray** from the shooter's eye position.
+
+Processing flow:
+
+1. Draw a golden particle beam along the ray's path.
+2. Play the firing sound regardless of whether anything is hit.
+3. If the ray strikes an entity, begin erasing the entity it struck.
+
+The ray **ignores** the following targets:
+
+- The shooter
+- Spectator-mode entities
+- Already-dead entities
+
+---
+
+## Erasure Effects by Target
+
+| Target type | Result |
+|---|---|
+| **Dropped item entities** | Cleared immediately. **However**, if the item is **Key to Time related**, it is protected. |
+| **Players** | **Total erasure:** status effects, XP, inventory, ender chest, advancements, recipes, and statistics are all zeroed out, then the player is executed. |
+| **Ender Dragon** | Forced `kill()` (triggers the death animation and the portal). |
+| **Other entities** | Immediate `discard()`. No drops, no death animation, no trace. |
+
+> 💡 "Ceasing to exist" means: whatever is erased leaves behind no corpse, no drops, and no death animation. It is simply wiped gently off the timeline.
+
+---
+
+## Key to Time Protection
+
+If a player has any **Key to Time related item** in their **main inventory** or **ender chest**, they receive **partial protection**:
+
+- **The inventory and ender chest are not cleared.**
+- The player is **executed by methods like kill**, but is not erased from the world.
+- After respawning, the player keeps their original items and progress.
+
+> This is why the Key to Time is regarded as the **only talisman** against the De-Mat Gun.
+
+---
+
+## Compatibility
+
+| Mod | Interaction |
+|---|---|
+| **Timelord Regeneration** | If present, regeneration count is zeroed out before the player is executed. |
+
+---
+
+## Trivia
+
+- The De-Mat Gun is the ultimate weapon of the Time Lords in *Doctor Who* — capable of erasing targets from time itself.

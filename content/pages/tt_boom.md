@@ -1,3 +1,4 @@
+<!-- lang:zh-CN -->
 # 塔迪斯自毁增强 / Self-Destruct Enhancement
 
 **DOCTOR M** 重写了塔迪斯的自毁序列。原本自毁只是**一次大爆炸**，现在变成了一场**逐步扩散的毁灭浪潮**——从塔迪斯中心开始，一圈一圈地向外吞噬整个世界。
@@ -162,3 +163,169 @@
 - **塔迪斯会在序列开始前从管理器移除**——防止序列进行中塔迪斯数据被其他逻辑引用。
 - **毁灭序列执行时如果服务器关闭**——延迟任务队列会**自动清理**，不会在下次启动时复活。
 - **配置值有极端警告**——如果 `maxRadius > 50` 或 `finalRadius > 80`，会在日志里警告"这可能造成长时间湮灭序列"。
+
+<!-- lang:en -->
+# Self-Destruct Enhancement / 塔迪斯自毁增强
+
+**DOCTOR M** rewrites the TARDIS self-destruct sequence. Originally the self-destruct was just **one big explosion**; now it becomes a **spreading wave of destruction** — starting from the TARDIS core, sweeping outward ring by ring and devouring the world.
+
+> ⚠️ **Warning:** This is the **most destructive feature** in the mod. Once enabled, TARDIS self-destruct destroys **every block and entity within 80–100 blocks**. Think twice before using it on a multiplayer server.
+
+---
+
+## Activation Conditions
+
+The self-destruct enhancement is controlled by a **config toggle**:
+
+| Config option | Default |
+|--------|--------|
+| **Master switch** | On |
+
+When turned off, TARDIS self-destruct reverts to AIT's original ordinary explosion.
+
+---
+
+## Destruction Sequence
+
+The entire self-destruct process is divided into **three phases**, lasting about **30–60 seconds** from trigger to end.
+
+### Phase 0: Core Collapse
+
+The **moment** the TARDIS triggers self-destruct:
+
+| Effect | Description |
+|------|------|
+| **Core clearing** | Blocks within a **2-block** radius vanish instantly. |
+| **Screen shake** | Nearby players get the **Nausea** effect (within 10 blocks). |
+| **Visuals** | A large burst of smoke particles erupts from the center + one flash. |
+| **Sound** | Beacon charge sound. |
+
+### Phases 1~N: Expanding Spread
+
+After core collapse, the destruction wave **spreads outward ring by ring**.
+
+**Spread rhythm**:
+
+| Parameter | Default | Description |
+|------|--------|------|
+| **Spread steps** | 20 steps | Number of transitions from radius 2 to max radius. |
+| **Interval per step** | 40 ticks (2 seconds) | Wait between steps. |
+| **Max radius** | **80 blocks** | Maximum range of the destruction wave. |
+
+**Spread curve** (easing):
+
+Radius growth is **not linear** — it uses a `1 - (1-p)³` easing function, so:
+
+- **First few steps**: radius grows fast (strong visual impact).
+- **Last few steps**: radius grows slow (the final ring lingers longer).
+
+**Effects of each step**:
+
+| Effect | Description |
+|------|------|
+| **Sphere clearing** | Clears all blocks within the current radius. |
+| **Knockback** | Entities within 2 blocks outside the radius are launched (upward + outward). |
+| **Screen shake** | Nearby players get Nausea (the closer, the longer it lasts). |
+| **Particles** | Soul fire + white ash particles generated on the sphere surface. |
+| **Sound** | Beacon deactivate sound (volume/pitch vary with progress) + a sonic screech every 5 steps. |
+
+### Final Phase: Total Annihilation
+
+On the last step, the destruction wave reaches **100 blocks** (larger than the spread phase) and performs **final clearance**:
+
+| Effect | Description |
+|------|------|
+| **Block clearing** | All blocks within a 100-block radius (except bedrock/barrier). |
+| **Entity wipe** | All entities within 100 blocks **die instantly** (except Creative/Spectator players). |
+| **Big explosion** | Plays an extremely loud explosion + TARDIS groan + sonic screech. |
+| **Grand finale** | A large number of flash, sonic, smoke column, and electric spark particles. |
+
+**"Grand finale" details**:
+
+| Particle | Approx. count |
+|------|-----------|
+| Explosion emitters | 50 |
+| Flashes | 100 |
+| Sonic waves | 200 |
+| Campfire smoke (column) | 100 blocks tall |
+| Electric sparks | Hundreds |
+
+All players within **200 blocks** gain **Nausea II**.
+
+---
+
+## Destruction Range Reference
+
+| Phase | Radius | Impact |
+|------|------|------|
+| **Core collapse** | 2 blocks | The TARDIS itself. |
+| **Spread phase** | 2 → 80 blocks | A gradually expanding spherical region. |
+| **Final clearance** | 100 blocks | Very large range. |
+
+**The full destruction sequence** ultimately clears a **sphere roughly 200 blocks in diameter** — the largest act of destruction in DOCTOR M.
+
+---
+
+## Protection Mechanism
+
+The destruction wave **does not** clear the following:
+
+| Preserved object | Reason |
+|---------|------|
+| **Bedrock** | World boundary. |
+| **Barrier blocks** | Special protected blocks. |
+| **Creative-mode players** | Not killed by the final clearance. |
+| **Spectator-mode players** | Same as above. |
+
+> In other words, if you self-destruct the TARDIS in Creative mode, **you'll be alive to watch the world get cleared**.
+
+---
+
+## Performance Optimization
+
+Destroying a 100-block-radius sphere involves **millions of blocks** — clearing them all at once would **freeze the server**. DOCTOR M makes the following optimizations:
+
+### Frame-sliced Processing
+
+Large sphere clears are **automatically frame-sliced** — only **5 layers of Y height** are processed per tick, avoiding single-tick stutters.
+
+**Examples**:
+- Radius 10 or less: completes in a single tick.
+- Radius 80: takes about **32 ticks** (1.6 seconds).
+- Radius 100: takes about **40 ticks** (2 seconds).
+
+### Chunk-Loaded Check
+
+Before clearing blocks, it **checks whether the chunk is loaded** — it will not force-load unloaded chunks just to clear them.
+
+**Result**: Distant chunks that aren't loaded **are not destroyed**; they only reveal themselves as empty when the player approaches.
+
+### Early Pruning
+
+Sphere clearing uses **mathematical pruning** — if an X offset is already outside the sphere's range, the entire Z loop is skipped.
+
+---
+
+## Use Cases
+
+The self-destruct enhancement suits the following scenarios:
+
+- **PVP endgame**: Chase enemies to the TARDIS, self-destruct and clear the whole battlefield.
+- **Extreme survival**: The TARDIS is swarmed by mobs; self-destruct wipes the area.
+- **Cinematic scenes**: Create a spectacular destruction effect when recording videos.
+- **Building demolition**: Use TARDIS self-destruct to quickly clear a large region.
+
+> ⚠️ **Not recommended for casual use on servers** — destroying a 100-block radius permanently alters the terrain.
+
+---
+
+## Trivia
+
+- **The self-destruct enhancement is an "extension" of AIT's vanilla self-destruct** — turning the toggle off fully reverts to vanilla behavior.
+- **The spread curve is non-linear** — fast at first, slow later; visually it looks like a "gravitational wave".
+- **Knockback only affects the "spreading edge"** — entities already inside the sphere vanish directly and are not knocked back.
+- **Screen shake is the Nausea effect** — not a real screen shake, but visually similar.
+- **The final clearance sound stack** — explosion + TARDIS groan + sonic screech, creating an "end of the world" feel.
+- **The TARDIS is removed from the manager before the sequence begins** — to prevent TARDIS data from being referenced by other logic during the sequence.
+- **If the server shuts down during the destruction sequence** — the delayed task queue is **automatically cleaned up** and won't resurrect on the next startup.
+- **Extreme config values trigger a warning** — if `maxRadius > 50` or `finalRadius > 80`, a log warning says "this may cause a prolonged annihilation sequence".

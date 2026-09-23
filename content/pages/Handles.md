@@ -1,3 +1,4 @@
+<!-- lang:zh-CN -->
 # 二把手中文指令 / Handles 中文支持
 
 ![Handles.png](assets/images/Handles.png)
@@ -160,3 +161,167 @@
 - **多个中文前缀可选**——“二把手”、“驾驶员”、“手柄”、“小手柄”，你可以选顺口的。
 - **中文指令会自动被转换成对应的英文指令**——二把手内部只认识英文，但 DOCTOR M 在你说话和它听到之间加了一层“翻译”。
 - **“飞”和“起飞”是两个不同指令**——前者是“进入飞行状态”，后者是“启动起飞序列”。
+
+<!-- lang:en -->
+# Chinese Commands for Handles / Handles Chinese Support
+
+![Handles.png](assets/images/Handles.png)
+
+> **Type:** Chat command extension  
+> **Applies to:** Handles  
+> **Source:** DOCTOR M  
+> **Dependency:** AIT (Adventures in Time)  
+> **Vanilla behavior:** English commands only
+
+---
+
+## Overview
+
+**Handles** is an item in AIT that can be controlled via **chat commands**.
+
+In vanilla AIT, you have to speak **English** for Handles to respond. **DOCTOR M** adds a **complete Chinese command system** to Handles — you can simply speak Chinese, and Handles will **understand and execute** it.
+
+> 💡 **Vanilla Handles:** type `handles help` → shows help  
+> 💡 **DOCTOR M:** type `二把手 帮助` → the same help
+
+Chinese commands are a **DOCTOR M exclusive**. Vanilla AIT only supports English, whereas DOCTOR M inserts a "translator" between what you say and what Handles hears — you speak Chinese, it runs the English command.
+
+---
+
+## Usage
+
+### Basic Format
+
+```text
+<prefix> <command>
+```
+
+**Prefix** (pick any one):
+
+| Prefix | Notes |
+|---|---|
+| `二把手` | Most common. |
+| `驾驶员` | Alternative. |
+| `手柄` | Short. |
+| `小手柄` | Shortest. |
+
+**Examples**:
+
+```text
+二把手 起飞
+驾驶员 开门
+手柄 降落
+```
+
+All four prefixes are functionally identical — pick whichever rolls off the tongue.
+
+---
+
+## Chinese Command Reference
+
+### 🛫 Flight Control
+
+| Chinese | Effect |
+|---|---|
+| 起飞 / 出发 / 启动飞行 | TARDIS takes off. |
+| 飞 | Enter flight state. |
+| 降落 / 着陆 | Land. |
+| 停飞 / 停止飞行 | Stop flying. |
+| 走你 | Take off (French "allons-y" reference). |
+| 冲啊 | Take off (German "geronimo" reference). |
+| 去物质化 / 解物质化 | Dematerialize. |
+| 传送 | Teleport elsewhere. |
+| 进度 / 飞行状态 / 飞行进度 | Report flight progress. |
+
+### 🚪 Doors & Locks
+
+| Chinese | Effect |
+|---|---|
+| 开门 / 打开门 / 打开 / 开门吧 | Open the doors. |
+| 关门 / 关闭门 / 关闭 | Close the doors. |
+| 切换锁 / 锁门 | Toggle the lock state. |
+| 解锁 | Unlock. |
+| 门锁 | Report the door lock state. |
+
+### 🛡️ Defense Systems
+
+| Chinese | Effect |
+|---|---|
+| 护盾 / 切换护盾 | Toggle the force field shield. |
+| 警报 / 切换警报 | Toggle the hostile alert. |
+| 钟声 / 教堂钟 | Cloister bell alert. |
+| 反重力 / 重力 / 切换反重力 | Toggle the anti-gravity system. |
+| 隐身 / 切换隐身 | Toggle optical cloaking. |
+| 协议3 | Protocol 3 (cloaking protocol). |
+
+### ⛽ Energy
+
+| Chinese | Effect |
+|---|---|
+| 加油 / 开始加油 / 启动加油 / 加油开 / 打开加油 | Start refuelling. |
+| 停止加油 / 加油关 / 禁用加油 / 关闭加油 | Stop refuelling. |
+
+### 🧭 Navigation
+
+| Chinese | Effect |
+|---|---|
+| 航点 / 前往航点 / 飞往航点 | Travel to a waypoint. |
+
+### 🔧 Handbrake
+
+| Chinese | Effect |
+|---|---|
+| 拉手刹 / 手刹开 / 开启手刹 | Engage the handbrake. |
+| 放手刹 / 手刹关 / 关闭手刹 | Release the handbrake. |
+
+### ⚙️ Miscellaneous
+
+| Chinese | Effect |
+|---|---|
+| 帮助 | Show help. |
+| 笑话 | Tell a joke. |
+| 冷知识 | Tell a fun fact. |
+
+---
+
+## Supported English Commands
+
+If you can't be bothered to switch to a Chinese IME, the **vanilla English commands** still work:
+
+| English | Effect |
+|---|---|
+| `handles help` | Help. |
+| `handles tell me a joke` | Tell a joke. |
+| `handles tell me a fun fact` | Fun fact. |
+| `handles take off` | Take off. |
+| `handles land` | Land. |
+| `handles open doors` | Open the doors. |
+| `handles close doors` | Close the doors. |
+| `handles toggle shields` | Toggle shields. |
+| `handles activate handbrake` | Engage the handbrake. |
+| `handles enable refuelling` | Refuel. |
+
+> Chinese and English commands **can be mixed** — Handles doesn't care what language you speak, only what the command means.
+
+---
+
+## Comparison with Vanilla AIT
+
+| Item | Vanilla AIT | DOCTOR M |
+|---|---|---|
+| English commands | Supported | Supported |
+| Chinese commands | Not supported | Supported |
+| Chinese prefixes | None | 二把手 / 驾驶员 / 手柄 / 小手柄 |
+| Mixed Chinese/English | N/A | Supported |
+| Command translation layer | None | Yes |
+
+---
+
+## Trivia
+
+- **Chinese commands are a DOCTOR M exclusive extension** — vanilla AIT only supports English.
+- **"走你" maps to "allons-y"** — the Tenth Doctor's catchphrase in *Doctor Who* (French for "let's go").
+- **"冲啊" maps to "geronimo"** — the Eleventh Doctor's shout before jumping out of a plane.
+- **Multiple Chinese prefixes are available** — "二把手", "驾驶员", "手柄", "小手柄" — pick whichever you like.
+- **Chinese commands are automatically converted to their English equivalents** — Handles itself only understands English, but DOCTOR M inserts a "translator" between what you say and what it hears.
+- **"飞" and "起飞" are two different commands** — the former is "enter flight state", the latter is "start the takeoff sequence".

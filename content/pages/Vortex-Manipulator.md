@@ -1,3 +1,4 @@
+<!-- lang:zh-CN -->
 # 涡旋操纵器 / Vortex Manipulator
 
 ![vortex_manipulator.png](assets/images/vortex_manipulator.png)
@@ -53,22 +54,9 @@
 
 ## 界面
 
-手持涡旋操纵器右键即可打开界面。（下次更新WIKI就换成游戏截图）
+手持涡旋操纵器右键即可打开界面。
 
-```text
-┌─────────────────────────────────────┐
-│          涡旋操纵器                   │
-│                                     │
-│  [Z]          <  [目标维度]  >       │
-│  [Y]          [设为当前位置]          │
-│  [X]          [设为上一位置]          │
-│                                     │
-│  能量：1420/1500                     │
-│  热量：23                            │
-│                                     │
-│       [关闭]        [前往]            │
-└─────────────────────────────────────┘
-```
+![vm-ui.png](assets/images/vm-ui.png)
 
 ### 控件说明
 
@@ -301,3 +289,295 @@
 ## 冷知识
 
 - 涡旋操纵器在原剧里都是由杰克上校使用，11任博士期间主要是锐雯.宋在使用，而且我合理怀疑锐雯.宋的VM就是杰克上校的那个👍
+
+<!-- lang:en -->
+# Vortex Manipulator / 涡旋操纵器
+
+![vortex_manipulator.png](assets/images/vortex_manipulator.png)
+
+> **Type:** Wrist-mounted teleport device  
+> **Source:** DOCTOR WHO
+> **Obtaining:** Type-103 TARDIS trade  
+> **Related advancement:** Unusual Technology  
+> **Related config:** `vortexManipulatorMaxFuel`, `vortexManipulatorMaxOverheat`, `vortexManipulatorCooldownTicks`, etc.  
+> **Related items:** Artron Energy Collector Unit, waypoint items
+
+---
+
+## Overview
+
+The **Vortex Manipulator** is 51st-century technology — a wrist-mounted teleport device that lets players set custom destinations across dimensions, at a steep cost.
+
+It comes with a fuel and overheat management system, waypoint support, and a complete interactive UI.
+
+> ⚠️ **Warning:** Enter your coordinates carefully — you definitely don't want to Cosplay Major Anderson.
+
+> §7A cheap time travel device, so fast your stomach can't keep up.  
+> §7No protective structure at all — enter the wrong coordinates and... you'll end up like Major Anderson, §cstuck in the ceiling§7.  
+> §7(BT, I found Anderson... he's... in the ceiling.)
+
+---
+
+## Obtaining
+
+The Vortex Manipulator can be obtained from the **Type-103 TARDIS trade**.
+
+---
+
+## Stats Overview
+
+| Attribute | Value |
+|---|---|
+| **Max fuel** | **1,500 AU**. |
+| **Max overheat** | **100**. |
+| **Usage cooldown** | **60 seconds**. |
+| **Damage recovery** | **3 in-game days** (72,000 ticks). |
+| **Passive cooling** | -1 per **4 seconds** (applies while in your inventory). |
+
+### Item Bar Colors
+
+| Color | Meaning |
+|---|---|
+| **Gold** `§6` | Normal; shows remaining fuel percentage. |
+| **Red** `§c` | On cooldown. |
+| **Dark red** `§4` | **Broken**; unusable until repaired. |
+
+---
+
+## UI
+
+Right-click while holding the Vortex Manipulator to open the UI.
+
+![vm-ui.png](assets/images/vm-ui.png)
+
+### Control Reference
+
+| Element | Function |
+|---|---|
+| **Z / Y / X input fields** | Manually enter target coordinates, synced live with the item's NBT. |
+| **< / > buttons** | Cycle through reachable dimensions (skipping the `ait-tardis` interior dimension). |
+| **Set to Current Position** | Saves your current position and dimension as the target. |
+| **Set to Previous Position** | Swaps the current target for the **previous** one (handy for hopping back). |
+| **Go** | Attempts the teleport. The server validates fuel, heat, cooldown, and dimension locks. |
+
+> 💡 **Tip:** The coordinate fields from top to bottom are **Z, Y, X**.
+
+---
+
+## Fuel & Overheat
+
+Every teleport consumes **fuel (AU)** and generates **overheat**. The two resources are independent.
+
+### Fuel
+
+| Attribute | Description |
+|---|---|
+| **Range** | Integer, **0–1500**. |
+| **Low-fuel warning** | Tooltip turns red below **100**. |
+| **When insufficient** | The teleport is cancelled. |
+
+### Overheat
+
+| Attribute | Description |
+|---|---|
+| **Range** | Integer, **0–100**. |
+| **Accumulation** | The farther the distance, the more it builds. |
+| **Natural cooling** | -**1** every **4 seconds** while in your inventory. |
+| **Meltdown** | Reaching **100** causes the device to **melt down**. |
+
+---
+
+## Teleport Costs
+
+Before each teleport, the server computes the cost.
+
+### Base Formula
+
+| Cost | Formula |
+|---|---|
+| **Fuel** | `ceil(5 + distance/50 + distance² / 10,000,000)` |
+| **Overheat** | `ceil(distance/800 + distance² / 4,000,000)` |
+
+> `distance` = straight-line distance from the player to the destination.
+
+### Fuel Multipliers
+
+The base fuel cost is multiplied by **every applicable** multiplier:
+
+| Condition | Multiplier | Reason |
+|---|---|---|
+| **Cross-dimension** | ×1.5 | Dimensional jumps cost more. |
+| **Extreme altitude** (Y > 200 or Y < 16) | ×1.15 | Upper / lower atmosphere is unstable. |
+| **Moving** (velocity² > 0.01) | ×1.1 | Locking onto a moving target takes more energy. |
+| **Dangerous landing** (no solid block within 5 blocks below the target) | ×1.2 | A stable landing takes extra energy. |
+
+### Hard Limits
+
+- If the final fuel cost exceeds **3,000 AU** (twice the max fuel), the teleport is **rejected outright** — the distance is too far.
+- You must **hold enough fuel in hand**; no "half jumps" allowed.
+
+---
+
+## Time Sickness
+
+Long-distance teleports carry a risk of **time displacement sickness**.
+
+| Distance | Chance | Effect |
+|---|---|---|
+| **> 500 blocks** | **10%** | Wither I, Nausea I, Weakness V, Slowness IV, Hunger II. |
+| **> 5,000 blocks** | **15%** | Same as above, higher chance. |
+
+**Duration**: `distance / 50` seconds.
+
+- For example, 1,000 blocks = 20 seconds.
+- 5,000 blocks = 100 seconds.
+- Applies **after** landing.
+
+Action bar message:
+
+```text
+§4Warning: the time stream has torn through your physiology. Unshielded jump aftereffects have set in. Estimated duration: %d seconds.
+```
+
+---
+
+## Meltdown & Repair
+
+When overheat reaches **100**, the Vortex Manipulator **melts down**:
+
+- Sets a **3-day repair timer** (72,000 Overworld ticks).
+- Deals **4 HP** damage to the player.
+- Applies **Poison** (5 seconds).
+- Shows a bold dark-red warning:
+
+```text
+§4Warning: core meltdown. Vortex Manipulator locked; forced cooling procedure initiated. Estimated recovery time: 3 days.
+```
+
+### During Meltdown
+
+| Item | Description |
+|---|---|
+| **Item bar** | Turns **dark red**. |
+| **Usage attempt** | **6 HP** damage, **Poison II** (10 seconds), **Slowness II** (10 seconds), **Blindness** (5 seconds). |
+| **Chat message** | Remaining days. |
+
+Attempting to use it shows:
+
+```text
+§4Error: core meltdown. Forced operation has caused damage.
+§4Device offline. Estimated recovery: %s days.
+```
+
+### Automatic Repair
+
+When the 3-day timer ends, the device **auto-repairs**:
+
+- Clears the meltdown flag.
+- Resets overheat to **0**.
+- Shows a green "cooling finished" message:
+
+```text
+Vortex Manipulator cooling finished. Ready for use again.
+```
+
+> 💡 There is no manual repair item — you just have to wait.
+
+---
+
+## Charging
+
+Hold an **Artron Energy Collector Unit** in your **off-hand**, hold the Vortex Manipulator in your **main hand**, and **sneak + right-click**.
+
+| Situation | Result |
+|---|---|
+| **Normal charging** | Transfers AU from the collector unit to the device, up to the device's remaining capacity. |
+| **Device full** | Operation fails with a message. |
+| **Collector unit empty** | Operation fails with a message. |
+
+Successful charging shows:
+
+```text
+Charged: +%s Artron Energy (VM: %s/%s)
+```
+
+---
+
+## Waypoints
+
+You can load coordinates from compatible waypoint items:
+
+1. Put the waypoint item (e.g. waypoint disk / control disk) in your **off-hand**.
+2. **Sneak + right-click** (main hand holds the Vortex Manipulator).
+3. If the off-hand item has an NBT path of `pos.{X,Y,Z,dimension}`, the target is **immediately overwritten**.
+
+A successful load shows the waypoint name:
+
+```text
+Waypoint "%s" loaded
+```
+
+---
+
+## Restrictions
+
+The Vortex Manipulator **cannot** teleport to:
+
+| Restriction | Result |
+|---|---|
+| `ait-tardis:*` dimensions | Blocked — this is the TARDIS interior dimension. |
+| Locked dimensions (AIT config) | Blocked when `lockDimensions` is enabled. |
+| Coordinates beyond ±30,000,000 (X/Z) or Y < -128 / Y > 512 | Blocked — prevents world generation crashes. |
+| Destinations costing over 3,000 AU | Blocked — exceeds safe operating range. |
+
+Corresponding messages:
+
+| Situation | Message |
+|---|---|
+| Invalid dimension | `Invalid dimension!` |
+| Dimension locked | `Dimension locked!` |
+| Insufficient energy | `Not enough energy! Required: %s` |
+| Out of bounds | `§cTarget coordinates exceed safe bounds; system safety lock engaged.` |
+| Distance too far | `§cEstimated cost %d energy exceeds device energy limit; system safety lock engaged.` |
+| On cooldown | `On cooldown: %s sec` |
+
+---
+
+## Config Options
+
+Some values of the Vortex Manipulator can be adjusted in `config/doctor_m.json`:
+
+| Key | Default | Description |
+|---|---|---|
+| `vortexManipulatorMaxFuel` | 1500 | Max fuel. |
+| `vortexManipulatorMaxOverheat` | 100 | Max overheat. |
+| `vortexManipulatorCooldownTicks` | 1200 | Normal cooldown (ticks); 1200 ticks = 60 seconds. |
+| `vortexManipulatorBrokenCooldownTicks` | 72000 | Damage recovery time (ticks); 72000 ticks = 3 in-game days. |
+| `vortexManipulatorCoolingIntervalTicks` | 80 | Cooling interval (ticks). |
+| `vortexManipulatorCoolingPerInterval` | 1 | Overheat reduced per cooling tick. |
+
+---
+
+## Related Advancement
+
+| Advancement | Title | Description |
+|---|---|---|
+| `advancements.doctor_m.vortex_manipulator` | Unusual Technology | Use it carefully — don't become the second Major Anderson. |
+
+---
+
+## Tips
+
+- **Always check the landing spot first.** The "dangerous landing" multiplier adds an extra 20% to the cost.
+- **Stand still before jumping.** Moving adds a 10% fuel penalty.
+- **Plan your return trip.** "Set to Previous Position" instantly swaps the target back to where you came from.
+- **Don't spam long jumps.** Overheat builds faster than you think, and 3 days is a long time.
+- **Carry an Artron Energy Collector Unit with you.** 1,500 AU drains fast across dimensions.
+- **Watch your off-hand when charging.** The off-hand must hold the Artron Energy Collector Unit, the main hand must hold the Vortex Manipulator, and you must sneak + right-click.
+- **Waypoints save you from typing coordinates by hand.** Put the waypoint item in your off-hand and sneak + right-click to load its coordinates.
+
+---
+
+## Trivia
+
+- In the show, the Vortex Manipulator was always used by Captain Jack, and during the Eleventh Doctor era it was mainly River Song using it. And I strongly suspect River Song's VM is Captain Jack's 👍

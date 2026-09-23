@@ -1,3 +1,4 @@
+<!-- lang:zh-CN -->
 # 防御装备 / Defensive Equipment
 
 > **类型：** 防御装备套装  
@@ -208,3 +209,215 @@ DOCTOR M 提供了两件配套的防御装备，它们协同工作：
 ## 冷知识 / 备注
 
 - 力场盾牌是无限耐久的~
+
+<!-- lang:en -->
+# Defensive Equipment / 防御装备
+
+> **Type:** Defensive equipment set  
+> **Related items:** Shield Generator, Force Field Shield  
+> **Related config:** `shieldMaxEnergy`, `forceFieldMaxEnergy`, etc.  
+> **Related creature:** Type-103 TARDIS
+
+---
+
+## Overview
+
+DOCTOR M provides two matching pieces of defensive gear that work in tandem:
+
+| Item | Slot | Type | Role |
+|---|---|---|---|
+| **Shield Generator** | Trinket | Passive | Consumes energy to absorb incoming damage. |
+| **Force Field Shield** | Main hand / off-hand | Active | Deploys a spherical force field that pushes entities away and burns up projectiles. |
+
+> **Important:** Both items share the same damage handling pipeline. When you take damage, the game checks them in a **strict priority order**.
+
+---
+
+## Obtaining
+
+### Type-103 TARDIS Trading
+
+Both pieces of gear can be obtained by trading with the **Type-103 TARDIS**.
+
+For details on the trades, see the Type-103 TARDIS Wiki page.
+
+### Crafting Table Recipes
+
+#### Force Field Shield
+
+```text
+┌───────────────────┬───────────────────┬───────────────────┐
+│  Netherite Scrap  │    Iron Ingot     │  Netherite Scrap  │
+├───────────────────┼───────────────────┼───────────────────┤
+│  Netherite Ingot  │ Force Field Gen.  │  Netherite Ingot  │
+├───────────────────┼───────────────────┼───────────────────┤
+│  Netherite Scrap  │  Artron Energy    │  Netherite Scrap  │
+│                   │   Collector Unit  │                   │
+└───────────────────┴───────────────────┴───────────────────┘
+```
+
+| Material | Amount |
+|---|---|
+| Netherite Scrap | ×4 |
+| Netherite Ingot | ×2 |
+| Iron Ingot | ×2 |
+| Force Field Generator | ×1 |
+| Artron Energy Collector Unit | ×1 |
+
+#### Shield Generator
+
+```text
+┌───────────────────┬───────────────────┬───────────────────┐
+│  Hyper-Resonator  │                   │  Hyper-Resonator  │
+├───────────────────┼───────────────────┼───────────────────┤
+│    Iron Ingot     │  Artron Energy    │    Iron Ingot     │
+│                   │   Collector Unit  │                   │
+├───────────────────┼───────────────────┼───────────────────┤
+│  Hyper-Resonator  │                   │  Hyper-Resonator  │
+└───────────────────┴───────────────────┴───────────────────┘
+```
+
+| Material | Amount |
+|---|---|
+| Hyper-Resonator | ×4 |
+| Iron Ingot | ×2 |
+| Artron Energy Collector Unit | ×1 |
+
+---
+
+## Shield Generator / 护盾生成器
+
+![shield_core.png](assets/images/shield_core.png)
+
+A passive curio that quietly takes hits for you from the trinket slot.
+
+### Energy System
+
+| Attribute | Default | Notes |
+|---|---|---|
+| **Max energy** | Configurable, **1000** points | Stored per-item in NBT (`Energy`). |
+| **Recharge** | Configurable, **1** point per tick | Recharges both when equipped in a trinket slot **and** when sitting in your inventory. |
+| **Cost** | Configurable, **5** points per point of damage | Scales linearly with incoming damage. |
+
+### Behavior
+
+- Consumes energy to absorb damage.
+- Recharges automatically whether in your inventory or a trinket slot.
+- **Does not** protect you while you're using the Force Field Shield or blocking with a vanilla shield.
+
+### Config Options
+
+| Key | Default | Description |
+|---|---|---|
+| `shieldMaxEnergy` | 1000 | Maximum energy storage. |
+| `shieldRechargePerTick` | 1 | Passive recharge per tick. |
+| `shieldCostPerDamage` | 5 | Energy consumed per point of damage absorbed. |
+
+---
+
+## Force Field Shield / 力场盾牌
+
+![force_field_shield.png](assets/images/force_field_shield.png)
+
+An active handheld device that projects a force field to keep mobs and projectiles at bay while held up.
+
+### Energy System
+
+| Attribute | Default | Notes |
+|---|---|---|
+| **Max energy** | Configurable, **1500** points | Stored per-item in NBT (`Energy`). |
+| **Recharge** | Configurable, **1** point per tick | Only recharges while **unused** and **not on cooldown**. |
+| **Cost** | Configurable, **2** points per tick | Continuously drained while the force field is active. |
+
+**Recharge details:**
+
+- Passive recharge triggers once every **4 ticks** (i.e. **4** points per second).
+- Only recharges while **unused** and **not on cooldown**.
+- If overheat is active and energy fills up while recharging, the overheat lock is released automatically.
+
+### Usage
+
+| Action | Effect |
+|---|---|
+| **Hold right-click** | Deploy the force field. |
+| **Release right-click** | Release a push burst (if not on cooldown). |
+
+### Force Field Active Effects (while held)
+
+| Attribute | Value |
+|---|---|
+| **Radius** | 3.5 blocks (a true sphere). |
+| **Projectiles** | Burned up on contact (fire sound). |
+| **Entities** | Continuously pushed away. |
+| **Push strength** | `0.25`. |
+| **Energy drain** | `2` points per tick. |
+| **Max energy** | `1500` points. |
+| **Energy depletion** | If energy falls below the drain cost, the field enters **overheat** mode. |
+
+### Release Burst (on releasing right-click)
+
+**Triggers only when the field is active and not overheated**:
+
+| Attribute | Value |
+|---|---|
+| **Radius** | `5` blocks. |
+| **Effect** | Non-player entities are launched both horizontally and vertically. |
+| **Horizontal knockback** | `1.2`. |
+| **Vertical knockback** | `0.4`. |
+| **Sound** | The thud of an iron golem's attack. |
+| **Cooldown** | `40` ticks (`2` seconds) before the shield can be raised again. |
+
+### Environmental Damage Reduction
+
+The Force Field Shield grants extra reduction against **environmental damage**:
+
+| Attribute | Value |
+|---|---|
+| **Environmental damage factor** | `0.1` (10% kept). |
+| **Fully block non-environmental damage** | On (default). |
+
+### Config Options
+
+| Key | Default | Description |
+|---|---|---|
+| `forceFieldMaxEnergy` | 1500 | Maximum energy storage. |
+| `forceFieldDrainPerTick` | 2 | Energy drained per tick while the field is active. |
+| `forceFieldRechargePerTick` | 1 | Passive recharge per tick (applied every 4 ticks). |
+| `forceFieldCooldownTicks` | 40 | Cooldown after releasing the burst. |
+| `forceFieldPushStrength` | 0.25 | Continuous push force on entities inside the field. |
+| `forceFieldReleaseRadius` | 5.0 | Radius of the release burst. |
+| `forceFieldReleaseStrength` | 1.2 | Horizontal knockback of the burst. |
+| `forceFieldReleaseUpward` | 0.4 | Vertical knockback of the burst. |
+| `forceFieldEnvironmentalDamageMultiplier` | 0.1 | Fraction of environmental damage kept. |
+| `forceFieldBlockAllNonEnvironmental` | true | Whether to fully block non-environmental damage. |
+
+---
+
+## How the Two Pieces Work Together
+
+Both pieces share the same damage handling pipeline. When you take damage, the game checks them in a **strict priority order**.
+
+| Priority | Gear | Behavior |
+|---|---|---|
+| 1 | Vanilla shield | If blocking, the vanilla shield handles it first. |
+| 2 | Force Field Shield | If the field is active, the field handles it (burns projectiles, pushes entities, reduces environmental damage). |
+| 3 | Shield Generator | If the first two don't apply, the Shield Generator consumes energy to absorb the damage. |
+
+> 💡 The Shield Generator will not protect you **while you're using the Force Field Shield** or **blocking with a vanilla shield**. This is by design, to prevent double-layered defense.
+
+---
+
+## Combat Tips
+
+- **Layered defense.** Raise the Force Field Shield first to burn projectiles and keep mobs at range. If something slips through after you drop the field, the Shield Generator catches that hit.
+- **Watch your energy.** The Force Field Shield drains fast. Once it runs dry you enter forced overheat and have no protection until it recharges.
+- **Don't double up.** Holding both a vanilla shield and the Force Field Shield is redundant — the vanilla shield takes priority, and your energy just sits idle.
+- **Use the recharge gaps.** Both items recharge in your inventory. Swap the Force Field Shield out between fights to let it top up.
+- **The Shield Generator is quiet.** You may not notice it saved you unless you glance at the energy bar after a big fight.
+- **Environmental damage gets reduced too.** The Force Field Shield keeps only 10% of fire, suffocation, void, wither, potion, and similar environmental damage — raising it in hazardous environments is worth it.
+
+---
+
+## Trivia / Notes
+
+- The Force Field Shield has infinite durability~

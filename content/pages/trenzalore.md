@@ -1,3 +1,4 @@
+<!-- lang:zh-CN -->
 # 特兰泽洛 / Trenzalore
 
 ![Trenzalore.png](assets/images/Trenzalore.png)
@@ -185,3 +186,192 @@
 - 特兰泽洛的维度效果使用 `minecraft:overworld`。
 - 特兰泽洛可以正常使用床，但**不能使用重生锚**。
 - 特兰泽洛会自然生成怪物，怪物生成光照范围为 0–7。
+
+<!-- lang:en -->
+# Trenzalore / 特兰泽洛
+
+![Trenzalore.png](assets/images/Trenzalore.png)
+
+> **Type:** Planet
+> **Dimension ID:** `doctor_m:trenzalore`  
+> **Display name:** §3Trenzalore  
+> **Added in:** v2.1 — history of the past... and of what has yet to come...  
+> **Environment:** Endless night, heavy snow, sky light present, natural mob spawning enabled  
+> **Related biomes:** Snowy Plains, Snowy Slopes, Snowy Taiga, Ice Spikes, Frozen Peaks, Forbidden Zone  
+> **Related structure:** Doctor's Tomb  
+> **Related advancement:** Is the Time Coming?
+
+---
+
+## Overview
+
+**Trenzalore** is a dimension in DOCTOR M.
+
+Judging from the advancement text, Trenzalore is described as:
+
+> In a town beneath the falling snow, an old warrior is about to meet his bell; his glorious old body is about to greet a new chapter.
+
+This description points to a snow-covered town and some major event tied to a "bell", an "old body", and a "new chapter". The overall atmosphere leans toward finality, cycles, and farewells.
+
+Trenzalore is an **endless night dimension**. Its time is fixed at night, ambient light is extremely low, and sky light still exists, but the whole place is very dim. The dimension is dominated by snowy biomes and also contains one special biome — the **Forbidden Zone**. The **Doctor's Tomb** generates in the Forbidden Zone at an extremely low chance.
+
+---
+
+## Environment Parameters
+
+| Item | Value | Description |
+|---|---|---|
+| Natural dimension | Yes | A natural dimension. |
+| Ambient light | 0.05 | Extremely low; overall very dim. |
+| Fixed time | 18000 | Endless night; time is fixed at night. |
+| Sky light | Yes | Sky light exists, but time is fixed at night. |
+| Ceiling | None | The dimension is not enclosed. |
+| Coordinate scale | 1.0 | Same as the Overworld; no scaling. |
+| Logical height | 256 | The dimension's logical height. |
+| Min Y | -64 | Minimum Y coordinate for building/generation. |
+| Total height | 384 | From -64 to 320. |
+| Bed usable | Yes | Beds work normally. |
+| Respawn anchor | Not usable | Respawn anchors do not work. |
+| Raids | None | No raids occur. |
+| Natural mob spawning | Yes | The dimension spawns mobs naturally. |
+| Dimension effect | `minecraft:the_end` | Uses the End dimension effect. |
+
+---
+
+## Endless Night
+
+The most defining feature of Trenzalore is its **endless night**.
+
+- Time is fixed at **18000**, which corresponds to Minecraft's night.
+- Sky light still exists, but time never naturally advances to day.
+- Ambient light is **0.05** — darker than a normal night.
+- The overall mood is dark and cold, and combined with the heavy snow and snowy biomes, it conveys a sense of finality.
+
+> 💡 Trenzalore's endless night echoes the "bell" and the "old warrior" from the advancement description, creating an atmosphere of time standing still and the end drawing near.
+
+---
+
+## Biomes
+
+Trenzalore has six registered biomes.
+
+| Biome ID | Display name | Type |
+|---|---|---|
+| `minecraft:snowy_plains` | Snowy Plains | Vanilla snowy |
+| `minecraft:snowy_slopes` | Snowy Slopes | Vanilla snowy |
+| `minecraft:snowy_taiga` | Snowy Taiga | Vanilla snowy |
+| `minecraft:ice_spikes` | Ice Spikes | Vanilla snowy |
+| `minecraft:frozen_peaks` | Frozen Peaks | Vanilla snowy |
+| `doctor_m:forbidden_zone` | Forbidden Zone | DOCTOR M special biome |
+
+### Snowy Biomes
+
+Most of Trenzalore is made up of vanilla snowy biomes:
+
+- Snowy Plains
+- Snowy Slopes
+- Snowy Taiga
+- Ice Spikes
+- Frozen Peaks
+
+These biomes use Overworld snowy surface rules: grass block, dirt, stone. The overall look is cold terrain covered in heavy snow, matching the "town beneath the falling snow" from the advancement description.
+
+### Forbidden Zone
+
+The **Forbidden Zone** is Trenzalore's special biome.
+
+| Attribute | Value |
+|---|---|
+| Temperature | 2.0 |
+| Precipitation | None |
+| Sky color | 0 (pure black) |
+| Fog color | 0 (pure black) |
+| Water color | 0 (pure black) |
+| Water fog color | 0 (pure black) |
+| Grass color | 0 (pure black) |
+| Foliage color | 0 (pure black) |
+| Mob spawning | None |
+| Structure features | None |
+| Carvers | None |
+
+The Forbidden Zone's visual presentation is extremely distinctive:
+
+- Sky, fog, water, grass, and foliage are all **pure black**.
+- No precipitation.
+- No mobs spawn naturally.
+- No surface features.
+
+The Forbidden Zone's surface is made of **magma blocks, blackstone, obsidian, and stone**, presenting a dark, scorching, barren landscape in stark contrast to Trenzalore's other snowy biomes.
+
+> ⚠️ Even though the Forbidden Zone's temperature parameter is 2.0, its surface is made of magma blocks and blackstone — the environment is still dangerous.
+
+---
+
+## Structures
+
+### Doctor's Tomb
+
+> **Type:** Massive structure  
+> **Generates in:** Forbidden Zone  
+> **Spawn chance:** Extremely low
+
+The **Doctor's Tomb** is the most important structure in Trenzalore.
+
+Changelog description:
+
+> Forbidden Zone! And the Doctor's Tomb! The largest structure in DOCTOR M so far!
+
+The Doctor's Tomb has the following features:
+
+- Only generates in the **Forbidden Zone** biome.
+- Spawn chance is **extremely low**.
+- Is the **largest structure** in DOCTOR M so far.
+- Directly tied to the Doctor, Time Lords, the TARDIS, and related themes.
+
+Since the Doctor's Tomb only generates in the Forbidden Zone, and the Forbidden Zone is itself a special and dangerous biome, finding the Doctor's Tomb requires first locating the Forbidden Zone in Trenzalore, then searching within it for a structure that spawns at an extremely low chance.
+
+> 💡 The Doctor's Tomb is one of Trenzalore's core exploration objectives.
+
+---
+
+## Entering
+
+Trenzalore can be reached via the TARDIS.
+
+For navigation details, see the TARDIS-related Wiki page.
+
+---
+
+## Exploration Tips
+
+- **Bring a light source**: Trenzalore is an endless night dimension with very low ambient light; bring your own lighting.
+- **Prepare for the cold**: Most of the region is snowy biomes; the environment is cold.
+- **Watch out for mobs**: Trenzalore spawns mobs naturally, and under endless night, mob spawning isn't limited by daytime.
+- **Find the Forbidden Zone**: The Forbidden Zone is the only place the Doctor's Tomb generates; you must find it first.
+- **Be patient hunting the Doctor's Tomb**: The Doctor's Tomb has an extremely low spawn chance in the Forbidden Zone, and requires extensive exploration.
+- **The Forbidden Zone is dangerous**: Its surface is made of magma blocks, blackstone, and obsidian — explore carefully.
+
+---
+
+## Related Advancement
+
+| Advancement | Title | Description |
+|---|---|---|
+| `advancements.doctor_m.enter_trenzalore` | Is the Time Coming? | In a town beneath the falling snow, an old warrior is about to meet his bell; his glorious old body is about to greet a new chapter. |
+
+---
+
+## Trivia / Notes
+
+- Trenzalore is a dimension added in v2.1.
+- Trenzalore is an **endless night dimension**; time is fixed at 18000.
+- Trenzalore's ambient light is only **0.05** — darker than a normal night.
+- Trenzalore is dominated by snowy biomes, and also contains the special biome **Forbidden Zone**.
+- The Forbidden Zone's sky, fog, water, grass, and foliage are all **pure black**.
+- No mobs spawn naturally in the Forbidden Zone.
+- The **Doctor's Tomb** only generates in the Forbidden Zone, and only at an extremely low chance.
+- The Doctor's Tomb is the **largest structure** in DOCTOR M so far.
+- Trenzalore's dimension ID is `doctor_m:trenzalore`.
+- Trenzalore's dimension effect uses `minecraft:overworld`.
+- Beds work normally in Trenzalore, but **respawn anchors do not**.
+- Trenzalore spawns mobs naturally, with a mob spawning light range of 0–7.

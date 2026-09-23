@@ -1,3 +1,4 @@
+<!-- lang:zh-CN -->
 # 音速起子扩展 / Sonic Screwdriver Plus
 
 > **类型：** 物品扩展系统  
@@ -313,3 +314,320 @@ DOCTOR M 增强了过载模式，对**坚守者**有特殊效果：
 ## 冷知识
 
 - 晶体系统是 AIT2 的功能，所以 DOCTOR M 能让你提前玩到 AIT2 （bushi）。
+
+<!-- lang:en -->
+# Sonic Screwdriver Plus / 音速起子扩展
+
+> **Type:** Item expansion system  
+> **Applies to:** Sonic Screwdriver  
+> **Source:** DOCTOR M  
+> **Obtaining:** Type-103 TARDIS trade, Marian trade  
+> **Related advancements:** Unusual Technology, Deafening, How Did This Happen...
+
+---
+
+## Overview
+
+**DOCTOR M** gives AIT's Sonic Screwdriver a deep expansion: a **crystal system** and **upgrade modules**.
+
+You can swap the crystal in the screwdriver's tip to change its mode set, or install modules to tune its energy profile.
+
+> 💡 **Core concept:** Once a crystal is installed, **3 of the screwdriver's 4 modes** are **replaced**, forming a new mode set. It's not adding modes — it's swapping out the whole moveset.
+
+| System | Function | Mutually exclusive? |
+|---|---|---|
+| **Crystal system** | Replaces the screwdriver's mode set. | Only one crystal can be installed at a time. |
+| **Upgrade modules** | Changes the screwdriver's energy profile. | The two modules are mutually exclusive; only one can be installed. |
+
+> 💡 You can install a new module and a new crystal at the same time.
+
+---
+
+## Obtaining Sonic Screwdriver Modules
+
+Modules can only be obtained from the following sources:
+
+- **Type-103 TARDIS trade**
+- **Marian trade**
+
+---
+
+## Crystal System
+
+The Sonic Screwdriver comes with a **Zeiton Shard** as its default crystal. You can **replace** it with other crystals to switch the screwdriver's mode set.
+
+| Crystal | Effect |
+|---|---|
+| **Zeiton Shard** (default) | Keeps AIT's vanilla modes. |
+| **Amethyst Shard** | Switches to the **gravitational mode set**. |
+| **Charged Zeiton Crystal** | Switches to the **laser mode set**. |
+
+### Installation
+
+| Step | Action |
+|---|---|
+| 1 | Hold the crystal in your **off-hand**. |
+| 2 | Hold the Sonic Screwdriver in your **main hand**. |
+| 3 | **Sneak + Right-click**. |
+
+On success, the action bar shows "Crystal installed: XXX".
+
+> 💡 When installing a new crystal, the old one pops out and is returned to you. The crystal itself is **not consumed**.
+
+---
+
+## Gravitational Mode (Amethyst)
+
+After replacing the crystal with an **Amethyst Shard**, the screwdriver's modes become:
+
+| AIT vanilla mode | Amethyst mode |
+|---|---|
+| Interact | **Gravitational Drag** |
+| Overload | **Gravitational Shielding** |
+| Scan | **Gravitational Swap** |
+| TARDIS | *(unchanged)* |
+
+### Gravitational Drag
+
+**Grabs an entity and pulls it right in front of you.**
+
+| Attribute | Value |
+|---|---|
+| **Range** | 10 blocks. |
+| **Action** | Right-click on a target entity. |
+| **Behavior** | At long range the target teleports straight to you; at close range it's pulled in smoothly. |
+| **Facing** | The target keeps its orientation — no tumbling. |
+
+### Gravitational Shielding
+
+**Continuously pushes all nearby entities away.**
+
+| Attribute | Value |
+|---|---|
+| **Range** | 3-block radius. |
+| **Action** | Hold right-click to keep it active. |
+| **Behavior** | Mobs inside the radius are continuously pushed away, retaining some of their existing momentum. |
+
+### Gravitational Swap
+
+**Pulls yourself toward where you're looking.**
+
+| Attribute | Value |
+|---|---|
+| **Wind-up** | 1.5 seconds (30 ticks). |
+| **Action** | Hold right-click. |
+| **Wind-up visual** | Slow down, charge in place, with end-rod particles. |
+| **Launch** | You're pulled smoothly in your view direction — **no fall damage**. |
+
+> This mode is excellent for **crossing ravines, scaling walls, or escaping enemies**.
+
+---
+
+## Laser Mode (Charged Zeiton Crystal)
+
+After replacing the crystal with a **Charged Zeiton Crystal**, the screwdriver's modes become:
+
+| AIT vanilla mode | Charged Zeiton mode |
+|---|---|
+| Interact | **Pulse** |
+| Overload | **Laser** |
+| Scan | **Push** |
+| TARDIS | *(unchanged)* |
+
+### Pulse
+
+**Fires a laser bolt intermittently.**
+
+| Attribute | Value |
+|---|---|
+| **Range** | 48 blocks. |
+| **Rate** | One shot every **3 seconds**. |
+| **Damage** | 10 magic damage. |
+| **Cooldown** | **3 seconds** after releasing right-click before it can be used again. |
+| **Particles** | Golden wax-light particles. |
+
+> During cooldown you can't re-fire, and the action bar shows the remaining time.
+
+### Laser
+
+**Fires a continuous beam.**
+
+| Attribute | Value |
+|---|---|
+| **Range** | 48 blocks. |
+| **Damage** | 6 magic damage (**applied every tick**). |
+| **Action** | Hold right-click to keep firing. |
+| **Energy drain** | 8 points per tick. |
+
+**Extremely high damage** — one full second of sustained fire is 120 damage. But the drain is heavy, and low-capacity screwdrivers can't keep up for long.
+
+### Push
+
+**Instantly shoves all nearby mobs away.**
+
+| Attribute | Value |
+|---|---|
+| **Range** | 5-block radius. |
+| **Force** | Strong knockback + upward lift. |
+| **Cooldown** | **5 seconds**. |
+| **Energy cost** | **25 points**. |
+| **Sound** | Explosion. |
+
+> A panic button for when you're surrounded. Using it during cooldown shows the remaining seconds.
+
+---
+
+## Upgrade Modules
+
+Upgrade modules **change the Sonic Screwdriver's energy profile**. The two modules are **mutually exclusive**; only one can be installed.
+
+| Module | Effect |
+|---|---|
+| **Energy Upgrade Module** | Doubles the energy cap (**2000 points**). |
+| **Regeneration Core** | Drops the energy cap to **500 points**, but regenerates **0.5 points per tick** (about 10 per second). |
+
+### Choosing Between Them
+
+| Situation | Recommendation |
+|---|---|
+| **Burst output** (laser sweeping, gravitational shielding) | **Upgrade Module** — more energy, go all-out in one go. |
+| **Long-term use** (daily scanning, occasional use) | **Regeneration Core** — lower cap, but you'll basically never run dry. |
+
+### Install / Uninstall
+
+**Install:**
+
+1. Hold the upgrade module in your **off-hand**.
+2. Hold the Sonic Screwdriver in your **main hand**.
+3. **Sneak + Right-click**.
+
+**Uninstall:**
+
+1. Hold a Sonic Screwdriver in **Interact mode** in your **off-hand**.
+2. Hold the Sonic Screwdriver you want to remove the module from in your **main hand**.
+3. **Sneak + Right-click**.
+
+> After uninstalling, the old module automatically returns to your inventory. If your inventory is full it drops on the ground.
+
+---
+
+## Enhancements to AIT's Vanilla Modes
+
+DOCTOR M enhances AIT's four original modes: Scan, Overload, TARDIS, and Interact.
+
+### Scan Mode
+
+Scan mode now provides information across **three dimensions**.
+
+#### Scan Blocks (Wall Detection)
+
+When scanning, if there's a solid block in front of you, the screwdriver **penetrates it** and probes what's behind:
+
+| Result | Meaning |
+|---|---|
+| **Air** | Air behind the wall. |
+| **Liquid** | Water / lava behind the wall. |
+| **Space (with plants)** | A passable block behind the wall (grass, vines, torches, etc.). |
+| **Space** | Other non-solid blocks behind the wall. |
+
+#### Scan Region (Coordinates + Dimension + Time)
+
+Scanning also shows:
+
+- The current **block coordinates** (X Y Z).
+- The current **dimension ID**.
+- The current **in-game time** (HH:MM format).
+
+#### Scan Entities (Mob Classification)
+
+Scanning a mob shows its **category**:
+
+| Category | Examples |
+|---|---|
+| Baby / Undead / Arthropod / Illager | Zombies, spiders, pillagers. |
+| Feline / Wolf / Equine / Fox / Panda | Various animals. |
+| Pig / Sheep / Cow / Chicken / Rabbit | Livestock. |
+| Villager / Golem / Snow Golem | Friendly NPCs. |
+| Creeper / Enderman / Blaze / Magma Cube / Slime | Hostile. |
+| Ghast / Shulker / Ender Dragon / Wither / Guardian | Bosses and specials. |
+| Hostile mob / Passive mob / Flying mob | Generic fallbacks. |
+| **TARDIS** | The Type-103 TARDIS shows as "TARDIS". |
+
+#### 🥚 Scan Easter Egg: Overloading Marian
+
+**Scanning Marian.Jin with Scan mode** triggers a special effect:
+
+- A burst of electric sparks + sonic + fire particles.
+- Glitch sound.
+- Action bar shows: `§kacd悖论das因果asdw结合体`.
+- Unlocks the achievement **"How Did This Happen..."**.
+- The screwdriver enters a **3-second cooldown**.
+
+> Marian is the only creature in the mod that can trigger a scan overload.
+
+### Overload Mode
+
+DOCTOR M enhances Overload mode with a special effect against the **Warden**:
+
+| Effect | Value |
+|---|---|
+| **Instant damage** | 50 points. |
+| **Hard CC duration** | **10 seconds** (AI disabled). |
+| **Screwdriver cooldown** | **15 seconds**. |
+
+On trigger: a burst of sonic + electric spark particles, a sound effect, and unlocking the achievement **"Deafening"**.
+
+> While the Warden is hard-CC'd it does nothing at all — a golden window to escape or unload damage.
+
+### TARDIS Mode
+
+**When TARDIS summoning fails**, the screwdriver reports:
+
+- Your current position (coordinates + dimension).
+- The TARDIS's position and **relative distance**.
+- A **direction arrow** (↑↗→↘↓↙←↖) pointing toward the TARDIS.
+
+If the TARDIS is **in another dimension**, its dimension ID is shown.
+
+### Interact Mode
+
+**When pointed at a damaged TARDIS subsystem**, Interact mode can **repair its durability**:
+
+| Item | Description |
+|---|---|
+| **Repair per use** | **2%–10%** of max durability. |
+| **Trigger condition** | Subsystem durability is not full. |
+| **Feedback** | Sound effect + enchantment particles. |
+| **Durability full** | Plays a notify sound; nothing is consumed. |
+
+> Doesn't consume the screwdriver's durability, but regular use does consume the screwdriver's energy.
+
+---
+
+## Mode Replacement Rules
+
+This is the key to understanding the crystal system.
+
+| Crystal | Mode 1 | Mode 2 | Mode 3 | Mode 4 |
+|---|---|---|---|---|
+| **Zeiton Shard** | Interact | Overload | Scan | TARDIS |
+| **Amethyst Shard** | Gravitational Drag | Gravitational Shielding | Gravitational Swap | TARDIS |
+| **Charged Zeiton Crystal** | Pulse | Laser | Push | TARDIS |
+
+> **TARDIS mode is preserved across all crystals** — no matter which crystal is installed, the 4th mode is always TARDIS mode.
+
+---
+
+## Related Advancements
+
+| Advancement | Title | Description |
+|---|---|---|
+| `advancements.doctor_m.deafening` | Deafening | Smash the Warden with the Sonic Screwdriver's Overload mode! |
+| `advancements.doctor_m.scan_overload` | How Did This Happen... | Scanned an existence the Sonic Screwdriver cannot comprehend. |
+| `advancements.doctor_m.vortex_manipulator` | Unusual Technology | Use it carefully — don't become the second Major Anderson. |
+
+---
+
+## Trivia
+
+- The crystal system is an AIT2 feature, so DOCTOR M lets you play AIT2 early (not really).

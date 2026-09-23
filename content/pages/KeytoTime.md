@@ -1,3 +1,4 @@
+<!-- lang:zh-CN -->
 # 时间钥匙 / Key to Time
 
 ![key_to_time.png](assets/images/key_to_time.png)
@@ -221,3 +222,228 @@
 
 - 物品名字有**动态颜色**：紫色 → 白色 → 红色 → 白色循环流动。
 - **注：时间钥匙尚未完成哦~**
+
+<!-- lang:en -->
+# Key to Time / 时间钥匙
+
+![key_to_time.png](assets/images/key_to_time.png)
+
+> **Type:** Artifact  
+> **Source:** DOCTOR WHO  
+> **Related advancement:** Owner of the Universe  
+> **Related items:** De-Mat Gun, Pocket Watch, Eternal Crystal  
+> **Config options:** `keytoTimeDamage`, `keytoTimeMultiplier`, `keytoTimeExtra`
+
+---
+
+## Overview
+
+The **Key to Time** is an **artifact** capable of manipulating causality, defying death, and rewriting reality. Once equipped, you gain near-immortal abilities.
+
+> 💡 **Note:** The Key to Time is not yet complete; it will become even stronger in the future.
+
+---
+
+## Equipped Effects (Passive)
+
+While **holding the Key to Time**, the following effects are **continuously active**:
+
+| Effect | Description |
+|---|---|
+| **Flight** | Immediately grants flight (works outside Creative mode). |
+| **Forced percentage damage** | All your damage forcibly drains a percentage of the target's health. |
+| **Auto-heal** | Restores **10% of max health** per second. |
+| **Hunger / saturation refill** | Keeps hunger and saturation at maximum at all times. |
+| **Auto-extinguish** | Instantly puts out fire on you. |
+| **Oxygen supply** | Automatically grants the **Oxygenator** effect in oxygen-free environments (space / underwater). |
+| **Damage reduction** | All damage can take at most **15% of max health** (see details below). |
+| **Health bar shift** | Your current max health has become the greatest lie — it is effectively infinite. |
+| **Revival** | Automatically revives at full health on death (see details below). |
+
+**Where it works:** As long as it is anywhere in your **inventory** or in a **curio slot**, all passive effects apply. However, **Flight** and **Forced percentage damage** require it to be equipped in a **curio slot**.
+
+---
+
+## Damage Handling
+
+The Key to Time has a strict damage processing pipeline.
+
+### Damage Type Immunity
+
+The following damage is **completely nullified**:
+
+| Damage type | Description |
+|---|---|
+| Fire, lava, high temperature | All fire sources. |
+| Potion, magic damage | Direct and indirect magic. |
+| Wither, drowning, starvation | Physiological damage. |
+| Fall, cactus, sweet berry bush | Environmental damage. |
+| Freezing, suffocation, lightning | Natural damage. |
+| Sonic, void, cramming | Special damage. |
+| All non-vanilla damage | Every non-vanilla damage source is voided. |
+
+### Projectile Interception
+
+Any projectile **not fired by you** (arrows, fireballs, etc.) that touches you is **instantly destroyed**, playing the "arrow hit" sound and smoke particles.
+
+### Damage Cap
+
+**All other damage** is capped at **15% of max health**. In other words, no matter how hard an enemy hits, you lose at most 3 hearts (assuming 10 hearts max).
+
+### Death Interception
+
+If a hit would **kill you outright**, the Key to Time will:
+
+1. **Immediately heal you to full** (preventing death).
+2. **Trigger a 2-minute protection state** (see below).
+
+---
+
+## Revival Mechanic
+
+When the Key to Time holder **actually dies** (e.g. killed by some mechanic that bypasses the limits), **revival** triggers automatically:
+
+| Effect | Description |
+|---|---|
+| **Full-health revival** | Instantly restored to max health. |
+| **Clear all status effects** | Both positive and negative are wiped. |
+| **Gain Resistance II** | Lasts 2 seconds. |
+| **Clear the area** | All hostile mobs within **35 blocks** are instantly killed. |
+| **Sound** | A bell tolls. |
+| **Particles** | End rod + soul fire particles. |
+| **Action bar message** | Owner of the Key to Time, your power does not end here. You will not be troubled by trifles like death. The Six-Fold Gods still watch over you. |
+
+### Post-Revival Protection Period
+
+For **2 minutes** after revival, you gain additional continuous protection:
+
+- Health remains at maximum.
+- All entities within **3 blocks** are **continuously erased** (similar to the De-Mat Gun effect, accompanied by enderman teleport sounds and soul particles).
+
+> 💡 This protection period means that for a while after revival, enemies within melee range are automatically cleared.
+
+### Cooldown
+
+The Key to Time's revival **ignores cooldown** — this is the result of a buff in version 2.1. Revival priority is pushed to maximum.
+
+---
+
+## Three Toggleable Modes
+
+The Key to Time supports three special modes. Open the UI via **keybinds** (default: function keys A / B; check and change them in game settings) to toggle them.
+
+**When toggling a mode**, the action bar shows the corresponding "enabled / disabled" message.
+
+### 1. God Mode (Complete Damage Immunity)
+
+| Property | Description |
+|---|---|
+| **State** | On / Off. |
+| **Effect** | Immune to all damage; health stays at maximum; clears burning, wither, instant damage; refills air and hunger; auto-revives on death. |
+| **Cost** | None. |
+
+> **Normally God Mode wouldn't be this weak, but KTT isn't finished yet~.**
+
+Action bar messages:
+
+```text
+§aDamage immunity enabled
+§cDamage immunity disabled
+```
+
+### 2. Neutral Mode (Forced Mob Neutrality)
+
+| Property | Description |
+|---|---|
+| **State** | On / Off. |
+| **Effect** | Mobs no longer attack you on their own. |
+
+> Currently, all except the Warden can be forced neutral.
+
+Action bar messages:
+
+```text
+§aForced mob neutrality enabled
+§cForced mob neutrality disabled
+```
+
+### 3. Slash Mode (Soul Harvest)
+
+| Property | Description |
+|---|---|
+| **State** | On / Off. |
+| **Effect** | Attacking any entity triggers a **5-block slash effect**. |
+
+> Similar to Tlipoca's Scythe's Soul Harvest, but the Key to Time version is **passive** — attacking an entity automatically releases the slash, and at the highest tier.
+
+Action bar messages:
+
+```text
+§aSoul Harvest enabled
+§cSoul Harvest disabled
+```
+
+---
+
+## Active Abilities
+
+The Key to Time also provides three **active abilities**, toggled instantly via the UI.
+
+### Switch Game Mode
+
+Cycles in order:
+
+```text
+Survival → Creative → Adventure → Spectator → Survival → ...
+```
+
+### Switch World Difficulty
+
+Cycles the server difficulty:
+
+```text
+Peaceful → Easy → Normal → Hard → Peaceful → ...
+```
+
+> This is a **server-side** switch and affects all players.
+
+### Teleport
+
+The Key to Time provides a **teleport** function; see the in-game UI for details.
+
+---
+
+## Custom Title
+
+The Key to Time supports setting a **custom title** for its holder. The title appears in chat.
+
+- Set via the UI.
+- Stored in the Key to Time's NBT; can be read and cleared.
+- Must be equipped in a **curio slot** to take effect.
+
+---
+
+## Config Options
+
+Some values of the Key to Time can be adjusted in `config/doctor_m.json`:
+
+| Option | Default | Description |
+|---|---|---|
+| `keytoTimeDamage` | 1 | Cooldown (ticks). |
+| `keytoTimeMultiplier` | 2.0 | Damage multiplier. |
+| `keytoTimeExtra` | 15.0 | Minimum damage (%). |
+
+---
+
+## Related Advancement
+
+| Advancement | Title | Description |
+|---|---|---|
+| `advancements.doctor_m.obtain_key_to_time` | Owner of the Universe | We have the power to do anything we want. Absolute control over every particle in the universe. Absolute control over everything that has ever existed and everything that ever will exist. From now on — are you listening to me, Romana? Because if you're not, I can make you listen, because I can do anything. From this moment, there is no free will anywhere in the universe. Only my will, because I hold the Key to Time! |
+
+---
+
+## Trivia
+
+- The item name has a **dynamic color**: purple → white → red → white, cycling.
+- **Note: The Key to Time is not yet complete~**

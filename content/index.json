@@ -2,72 +2,67 @@
   "categories": [
     {
       "id": "intro",
-      "title": "关于模组",
+      "title": { "zh-CN": "关于模组", "en": "About" },
       "icon": "★",
       "pages": [
-        { "id": "overview", "title": "模组简介", "file": "intro-overview.md" },
-        { "id": "cf", "title": "配置UI", "file": "Configuration.md" },
-        { "id": "changelog", "title": "更新日志", "file": null }
+        { "id": "overview", "title": { "zh-CN": "模组简介", "en": "Overview" }, "file": "intro-overview.md" },
+        { "id": "cf", "title": { "zh-CN": "配置UI", "en": "Configuration UI" }, "file": "Configuration.md" },
+        { "id": "changelog", "title": { "zh-CN": "更新日志", "en": "Changelog" }, "file": null }
       ]
     },
     {
       "id": "tardis",
-      "title": "塔迪斯相关",
+      "title": { "zh-CN": "塔迪斯相关", "en": "TARDIS" },
       "icon": "◆",
       "pages": [
-        { "id": "tracer", "title": "追踪器与心灵感应电路增强", "file": "Tracer.md" },
-        { "id": "tt_boom", "title": "塔迪斯自毁PLUS", "file": "tt_boom.md" },
-        { "id": "build", "title": "指令创建塔迪斯", "file": "doctor_m_build.md" }
-
+        { "id": "tracer", "title": { "zh-CN": "追踪器与心灵感应电路增强", "en": "Tracer & Telepathic Circuit Enhancements" }, "file": "Tracer.md" },
+        { "id": "tt_boom", "title": { "zh-CN": "塔迪斯自毁PLUS", "en": "TARDIS Self-Destruct PLUS" }, "file": "tt_boom.md" },
+        { "id": "build", "title": { "zh-CN": "指令创建塔迪斯", "en": "Spawn TARDIS via Command" }, "file": "doctor_m_build.md" }
       ]
     },
     {
       "id": "items",
-      "title": "物品图鉴",
+      "title": { "zh-CN": "物品图鉴", "en": "Items" },
       "icon": "◈",
       "pages": [
-        { "id": "ktt", "title": "时间钥匙", "file": "KeytoTime.md" },
-        { "id": "pocket_watch", "title": "怀表", "file": "PocketWatch.md" },
-        { "id": "de_mat_gun", "title": "去物质枪", "file": "DeMat-Gun.md" },
-        { "id": "keyof_rassilon", "title": "拉斯隆之钥", "file": "KeyofRassilon.md" },
-        { "id": "s_a_f", "title": "力场盾牌与护盾生成器", "file": "Shield-Core-and-Force-Field-Shield.md" },
-        { "id": "t_h", "title": "玩具匠的锤子", "file": "Toymakers-Hammer.md" },
-        { "id": "vm", "title": "涡旋操纵器", "file": "Vortex-Manipulator.md" },
-        { "id": "t_s", "title": "特利波卡的镰刀", "file": "Tlipoca_Scythe.md" },
-        { "id": "stcs", "title": "STCS系列武器", "file": "STCS_Weapons.md" }
-
+        { "id": "ktt", "title": { "zh-CN": "时间钥匙", "en": "Key to Time" }, "file": "KeytoTime.md" },
+        { "id": "pocket_watch", "title": { "zh-CN": "怀表", "en": "Pocket Watch" }, "file": "PocketWatch.md" },
+        { "id": "de_mat_gun", "title": { "zh-CN": "去物质枪", "en": "De-Mat Gun" }, "file": "DeMat-Gun.md" },
+        { "id": "keyof_rassilon", "title": { "zh-CN": "拉斯隆之钥", "en": "Key of Rassilon" }, "file": "KeyofRassilon.md" },
+        { "id": "s_a_f", "title": { "zh-CN": "力场盾牌与护盾生成器", "en": "Force Field Shield & Shield Generator" }, "file": "Shield-Core-and-Force-Field-Shield.md" },
+        { "id": "t_h", "title": { "zh-CN": "玩具匠的锤子", "en": "Toymaker's Hammer" }, "file": "Toymakers-Hammer.md" },
+        { "id": "vm", "title": { "zh-CN": "涡旋操纵器", "en": "Vortex Manipulator" }, "file": "Vortex-Manipulator.md" },
+        { "id": "t_s", "title": { "zh-CN": "特利波卡的镰刀", "en": "Tlipoca's Scythe" }, "file": "Tlipoca_Scythe.md" },
+        { "id": "stcs", "title": { "zh-CN": "STCS系列武器", "en": "STCS Weapons" }, "file": "STCS_Weapons.md" }
       ]
     },
     {
       "id": "dimensions",
-      "title": "维度",
+      "title": { "zh-CN": "维度", "en": "Dimensions" },
       "icon": "◆",
       "pages": [
-        { "id": "titan", "title": "土卫六-泰坦", "file": "titan.md" },
-        { "id": "trenzalore", "title": "特兰泽洛", "file": "trenzalore.md" }
-
+        { "id": "titan", "title": { "zh-CN": "土卫六-泰坦", "en": "Titan" }, "file": "titan.md" },
+        { "id": "trenzalore", "title": { "zh-CN": "特兰泽洛", "en": "Trenzalore" }, "file": "trenzalore.md" }
       ]
     },
     {
       "id": "biology",
-      "title": "生物",
+      "title": { "zh-CN": "生物", "en": "Creatures" },
       "icon": "◆",
       "pages": [
-        { "id": "tardis_103", "title": "103型塔迪斯", "file": "Type-103-TARDIS.md" },
-        { "id": "marian", "title": "玛丽安.谨", "file": "玛丽安.谨（Marian.Jin）.md" }
-
+        { "id": "tardis_103", "title": { "zh-CN": "103型塔迪斯", "en": "Type-103 TARDIS" }, "file": "Type-103-TARDIS.md" },
+        { "id": "marian", "title": { "zh-CN": "玛丽安.谨", "en": "Marian.Jin" }, "file": "玛丽安.谨（Marian.Jin）.md" }
       ]
     },
     {
       "id": "new_mechanism",
-      "title": "新机制/新功能",
+      "title": { "zh-CN": "新机制/新功能", "en": "New Mechanics" },
       "icon": "◆",
       "pages": [
-        { "id": "s_s_p", "title": "音速起子增强", "file": "Sonic_Screwdriver_Plus.md" },
-        { "id": "s_p", "title": "更好的太空（还会持续更新！）", "file": "space_plus.md" },
-        { "id": "handles", "title": "二把手中文支持！", "file": "Handles.md" },
-        { "id": "stp", "title": "STP/无缝传送技术！", "file": "Seamless_Teleport.md" }
-
+        { "id": "s_s_p", "title": { "zh-CN": "音速起子增强", "en": "Sonic Screwdriver Plus" }, "file": "Sonic_Screwdriver_Plus.md" },
+        { "id": "s_p", "title": { "zh-CN": "更好的太空（还会持续更新！）", "en": "Better Space (still updating!)" }, "file": "space_plus.md" },
+        { "id": "handles", "title": { "zh-CN": "二把手中文支持！", "en": "Handles Chinese Support!" }, "file": "Handles.md" },
+        { "id": "stp", "title": { "zh-CN": "STP/无缝传送技术！", "en": "STP / Seamless Teleport!" }, "file": "Seamless_Teleport.md" }
       ]
     }
   ]

@@ -1,3 +1,4 @@
+<!-- lang:zh-CN -->
 # DOCTOR M 简介
 
 DOCTOR M 是一个以《神秘博士》为主题的 Minecraft 模组，基于 **AIT（Adventures In Time）** 开发的一个附属模组。
@@ -23,3 +24,30 @@ DOCTOR M 与一些模组有特别的联动，如 Modrinth 介绍页当中的联�
 ## 在那里可以获取DOCTOR M？
 
 我们的作品主要发布在 [Modrinth](https://modrinth.com) 上，你可以点击这个超链接跳转到 Modrinth 里下载 DOCTOR M [下载 DOCTOR M](https://modrinth.com/mod/doctorm)
+
+<!-- lang:en -->
+# DOCTOR M Overview
+
+DOCTOR M is a Minecraft mod themed around *Doctor Who*, built as an add-on for **AIT (Adventures In Time)**.
+
+![Mod cover](assets/images/doctor_m.png)
+
+## What does it do?
+
+DOCTOR M makes a great many adjustments on top of what AIT already offers. Other pages go into detail — here, all you need to know is that DOCTOR M adds a huge number of new mechanics and features to AIT, along with plenty of good things AIT once had but that were buried away in its branches!
+
+## Version Support & Compatibility
+
+DOCTOR M currently supports only 1.20.1 Fabric. There are no plans for Forge support, because that isn't AIT's primary supported version.
+Regarding [Connector](https://modrinth.com/mod/connector): DOCTOR M cannot guarantee that using it will let DOCTOR M run on Forge, because DOCTOR M uses a large number of Mixins against AIT. On Forge, those names and methods may differ, which would cause crashes!
+DOCTOR M has special integrations with several mods, as listed on its Modrinth page:
+
+| Mod | Description |
+|------|-------------|
+| AIT Extras | Some interiors/buildings require blocks from this mod. (Only applies to versions before 1.1.0) |
+| Create | Some interiors require its blocks. |
+| Tough as Nails | AIT's spacesuit provides warmth. |
+
+## Where can I get DOCTOR M?
+
+Our work is mainly published on [Modrinth](https://modrinth.com). You can click the hyperlink to jump to Modrinth and download DOCTOR M: [Download DOCTOR M](https://modrinth.com/mod/doctorm)

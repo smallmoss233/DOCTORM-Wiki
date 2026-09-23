@@ -1,3 +1,4 @@
+<!-- lang:zh-CN -->
 # 103 型塔迪斯 / Type-103 TARDIS
 
 ![103tarids.png](assets/images/103tarids.png)
@@ -305,3 +306,312 @@
 - **特殊反击有 5 秒冷却**，执行时会有传送门粒子和末影人传送音效。
 - **交易者 103 是唯一有交易系统的性格**，交易列表每游戏日刷新。
 - **103 的名字来自皮肤显示名**，所以每只 103 的名字都不一样。
+
+<!-- lang:en -->
+# Type-103 TARDIS / 103 型塔迪斯
+
+![103tarids.png](assets/images/103tarids.png)
+
+> **Type:** Humanoid TARDIS / Neutral creature  
+> **Entity ID:** `doctor_m:103_tardis`  
+> **Source:** DOCTOR WHO — Faction Paradox spin-off novels
+> **Spawns in:** Overworld snowy biomes, Trenzalore dimension  
+> **Related advancements:** Cross-Time Trade, Alright! Deal!  
+> **Related config:** `103tardis_trade.json`
+
+---
+
+## Overview
+
+The **Type-103 TARDIS** is a humanoid form of TARDIS. It's referred to below as **103** for short.
+
+In **DOCTOR M**, 103s spawn in **snowy biomes**, and spawn more frequently in the **Trenzalore dimension**. If you want to meet these curious humanoid TARDISes, try your luck in a **Snowy Plains** or in the **Trenzalore dimension**.
+
+| Attribute | Value |
+|---|---|
+| **Health** | 20 HP (10 hearts). |
+| **Movement speed** | 0.25. |
+| **Attack damage** | 2 HP (1 heart). |
+| **Follow range** | 24 blocks. |
+| **Skin** | **Randomly picked** from a list at spawn. |
+
+---
+
+## Spawn Mechanics
+
+103 spawning is governed by the following conditions.
+
+### Dimension & Chance
+
+| Dimension | Spawn chance | Notes |
+|---|---|---|
+| **Overworld** | 8%. | Non-ocean biomes only. |
+| **Trenzalore** | 20%. | Non-ocean biomes only. |
+
+### Spawn Restrictions
+
+- **Never spawns in oceans** — all ocean biomes (including deep ocean, frozen ocean, etc.) are excluded.
+- **Must be on standable ground** — uses the `MOTION_BLOCKING_NO_LEAVES` heightmap.
+- **Spawns 1 at a time** — weight 2, count 1~1.
+
+### Skins
+
+Each 103 picks a skin set **at random** from a list when it spawns:
+
+- Each skin set comes with its **own display name**.
+- Supports both **Steve** (classic) and **Alex** (slim) models.
+
+---
+
+## Shared Mechanics
+
+Regardless of personality, all 103s share the following.
+
+### Damage Reduction
+
+All incoming damage is **halved**.
+
+### Natural Regeneration
+
+- Begins regenerating **5 seconds** after taking damage.
+- Restores **1 heart** every **2 seconds**.
+
+### Memory System
+
+- 103s remember the identity of their attacker.
+- The memory lasts **30 seconds**.
+
+---
+
+## The Five Personalities
+
+Each 103 is assigned a personality **uniformly at random** when it spawns, determining its behavior, dialogue style, and counterattack method.
+
+| Personality | Chance | Summary |
+|---|---|---|
+| **Trader (TRADER)** | **20%** | Neutral and friendly; supports trading. |
+| **Aggressive (AGGRESSIVE)** | **20%** | Actively attacks players; extremely dangerous. |
+| **Defensive (DEFENSIVE)** | **20%** | Prefers avoidance; only fights back when cornered. |
+| **Timid (TIMID)** | **20%** | Extremely cowardly; passively flees. |
+| **Brave (BRAVE)** | **20%** | Protects players; actively attacks hostile mobs. |
+
+> 💡 **Tip:** Personality is fixed at spawn and never changes. You can figure out its personality by watching its behavior or dialogue.
+
+---
+
+## Combat Output
+
+Every 103 that fights actively (except Timid) uses the same combat AI:
+
+| Situation | Output |
+|---|---|
+| **Target in melee range** | Direct melee attack. |
+| **Target far away, line of sight** | Charges 10 ticks → **fires 2 staser bolts in a row (projectiles)**. |
+
+> In other words, **103's main damage comes from projectiles** — once it locks onto you, it will chase you down, firing bolts on the run.
+
+---
+
+## Special Counterattacks
+
+Besides regular output, when a 103 is attacked it also performs a **special counterattack**. This is its real "punishment":
+
+| Special counter | Effect |
+|---|---|
+| **Melee** | Deals melee damage directly to the attacker. |
+| **High-altitude throw** | Teleports the player to Y+60~100 in the air, with **Slow Falling** (5 seconds) and **Nausea** (8 seconds). |
+| **Trenzalore teleport** | Force-teleports the player to the **doctor_m:trenzalore** dimension. |
+| **Vortex teleport** | Teleports the player to the **ait:time_vortex** dimension, with **Wither** (5 seconds), **Slowness** (10 seconds), **Weakness** (10 seconds), and **Blindness** (3 seconds). |
+
+> ⚠️ **Note:** **Energy beam is not part of the special counterattack** — it's in the weight table, but the code excludes it from the draw. So the four above are what actually trigger.
+
+> Special counterattacks have a **5-second cooldown**. When executed, portal particles appear around the 103, and the enderman teleport sound plays.
+
+---
+
+## Trader (TRADER) — 20%
+
+One of the most common 103 forms, and the **only personality with a trading system**.
+
+### Behavior
+
+- **Neutral**: Never attacks any mob on its own.
+- **Trading**: Right-click to view the daily trade list; sneak + right-click to trade directly.
+- **Flees**: Slowly runs from hostile mobs.
+- **Wanders**: Wide roaming range; wanders all over.
+
+### Reaction Chain When Attacked
+
+| Hits | Reaction |
+|---|---|
+| Hit 1 | Hurt reaction + requests a ceasefire. |
+| Hit 2 | **Warning** (final ultimatum). |
+| Hit 3 | **Locks onto the player**, chases for 60 seconds (melee + projectile output begins). |
+
+### Special Counter Preferences
+
+| Counter | Chance |
+|---|---|
+| Melee | 57%. |
+| High-altitude throw | 29%. |
+| Trenzalore teleport | 11%. |
+| Vortex teleport | 3%. |
+
+> The original weight table also included energy beam, but the code excludes it, so the actual probabilities are normalized across what remains.
+
+> 🛒 **Trading tip:** A Trader 103 refreshes its trade list once per in-game day. A successful trade grants the achievement **"Cross-Time Trade"**.
+
+---
+
+## Aggressive (AGGRESSIVE) — 20%
+
+The most dangerous 103 form, extremely hostile.
+
+### Behavior
+
+- **Actively hunts**: Prioritizes players and hostile mobs as targets.
+- **No warning**: Locks onto you the moment it's attacked.
+- **Wanders**: Wide roaming range, fast.
+
+### Reaction Chain When Attacked
+
+| Hits | Reaction |
+|---|---|
+| Hit 1 | **Immediately locks on**, chases for 60 seconds. |
+
+> ⚠️ **Warning:** Aggressive 103 has **no warning stage**. It comes after you from the very first hit.
+
+### Special Counter Preferences
+
+| Counter | Chance |
+|---|---|
+| High-altitude throw | 38%. |
+| Melee | 31%. |
+| Vortex teleport | 23%. |
+| Trenzalore teleport | 8%. |
+
+---
+
+## Defensive (DEFENSIVE) — 20%
+
+A defensive 103 that prefers dodging threats over facing them head-on.
+
+### Behavior
+
+- **Avoidance first**: Actively flees from hostile mobs.
+- **Doesn't attack players unprompted**: Only fights back when attacked by a player.
+- **Conservative**: Slow roaming speed, small roaming range.
+
+### Reaction Chain When Attacked
+
+| Hits | Reaction |
+|---|---|
+| Hit 1 | Hurt reaction + requests a ceasefire. |
+| Hit 2 | **Warning**. |
+| Hit 3 | **Locks on**, chases for 60 seconds. |
+
+### Special Counter Preferences
+
+| Counter | Chance |
+|---|---|
+| Trenzalore teleport | 43%. |
+| Melee | 29%. |
+| High-altitude throw | 21%. |
+| Vortex teleport | 7%. |
+
+> 🛡️ A Defensive 103 loves to send enemies to the **Trenzalore dimension** and trap them there with the environment.
+
+---
+
+## Timid (TIMID) — 20%
+
+An extremely cowardly 103 whose first reaction to any threat is to flee.
+
+### Behavior
+
+- **Runs from everything**: Flees if a player comes within 12 blocks; flees if a hostile mob comes within 10 blocks.
+- **Slowest roamer**: Movement speed only 0.4; barely moves at all.
+- **No active attacks**: Never locks onto any target.
+
+### Reaction When Attacked
+
+| Hits | Reaction |
+|---|---|
+| Hit 1 | Hurt reaction + **immediately fires back two staser bolts**. |
+
+> 😰 Timid 103 is the only personality that **retaliates just once**. It neither locks onto you nor uses a special counter — after two projectiles, it just keeps fleeing.
+
+---
+
+## Brave (BRAVE) — 20%
+
+A justice-driven 103 that actively protects players from hostile mobs.
+
+### Behavior
+
+- **Protector**: Actively attacks hostile mobs, but won't attack players without cause.
+- **Revenge**: Fights back when attacked by a player, but prioritizes mobs.
+- **Active**: Fastest roaming speed; very active.
+
+### Reaction Chain When Attacked
+
+| Hits | Reaction |
+|---|---|
+| Hit 1 | Hurt reaction + requests a ceasefire. |
+| Hit 2 | **Warning**. |
+| Hit 3 | **Locks on**, chases for 60 seconds. |
+
+### Special Counter Preferences
+
+| Counter | Chance |
+|---|---|
+| Melee | 46%. |
+| High-altitude throw | 38%. |
+| Trenzalore teleport | 15%. |
+| Vortex teleport | 8%. |
+
+> 🦁 Among Brave 103's special counters, melee has the highest share — it prefers to just punch you.
+
+---
+
+## Trading System
+
+Only the **Trader (TRADER)** personality has a trading system.
+
+| Item | Description |
+|---|---|
+| **Daily refresh** | The trade list auto-refreshes every in-game day. |
+| **Data source** | Loaded from the `103tardis_trade.json` datapack. |
+| **Right-click** | View the welcome message and trade list. |
+| **Sneak + Right-click** | Submit the held item for trading. |
+| **Achievement reward** | The first successful trade grants the achievement **"Cross-Time Trade"**. |
+
+---
+
+## Dialogue System
+
+Each personality has its **own dialogue lines**, saying different things depending on the situation:
+
+| Situation | Trigger |
+|---|---|
+| **Hurt** | 30% random chance to quip when hit. |
+| **Request ceasefire** | On the first attack from a player. |
+| **Warning** | On the second attack from a player. |
+| **Interact** | When a non-Trader personality is right-clicked. |
+| **Welcome** | When a Trader is right-clicked. |
+| **Counter** | When performing a counterattack (one line each for melee / high-altitude / teleport). |
+
+> 103s speak with their own name (the skin display name), e.g. `[So-and-so] You're done for!`
+
+---
+
+## Trivia / Notes
+
+- A 103's **skin is picked at random**, and each skin set comes with its own display name.
+- A 103's **personality is fixed at spawn** and never changes over time.
+- **Aggressive 103 has no warning stage** — it comes after you from the very first hit.
+- **Timid 103 retaliates only once** — after two projectiles, it just keeps fleeing.
+- **Energy beam is written into the weight table but excluded by the code**, so it never actually triggers.
+- **Special counterattacks have a 5-second cooldown**, and portal particles + enderman teleport sound play when executed.
+- **Trader 103 is the only personality with a trading system**, with a trade list that refreshes every in-game day.
+- **A 103's name comes from its skin display name**, so every 103 has a different name.

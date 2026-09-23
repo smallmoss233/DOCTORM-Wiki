@@ -1,3 +1,4 @@
+<!-- lang:zh-CN -->
 # DOCTOR M 塔迪斯建造指令 / `/doctor_m build`
 
 ![doctor_m_build.png](assets/images/doctor_m_build.png)
@@ -236,3 +237,243 @@
 ## 冷知识
 
 - `/doctor_m build` 这个指令是为了永恒的旅行制作出来的~
+
+<!-- lang:en -->
+# DOCTOR M TARDIS Build Command / `/doctor_m build`
+
+![doctor_m_build.png](assets/images/doctor_m_build.png)
+
+> **Type:** Admin command  
+> **Permission:** Requires permission level 2 (OP)  
+> **Purpose:** Creates a TARDIS, with optional desktop, exterior, owner, name, subsystem mode, spawn position, and executor.  
+> **Related command:** `/doctor_m config`
+
+## Overview
+
+`/doctor_m build` is the DOCTOR M command for creating a TARDIS. It spawns a new TARDIS based on the given parameters and automatically handles initialization for fuel, owner, loyalty, name, and subsystems.
+
+If no desktop or exterior is specified, a random default theme is used.  
+If no owner is specified, the executing player becomes the owner.  
+If no name is specified, the TARDIS is named `<owner>'s TARDIS`.
+
+---
+
+## Syntax
+
+The most basic usage:
+
+```text
+/doctor_m build
+```
+
+The full set of parameters can be combined:
+
+```text
+/doctor_m build <desktop> <exterior> <owner> [name <name>] [<subsystem>] [<pos>] [<executor>]
+```
+
+Coordinates can also be specified directly:
+
+```text
+/doctor_m build <desktop> <exterior> <owner> <pos> <executor>
+```
+
+Common forms:
+
+```text
+/doctor_m build
+/doctor_m build <desktop>
+/doctor_m build <desktop> <exterior>
+/doctor_m build <desktop> <exterior> <owner>
+/doctor_m build <desktop> <exterior> <owner> name <name>
+/doctor_m build <desktop> <exterior> <owner> <subsystem>
+/doctor_m build <desktop> <exterior> <owner> <subsystem> <pos>
+/doctor_m build <desktop> <exterior> <owner> <subsystem> <pos> <executor>
+```
+
+> Autocomplete is supported for desktop, exterior, owner, subsystem, name, and executor parameters while typing.
+
+---
+
+## Parameters
+
+| Parameter | Required | Description | Default |
+|---|---|---|---|
+| `<desktop>` | No | TARDIS desktop theme. Supports autocomplete. | Random default theme |
+| `<exterior>` | No | TARDIS exterior variant. Supports autocomplete. | Random default theme |
+| `<owner>` | No | TARDIS owner. Accepts player names, `me`, and some preset names. | Executing player |
+| `name <name>` | No | Sets the TARDIS name. The `name` keyword must come first. | `<owner>'s TARDIS` |
+| `<subsystem>` | No | Subsystem mode. Options: `full`, `essential`, `only_engine`, `none`. | `full` |
+| `<pos>` | No | TARDIS spawn coordinates. | 2 blocks above the executing player |
+| `<executor>` | No | Specifies the executing player. Required when run from the console. | The command sender |
+
+---
+
+## Subsystem Modes
+
+| Mode ID | Display name | Effect |
+|---|---|---|
+| `full` | Full | All subsystems enabled, and kept at full durability. |
+| `essential` | Essential | Only essential subsystems enabled, such as engine, life support, stabilizers, dematerialization, chameleon circuit, etc. |
+| `only_engine` | Engine only | Only the engine is enabled. |
+| `none` | None | All subsystems disabled. |
+
+When switching or creating, the success message shows the currently loaded subsystem mode.
+
+---
+
+## Owner Parameter
+
+`<owner>` accepts the following:
+
+- Arbitrary text
+- An online player name
+- `me`: uses the executing player as the owner
+- Preset autocomplete names, for example:
+    - `Doctor`
+    - `Master`
+    - `Mary.Jin`
+    - `Marian.jin`
+    - `Evereye`
+    - `SmallMoss`
+    - `Mobius`
+
+If the specified player is online, the TARDIS takes that player as its owner.  
+If a name is specified but the player is offline, that name is recorded as the owner name.
+
+---
+
+## Executor and Coordinates
+
+### Executor
+
+If `<executor>` is not specified:
+
+- When a player runs the command directly, the executing player defaults to that player.
+- When run from the console, `<executor>` must be specified, otherwise the command errors out.
+
+### Spawn Coordinates
+
+If `<pos>` is not specified:
+
+- The TARDIS spawns 2 blocks above the executing player.
+- Its facing is determined by the executing player's body orientation.
+
+If coordinates are specified, that position is used as the TARDIS spawn location.
+
+---
+
+## Default Creation Behavior
+
+When creating a TARDIS with `/doctor_m build`, the system automatically:
+
+- Fills the fuel to max and enables power.
+- Enables or disables subsystems according to the subsystem mode.
+- Sets the specified owner as the TARDIS owner.
+- Records the creating player's name.
+- Applies a random default theme if no desktop or exterior is specified.
+- Names it `<owner>'s TARDIS` if no name is specified.
+
+---
+
+## Success Message
+
+After a successful creation, the following are shown in order:
+
+```text
+TARDIS created successfully!
+TARDIS UUID: <uuid>
+TARDIS name: <name>
+TARDIS desktop: <desktop>
+TARDIS exterior: <exterior>
+TARDIS owner: <owner>
+Loaded subsystems: <subsystem_mode>
+Location: <position>
+```
+
+---
+
+## Error Messages
+
+| Message | Description |
+|---|---|
+| `Unknown executing player: %s` | The specified executing player does not exist. |
+| `Invalid desktop ID format: %s` | The desktop ID format is incorrect. |
+| `Unknown desktop: %s (parsed as %s)` | No matching desktop found. |
+| `Invalid exterior ID format: %s` | The exterior ID format is incorrect. |
+| `Unknown exterior: %s (parsed as %s)` | No matching exterior found. |
+| `Creation failed: maximum TARDIS limit may have been reached` | The server's TARDIS count has hit the cap. |
+| `Invalid subsystem mode: %s. Available options: full, essential, engine_only, none` | The subsystem mode is invalid. |
+
+---
+
+## Autocomplete
+
+| Parameter | Completions |
+|---|---|
+| `<desktop>` | All registered desktops |
+| `<exterior>` | All registered exteriors |
+| `<owner>` | Online players, `me`, some preset names |
+| `<subsystem>` | `full`, `essential`, `only_engine`, `none` |
+| `name <name>` | `Lolita`, `Marian`, `Marian.jin`, `Evereye`, `Mobius`, `Sexy`, `Idris`, `Watcher` |
+| `<executor>` | Online players, `me` |
+
+---
+
+## Examples
+
+The examples below only show the format. Actual desktop and exterior IDs are subject to in-game autocomplete.
+
+```text
+/doctor_m build
+```
+
+Creates a default TARDIS for the executing player.
+
+```text
+/doctor_m build evereye
+```
+
+Specifies `evereye` as the desktop.
+
+```text
+/doctor_m build evereye evereyebox
+```
+
+Specifies both desktop and exterior.
+
+```text
+/doctor_m build evereye evereyebox me
+```
+
+Uses the executing player as the owner.
+
+```text
+/doctor_m build evereye evereyebox me name Lolita
+```
+
+Sets the TARDIS name to `Lolita`.
+
+```text
+/doctor_m build evereye evereyebox me essential
+```
+
+Creates the TARDIS with the essential subsystem configuration.
+
+```text
+/doctor_m build evereye evereyebox me full 100 64 100
+```
+
+Creates the TARDIS at the specified coordinates.
+
+```text
+/doctor_m build evereye evereyebox me none 100 64 100 Steve
+```
+
+Specifies coordinates and makes `Steve` the executing player.
+
+---
+
+## Trivia
+
+- The `/doctor_m build` command was made for eternal travel~

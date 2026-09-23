@@ -1,3 +1,4 @@
+<!-- lang:zh-CN -->
 # STP 无缝传送 / Seamless Teleport
 
 > **类型：** 技术 / 渲染 / 传送
@@ -168,3 +169,175 @@ STP 不是“强制走自己的流程”。如果任何一步失败，都会回�
 ## 冷知识 / 备注
 
 - STP 在 AIT 1.2.0 beta 时期曾有过一个测试版本，SmallMoss很喜欢那个功能，这就是为什么现在它出现在了 DOCTOR M 里。
+
+<!-- lang:en -->
+# STP Seamless Teleport / 无缝传送
+
+> **Type:** Technical / Rendering / Teleport
+> **Source:** Ported from AIT's abandoned branch [Seamless Teleport](https://github.com/amblelabs/ait/tree/DrTheodor/seamless-teleport)  
+> **Config option:** `seamlessTeleportEnabled`  
+> **Default state:** On  
+> **Conflicting mod:** Immersive Portals
+
+---
+
+## Overview
+
+**STP (Seamless Teleport)** is the system in DOCTOR M responsible for eliminating the loading screen during dimension transitions.
+
+In vanilla Minecraft, when a player crosses dimensions, the client triggers a full `ClientWorld` rebuild, during which a "Loading terrain" screen is shown. STP's goal is to make this process **as seamless as possible** — the player never sees a loading screen, and the visuals transition as smoothly as possible into the target dimension.
+
+STP was not researched from scratch by DOCTOR M. It was reverse-engineered and re-implemented from **AIT (Adventures in Time)**'s abandoned branch [Seamless Teleport](https://github.com/amblelabs/ait/tree/DrTheodor/seamless-teleport). The original branch was developed by DrTheodor; DOCTOR M adapted, optimized, and stability-fixed it on top of that.
+
+---
+
+## Scope
+
+STP currently applies to the following scenarios:
+
+| Scenario | Description |
+|---|---|
+| **TARDIS door entry/exit** | A player walking into or out of the TARDIS. |
+| **TARDIS collision teleport** | Teleport triggered when a player touches the TARDIS exterior shell or doorway. |
+| **Vortex Manipulator teleport** | Dimension jumps performed with the Vortex Manipulator. |
+| **Key to Time cross-dimension teleport** | Key to Time related cross-dimension teleports. |
+
+All of the above attempt the STP flow instead of the vanilla loading screen flow.
+
+---
+
+## How It Works
+
+> The following is a simplified explanation of the principles, without the full implementation details.
+
+STP's core idea is:
+
+> **Before actually switching worlds, push the target dimension's surrounding chunk data to the client so it can cache ahead of time. When the teleport happens, the client rebuilds the world directly from cache, bypassing the loading screen.**
+
+This breaks down into two phases.
+
+### Phase 1: Preload
+
+When a player is about to enter a dimension (e.g. opening a TARDIS door, touching the doorway, using the Vortex Manipulator), the server will:
+
+1. Determine the target chunk center in the target dimension.
+2. Asynchronously load chunks around that center (default radius 1, i.e. 3×3 = 9 chunks).
+3. Send that chunk data to the client via a custom packet.
+4. The client caches the chunk data in memory.
+
+If the same center is triggered again within 5 seconds, the existing preload task is reused to avoid duplicate loading.
+
+### Phase 2: Teleport
+
+When the teleport actually needs to happen, the server will:
+
+1. Wait for the preload to finish.
+2. Send a meta packet telling the client the target dimension, coordinates, facing, and other info.
+3. The client manually rebuilds `ClientWorld`.
+4. The client feeds the preloaded chunks directly from cache into the new world.
+5. The player continues playing in the new dimension, with no loading screen at any point.
+
+If the preload hasn't finished yet, the teleport waits for it to complete. If the preload fails, it falls back to the vanilla teleport flow.
+
+---
+
+## Key Handling
+
+STP handles a few easily overlooked issues in its implementation.
+
+### World Switch Notification
+
+When crossing dimensions, STP actively notifies other mods that "the world has switched."
+
+This step is very important. AIT's sound system, the Eye of Harmony renderer, and other modules listen for world switch events. Without notification, you'd get:
+
+- TARDIS sounds continuing to play
+- Eye of Harmony rendering bleeding into other dimensions
+
+### Player State Inheritance
+
+When STP rebuilds `ClientPlayerEntity`, it inherits the old player's:
+
+- Position
+- View angle
+- Head yaw
+- Body yaw
+- Render interpolation history
+
+The purpose is to avoid position jumps or hand/camera pops on the first frame after teleport.
+
+### Chunk Render Rebuild
+
+On world switch, STP quickly swaps out `ChunkBuilder` and `BuiltChunkStorage` and forces all loaded chunks to rebuild their render data. Old resources are released asynchronously in the background to avoid blocking the main thread.
+
+---
+
+## Configuration
+
+STP is controlled by a config option:
+
+| Option | Default | Description |
+|---|---|---|
+| **Seamless Teleport (STP)** | On | Whether to enable STP. |
+
+When disabled, all teleports fall back to the vanilla flow and the loading screen appears.
+
+Config locations:
+
+- In-game: `/doctor_m config`
+- Config file: `seamlessTeleportEnabled` in `config/doctor_m.json`
+
+Changes take effect on the next teleport — no game restart needed.
+
+---
+
+## Conflict with Immersive Portals
+
+STP has a rendering pipeline conflict with **Immersive Portals**.
+
+### Cause of the Conflict
+
+Both STP and Immersive Portals try to take over the world rebuild and rendering flow during dimension switches. With both enabled at once, you may see:
+
+- Rendering glitches
+- Chunk display errors
+- Visual anomalies after teleporting
+
+### Automatic Warning
+
+If you have Immersive Portals installed and STP is on, the client shows a warning on entering the game:
+
+> §e[DOCTOR M] Immersive Portals detected. Seamless Teleport (STP) conflicts with its rendering pipeline. Please disable STP.
+
+And:
+
+> §7Want to hide this message? Disable STP in `config/doctor_m.json`, or run `/doctor_m config` and turn it off in the settings.
+
+### Recommendations
+
+| Situation | Recommendation |
+|---|---|
+| Immersive Portals installed | Disable STP |
+| Immersive Portals not installed | Keep STP on |
+| Not sure | Keep STP on, and disable it if rendering anomalies appear |
+
+---
+
+## Fallback Mechanism
+
+STP doesn't "force its own flow." If any step fails, it falls back to vanilla teleport.
+
+| Failure point | Behavior |
+|---|---|
+| STP disabled by config | Goes straight to vanilla teleport |
+| Preload fails | Falls back to vanilla teleport |
+| Exception thrown during teleport | Falls back to vanilla `WorldUtil.teleportToWorld` |
+| Player disconnects while waiting | Packet is no longer sent, teleport is cancelled |
+
+The fallback mechanism ensures that even if STP has problems, players never get stuck mid-teleport.
+
+---
+
+## Trivia / Notes
+
+- STP had a test version back in the AIT 1.2.0 beta days. SmallMoss really liked that feature — which is why it now appears in DOCTOR M.

@@ -1,3 +1,4 @@
+<!-- lang:zh-CN -->
 # STCS 系列 / STCS Weapons
 
 > **类型：** 能量-近战武器
@@ -275,3 +276,282 @@ STCS 武器的 Tooltip 会显示以下信息：
 ## 冷知识
 
 - **STCS 是贡献者 TC-020 的创意哦~
+
+<!-- lang:en -->
+# STCS Series / STCS Weapons
+
+> **Type:** Energy-melee weapons
+> **Source:** DOCTOR M  
+> **Related items:** STC-07H "Kraken", STC-08A "Sky Chart", STC-09L "Ranger"  
+> **Related config:** `stcsMinEnergyCost`, `stcsAoeRadius`  
+> **Completion:** 🚧 Module system arrives in v2.2
+
+---
+
+## Overview
+
+**STCS** is a **weapon system** in DOCTOR M. All three weapons share the same underlying framework — **energy bar, blade core, blade lock** — but each has a completely different skill set and combat style.
+
+| Model | Codename | Role | Features |
+|---|---|---|---|
+| **STC-07H** | Kraken | Heavy | Heaviest, slowest, but strongest defense and damage. |
+| **STC-08A** | Sky Chart | Standard | Balanced all around; the most versatile of the three. |
+| **STC-09L** | Ranger | Assault | Lightest, fastest; wins through mobility. |
+
+> 🚧 **This entry is not yet complete.** The STCS series' **module system** will be added in **v2.2**. The current version only includes the base framework and three usable core models.
+
+---
+
+## Base Stat Comparison
+
+| Attribute | Kraken | Sky Chart | Ranger |
+|---|---|---|---|
+| **Base attack damage** | 30 | 24 | 20 |
+| **Attack speed** | 1.2 | 2.0 | 2.8 |
+| **Max energy** | 10000 | 10000 | 10000 |
+| **Blade lock damage reduction** | **90%** | 85% | 80% |
+| **Block energy cost multiplier** | 10 / damage | 30 / damage | **50 / damage** |
+
+> 💡 **The lower the block energy cost multiplier, the more efficient blocking is.** Kraken spends only 10 energy per point of damage — the most energy-efficient of the three. Ranger spends 50 energy per point of damage — the most expensive to block with, so it demands real skill.
+
+---
+
+## Shared Mechanics
+
+All three weapons share the following underlying framework.
+
+### Energy System
+
+| Item | Value |
+|---|---|
+| **Max energy** | 10000. |
+| **Passive regen** | **80** points per second (while the core is inactive and not blocking). |
+| **Core drain** | **400** points per second (while the blade core is active). |
+
+The energy bar is shown in real time on the **action bar**: a green progress bar + current value.
+
+Action bar info includes:
+
+```text
+§b[STCS] §f<weapon name>
+§a●Core §7●Ready
+```
+
+Core / skill states show as:
+
+| State | Display |
+|---|---|
+| Core ready | `§7●Ready` |
+| Core active | `§a●Core` |
+| Core cooldown | `§c●Core<sec>s` |
+| Skill ready | `§a●Ready` |
+| Skill cooldown | `§c●Skill<sec>s` |
+| Currently blocking | `§b[Blocking]` |
+
+### Blade Core
+
+**Press the keybind to activate / deactivate the blade core.** Once on:
+
+| Effect | Value |
+|---|---|
+| **Bonus attack damage** | **+6**. |
+| **Movement speed** | **+20%** (multiplicative). |
+| **Energy drain** | 400 points per second. |
+| **Activation requirement** | At least **800** energy. |
+
+**While the core is active**, blade lock damage reduction is pushed straight to **100%** — you can be fully immune to damage for as long as the core lasts, as long as energy holds out.
+
+**When energy runs out**, the core shuts off automatically and enters a **4-minute cooldown**. It can only be activated again after the cooldown ends.
+
+**Unequipping the weapon also deactivates the core** — you must keep it in hand (main hand or off-hand) to use the core.
+
+Trying to activate it without enough energy shows:
+
+```text
+Not enough energy to sustain the blade core. At least 800 energy is required.
+```
+
+### Blade Lock
+
+**Activates automatically while sneaking.** When you take damage, STCS **consumes energy to offset part or all of the damage**.
+
+| Step | Description |
+|---|---|
+| 1 | Compute energy cost as `damage × block cost multiplier`. |
+| 2 | Check whether current energy is sufficient. |
+| 3 | Deduct energy. |
+| 4 | Compute the actual damage reduction (core active = 100%, otherwise = each weapon's blade lock reduction). |
+| 5 | Apply the reduced damage. |
+
+**When the reduction is ≥ 80%**, it plays a **shield block sound** + crit particles + wax-light particles.
+
+**The following damage cannot be blocked by blade lock**:
+
+- `/kill`-style command damage.
+- Void damage.
+- Any damage flagged as "bypasses invulnerability".
+
+### AoE Damage Sharing
+
+**When you attack any enemy with an STCS weapon**, other entities within **3 blocks** of the enemy hit take **equal damage**.
+
+> This means hitting one mob also hurts the ones beside it — **gather mobs and one weapon clears the whole pack**.
+> This was actually added to make up for the STCS series lacking a sweep attack :P
+
+Config options:
+
+| Key | Default | Description |
+|---|---|---|
+| `stcsAoeRadius` | 3.0 | STCS area damage radius. |
+| `stcsMinEnergyCost` | 1 | Minimum block energy cost. |
+
+### Dynamic Names
+
+All three weapons have **dynamic color** cycles in their names:
+
+| Model | Color cycle |
+|---|---|
+| **Kraken** | Purple → Purple → Orange. |
+| **Sky Chart** | Purple → Purple → Blue. |
+| **Ranger** | Purple → Purple → Red. |
+
+### Tooltip
+
+The STCS weapon tooltip shows the following info:
+
+```text
+§b[STCS] §f<weapon name>
+§7Damage: §c<value>
+§7Attack speed: §e<value>
+§7Max energy: §a<value>
+§7Blade lock reduction: §b<percent>
+§dKit: <kit name>
+§5Special: <special name>
+```
+
+Module slots that haven't been implemented show as blank or default in the tooltip.
+
+---
+
+## STC-07H "Kraken" — Heavy Type
+
+![stch.png](assets/images/stch.png)
+
+**The heaviest and slowest of the three, but strongest in defense and damage.**
+
+> §7STC-08A support type — heavier, slower, but strong defense and damage.
+
+### Skill: Sweeping Slash
+
+**Press the skill key** to unleash a wide sweeping slash.
+
+| Attribute | Value |
+|---|---|
+| **Range** | **6-block** radius. |
+| **Damage** | **120**. |
+| **Energy cost** | **2000**. |
+| **Cooldown** | **15 seconds** (-2 seconds while the core is active). |
+
+**Effects**:
+
+- All nearby enemies take heavy damage.
+- Each hit **resets the target's hit invulnerability frames** (so you can hit repeatedly).
+- Sweep + crit particles burst from enemies.
+- A ring of sweep particles is generated in **36 directions** around you.
+- Plays the player sweep attack sound.
+
+> Kraken's blade lock reduction is a hefty 90%, and paired with the core it's practically invincible. Ideal for head-on brawls and boss fights.
+
+---
+
+## STC-08A "Sky Chart" — Standard Type
+
+![stca.png](assets/images/stca.png)
+
+**Balanced all around; the most versatile of the three.**
+
+> §7STCS standard model STC-08A — balanced on all fronts, and the standard platform used by both the STC-09L and STC-07H. Highly acclaimed.
+
+### Skill: Shockwave
+
+**Press the skill key** to unleash an area knockback.
+
+| Attribute | Value |
+|---|---|
+| **Range** | **8-block** radius. |
+| **Damage** | **12**. |
+| **Knockback** | Horizontal 2.0 + Vertical 0.5. |
+| **Energy cost** | **400**. |
+| **Cooldown** | **20 seconds** (-2 seconds while the core is active). |
+
+**Effects**:
+
+- All nearby enemies are knocked back + launched.
+- Each enemy hit bursts with white smoke.
+- Explosion + a large cloud of smoke particles appears around you.
+- Plays an explosion sound.
+
+> Sky Chart has the largest range (8 blocks) — the best choice for clearing and escaping. The damage is low, but it can shove a whole crowd of enemies away.
+
+---
+
+## STC-09L "Ranger" — Assault Type
+
+![stcl.png](assets/images/stcl.png)
+
+**The lightest and fastest of the three, winning through mobility.**
+
+> §7STC-08A assault type — light yet still strong. Remember when using it: Focus, Plan, Attack.
+
+### Skill: Teleport Dash
+
+**Press the skill key** to dash in your view direction.
+
+| Attribute | Value |
+|---|---|
+| **Dash distance** | **6 blocks**. |
+| **Energy cost** | **200**. |
+| **Cooldown** | **1 second** (-1 second while the core is active → virtually no cooldown). |
+
+**Effects**:
+
+- Instantly teleport 6 blocks in your view direction (stops in front of a wall if you hit one).
+- A ring of **end-rod particles** + flash + a burst of smoke at both the start and end points.
+- A trail of **portal particles + end rods + cloud particles** is drawn along the path.
+- The screen triggers a **color inversion effect** (0.5 seconds).
+- Plays the enderman teleport sound.
+- **No fall damage**.
+
+> Ranger's core is **displacement**. With the core active, its cooldown is almost gone (1 second → 0), enabling chain blinking. Ideal for kiting and repositioning.
+
+---
+
+## Module System (v2.2 Preview)
+
+The module system's **framework is in place** (kit / special / normal module slots), but the actual content will ship in **v2.2**.
+
+It's expected to let players:
+
+| Module type | Function |
+|---|---|
+| **Kit module** | Changes the weapon's overall style. |
+| **Special module** | Provides a unique passive. |
+| **Normal module** | Up to **4** can be installed, stacking small bonuses. |
+
+Details will be added once v2.2 lands.
+
+---
+
+## Known Incomplete Content
+
+| Feature | Status |
+|---|---|
+| **Module system** | Framework in place (kit / special / normal module slots); ships in v2.2. |
+| **Configurable block cost multipliers** | Currently hardcoded in each weapon's class. |
+| **Detailed energy display** | Action bar only shows a percentage bar, not exact values. |
+
+---
+
+## Trivia
+
+- **STCS is contributor TC-020's idea~**

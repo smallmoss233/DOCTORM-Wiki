@@ -1,3 +1,4 @@
+<!-- lang:zh-CN -->
 # 土卫六-泰坦 / Titan
 
 ![titan.png](assets/images/titan.png)
@@ -179,3 +180,186 @@
 - 沙丘使用**红沙 + 红砂岩**作为地表。
 - 平原使用**冰 + 粗泥**作为地表。
 - 回廊废墟只生成在泰坦平原，且概率极低。
+
+<!-- lang:en -->
+# Titan / 土卫六-泰坦
+
+![titan.png](assets/images/titan.png)
+
+> **Type:** Planet
+> **Dimension ID:** `doctor_m:titan`  
+> **Display name:** Titan  
+> **Added in:** v2.1 — history of the past... and of what has yet to come...  
+> **Environment:** Anoxic, low gravity, extreme cold, no natural light  
+> **Related biomes:** Titan Plains, Titan Methane Lakes, Titan Dunes  
+> **Related structure:** Coister Ruins
+
+---
+
+## Overview
+
+**Titan** is a space dimension added to DOCTOR M in v2.1.
+
+It corresponds to Saturn's real-life moon, Titan — an alien world with **no atmosphere, extremely low gravity, and extreme cold**. There is no oxygen and no natural light here; players must wear a spacesuit to survive.
+
+Titan isn't an empty void. It has its own biomes, surface materials, weather behavior, and structures. Three biomes are currently confirmed: **Titan Plains**, **Titan Methane Lakes**, and **Titan Dunes**. Titan Plains has an extremely rare chance to spawn a ruined TARDIS church — the **Coister Ruins**.
+
+---
+
+## Environment Parameters
+
+Titan's dimension parameters are as follows:
+
+| Item | Value | Description |
+|---|---|---|
+| Natural dimension | No | Not a naturally generated dimension. |
+| Ambient light | 0 | No base ambient lighting. |
+| Sky light | None | No sky light; the dimension is overall dark. |
+| Ceiling | None | The dimension is not enclosed. |
+| Coordinate scale | 1 | Same as the Overworld; no scaling. |
+| Logical height | 384 | The dimension's logical height. |
+| Min Y | -64 | Minimum Y coordinate for building/generation. |
+| Total height | 384 | From -64 to 320. |
+| Bed usable | Yes | Beds work normally. |
+| Respawn anchor usable | Yes | Respawn anchors work normally. |
+| Raids | None | No raids occur. |
+| Natural mob spawning | Disabled | The dimension itself spawns no mobs. |
+| Temperature | 94K (-179°C) | Real Titan's surface temperature; extremely cold. |
+| Gravity | 14% of Earth's | Low-gravity environment; jumping and falling behave differently from the Overworld. |
+| Oxygen | None | No breathable atmosphere; a spacesuit is required. |
+
+---
+
+## Survival Requirements
+
+Titan is an **anoxic, low-gravity, extremely cold** dimension — you can't survive there the way you do in the Overworld.
+
+Before heading to Titan, prepare:
+
+- **Spacesuit**: Provides oxygen and prevents suffocation.
+- **Oxygen tank or oxygen refill device**: Keeps the spacesuit topped up.
+- **Light source**: Titan has no ambient light; bring your own.
+- **Warmth and survival supplies**: The temperature is brutal.
+- **Fall-prevention gear**: Movement works differently under low gravity.
+
+> 💡 Titan has no oxygen — you must wear a spacesuit. Entering Titan without one quickly leads to suffocation.
+
+---
+
+## Biomes
+
+Titan has three registered biomes.
+
+| Biome ID | Display name | Features |
+|---|---|---|
+| `doctor_m:titan_plains` | Titan Plains | Ice and coarse dirt surface; the most common region on Titan. |
+| `doctor_m:titan_methane_lakes` | Titan Methane Lakes | Blue ice and basalt surface; dark, deep water corresponding to methane lakes. |
+| `doctor_m:titan_dunes` | Titan Dunes | Red sand and red sandstone surface; dune terrain. |
+
+### Titan Plains
+
+Titan Plains is Titan's base biome.
+
+The surface is primarily **ice** and **coarse dirt**, transitioning down into stone. The terrain is fairly open — the best area on Titan to start exploring from.
+
+Titan Plains is also where the **Coister Ruins** generate.
+
+Environment details:
+
+- Temperature: -0.5
+- Precipitation: None
+- Particles: Ash, chance 0.02
+- Sky color: 11053224
+- Fog color: 12638463
+- Grass color: 11184810
+- Foliage color: 10592673
+- Water color: 16445670
+- Water fog color: 13355979
+- Surface features: Ice spikes, gravel disks
+
+### Titan Methane Lakes
+
+Titan Methane Lakes corresponds to the real Titan's liquid methane lakes.
+
+The surface is primarily **blue ice**, transitioning down into **basalt** and **deepslate**. The water color is dark, near black, and combined with the extreme cold, it gives off an alien sense of chill.
+
+Environment details:
+
+- Temperature: -0.8
+- Precipitation: None
+- Particles: Ash, chance 0.01
+- Sky color: 11053224
+- Fog color: 12638463
+- Water color: 394758
+- Water fog color: 1973790
+- Surface features: Ice spikes, basalt pillars
+
+### Titan Dunes
+
+Titan Dunes is dune terrain.
+
+The surface is primarily **red sand**, transitioning down into **red sandstone** and **stone**. Compared to the plains and methane lakes, the dunes feel drier and more desolate.
+
+Environment details:
+
+- Temperature: -0.6
+- Precipitation: None
+- Particles: Ash, chance 0.03
+- Sky color: 11053224
+- Fog color: 12638463
+- Grass color: 11184810
+- Foliage color: 10592673
+- Water color: 16445670
+- Water fog color: 13355979
+- Surface features: Desert wells
+
+---
+
+## Structures
+
+### Coister Ruins
+
+> **Type:** TARDIS ruins  
+> **Generates in:** Titan Plains  
+> **Spawn chance:** Extremely low
+
+The **Coister Ruins** is a **TARDIS ruin** sitting on Titan Plains, appearing as a **dilapidated church**.
+
+Its keywords are:
+
+- Coister / Cloister
+- Church
+- TARDIS ruins
+- Titan Plains
+- Extremely low spawn chance
+
+The Coister Ruins is currently the only confirmed structure on Titan. It's a TARDIS-related ruin, meaning it may contain TARDIS wreckage, traces of an old civilization, or related loot.
+
+Because its spawn chance is extremely low, the Coister Ruins is not easy to find. Exploring Titan Plains takes patience and a bit of luck.
+
+---
+
+## Exploration Tips
+
+- **Wear a spacesuit**: Titan has no oxygen; without a spacesuit you suffocate fast.
+- **Bring plenty of oxygen**: Prepare oxygen tanks or refill devices ahead of time.
+- **Bring your own light**: Titan's ambient light is 0; there is no natural lighting.
+- **Mind the low gravity**: Gravity is only 14% of Earth's; jumping and falling feel different from the Overworld.
+- **Prepare for the cold**: The temperature is about -179°C — extreme cold.
+- **Search for the Coister Ruins**: They only generate on Titan Plains, and only at an extremely low chance, so patience is required.
+
+---
+
+## Trivia / Notes
+
+- Titan is a dimension added in v2.1.
+- Titan's gravity is **14%** of Earth's — a low-gravity environment.
+- Titan has no oxygen; a spacesuit is mandatory.
+- Titan's temperature is about **94K (-179°C)**.
+- Titan has no ambient light; the dimension is overall dark.
+- Titan's particle effect is **ash**, with different ash chances per biome.
+- Titan Plains, Methane Lakes, and Dunes each have distinct surface materials.
+- The Methane Lakes use **blue ice + basalt** as their surface.
+- The Dunes use **red sand + red sandstone** as their surface.
+- The Plains use **ice + coarse dirt** as their surface.
+- The Coister Ruins only generate on Titan Plains, and only at an extremely low chance.

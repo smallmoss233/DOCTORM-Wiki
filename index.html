@@ -23,7 +23,7 @@
             <div class="wiki-mobile-brand-icon">D</div>
             <span>DOCTOR M WIKI</span>
         </div>
-        <button class="wiki-mobile-toggle" aria-label="打开菜单">☰</button>
+        <button class="wiki-mobile-toggle" aria-label="打开菜单" data-i18n-aria="menuOpen">☰</button>
     </div>
 
     <!-- 左侧 -->
@@ -33,16 +33,19 @@
             <img class="wiki-brand-icon" src="assets/wiki-icon.png" alt="DOCTOR M">
             <div class="wiki-brand-text">
                 <div class="wiki-brand-title">DOCTOR M - WIKI</div>
-                <div class="wiki-brand-sub">一款AIT扩展模组！</div>
+                <div class="wiki-brand-sub" data-i18n="siteTagline">一款AIT扩展模组！</div>
             </div>
             <!-- ★ 移动端关闭按钮（桌面隐藏） -->
-            <button class="wiki-sidebar-close" aria-label="关闭菜单">×</button>
+            <button class="wiki-sidebar-close" aria-label="关闭菜单" data-i18n-aria="menuClose">×</button>
         </div>
+
+        <!-- ★★★ 语言切换器 ★★★ -->
+        <div class="wiki-lang-switch" id="wiki-lang-switch"></div>
 
         <nav class="wiki-nav" id="wiki-nav"></nav>
 
         <div class="wiki-footer">
-            <a href="index.html">← 返回主站</a>
+            <a href="index.html" data-i18n="backToSite">← 返回主站</a>
         </div>
     </aside>
 
@@ -54,9 +57,9 @@
             <div class="wiki-loading">加载中…</div>
         </article>
 
-        <!-- ★ 右侧目录（必须放在 .wiki-main 内才能被 grid 布局） -->
+        <!-- ★ 右侧目录 -->
         <aside class="wiki-toc" id="wiki-toc">
-            <div class="wiki-toc-title">本页目录</div>
+            <div class="wiki-toc-title" data-i18n="tocTitle">本页目录</div>
             <nav class="wiki-toc-nav" id="wiki-toc-nav"></nav>
         </aside>
     </main>

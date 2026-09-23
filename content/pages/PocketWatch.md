@@ -1,3 +1,4 @@
+<!-- lang:zh-CN -->
 # 怀表 / Pocket Watch
 
 ![pocket_watch.png](assets/images/pocket_watch.png)  ![pocket_watch_open.png](assets/images/pocket_watch_open.png)
@@ -153,3 +154,160 @@ Shift 详情文本：
 ## 冷知识
 
 - 这块怀表是属于**玛丽.谨**的，她将在未来加入 DOCTOR M 。
+
+<!-- lang:en -->
+# Pocket Watch / 怀表
+
+![pocket_watch.png](assets/images/pocket_watch.png)  ![pocket_watch_open.png](assets/images/pocket_watch_open.png)
+
+> **Type:** Life-saving item / Key to Time fragment / Regeneration container
+> **Item ID:** `doctor_m:pocket_watch`  
+> **Name color:** Gold  
+> **Compatible mod:** TimelordRegen (optional)  
+> **Trigger slots:** Main inventory, off-hand, curio slot
+
+## Overview
+
+The **Pocket Watch** is a life-saving item in DOCTOR M. It looks like nothing more than an old pocket watch, but when its holder takes fatal damage, it emits a dry click, rewinds the fatal wound, and sends a shockwave through nearby creatures.
+
+The Pocket Watch interacts with the **[Timelord Regeneration](https://github.com/amblelabs/regeneration)** mod: once installed, it can store and transfer a Time Lord's regeneration count.  
+Even without TimelordRegen installed, the Pocket Watch's revival life-saving mechanic still works; transferring regeneration counts requires TimelordRegen.
+
+---
+
+## Basic Info
+
+| Attribute | Description |
+|---|---|
+| Item name | Pocket Watch |
+| Name color | Gold |
+| Type | Item / Life-saving item |
+| Belongs to | DOCTOR M |
+| Compatible with | TimelordRegen |
+| Slots that can trigger revival | Main inventory, off-hand |
+| Revival cooldown | 1 in-game day, about 20 minutes of real time |
+| Active-use cooldown | 5 seconds after sneak-transferring regeneration counts |
+
+---
+
+## Active Use
+
+### Right-click: Open / close the Pocket Watch
+
+- Right-click toggles the Pocket Watch's open / closed state.
+
+### Linked Additional Features
+
+- The first time you open the Pocket Watch, it binds the current player as its owner.
+- **Sneak + right-click** the Pocket Watch to store TimelordRegen's maximum regeneration count.
+- After opening the Pocket Watch, if regeneration counts are stored inside it and the current player is a Time Lord, it will try to transfer the stored counts to the player, up to the cap.
+
+> **Note:** Without TimelordRegen installed, right-clicking can only open the watch~
+
+---
+
+## Open State & Time HUD
+
+When the Pocket Watch is open and held in the main hand or off-hand, a time HUD appears above the bottom center of the screen.
+
+The display contains:
+
+```text
+☀ Time · Period
+```
+
+For example:
+
+```text
+☀ 6:00 AM · Morning
+```
+
+The periods are:
+
+| Period | In-game time range |
+|---|---|
+| Morning | 0 – 6000 |
+| Afternoon | 6000 – 11000 |
+| Evening | 11000 – 13000 |
+| Night | 13000 – 24000 |
+
+The HUD text is gold.  
+If the Pocket Watch is in a curio slot, this HUD is not shown even when the watch is open; the revival life-saving mechanic still triggers.
+
+---
+
+## Revival Mechanic
+
+The Pocket Watch's core ability is automatic life-saving.
+
+### Trigger Conditions
+
+When a player takes damage that would kill them, the Pocket Watch triggers revival if the following conditions are met:
+
+- The Pocket Watch is in the player's main inventory, off-hand, or curio slot.
+- The Pocket Watch is not on revival cooldown.
+
+### Revival Effects
+
+On trigger, the player does not die and immediately gains the following:
+
+| Effect | Description |
+|---|---|
+| **Health restore** | Restores to half of max health |
+| **Clear status effects** | Removes all status effects from the player |
+| **Area damage** | Deals 25 magic damage to every living entity within 10 blocks except the player |
+| **Hunger IV** | Lasts 3 seconds |
+| **Darkness** | Lasts 15 seconds |
+| **Particles** | Spawns reverse portal particles |
+| **Sound** | Plays a bell toll |
+| **Action bar message** | Shows "Your journey has not yet reached its end. The Six-Fold Gods watch over you, awaiting where your journey will finally lead..." |
+| **Cooldown** | The Pocket Watch enters a 1 in-game day cooldown, about 20 minutes of real time |
+
+> **Note:** You revive at half of max health, not at full health.  
+> You also gain Hunger IV and Darkness, so revival is not entirely cost-free.
+
+### Cooldown
+
+Revival cooldown is **1 in-game day**, i.e. 24000 ticks × 50ms = 1,200,000ms, roughly **20 minutes of real time**.
+
+During cooldown:
+
+- Revival cannot trigger again.
+- The Pocket Watch in your inventory shows a gold cooldown bar.
+- The tooltip shows the remaining cooldown, formatted as "The gears in the dial are still turning idly... X min X sec until the spring can be wound again".
+
+---
+
+## Item Tooltip
+
+The Pocket Watch's tooltip shows different information depending on state:
+
+- Open / closed state:
+    - `[Opened]`
+    - `[Closed]`
+
+- If TimelordRegen is installed:
+    - Shows Pocket Watch charge / max charge.
+    - Shows the Pocket Watch's owner.
+- If on revival cooldown:
+    - Shows remaining cooldown.
+- Always shows the Pocket Watch's description text.
+- Hold Shift for detailed description.
+
+Pocket Watch description text:
+
+> An old pocket watch, yet its brass casing is bright and new — as if it had just been cast yesterday…
+
+Shift detail text:
+
+> It's nothing but a forgotten old watch…  
+> When you should have fallen, a dry click comes from inside the dial.  
+> By the time you come to your senses, the fatal wound is gone, as if you had merely lost focus for an instant.  
+> The creatures around you seem to have been shaken silly by that strange sound.  
+> Something is off with the winding mechanism — after each rewind it takes quite a while before it can run again.
+
+---
+
+## Trivia
+
+- This Pocket Watch belongs to **Marian.Jin**; she will join DOCTOR M in the future.

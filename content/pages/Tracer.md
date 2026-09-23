@@ -1,3 +1,4 @@
+<!-- lang:zh-CN -->
 # 追踪器 / Tracer
 
 ![tracer.png](assets/images/tracer.png)
@@ -229,3 +230,236 @@
 - **追踪器的音效是音符盒音色**——自动扫描用的是“钟琴”（chime），手动扫描用的是“叮”（pling），两者音色不同。
 - **自动扫描不检测容器**——想找箱子里的碎片，必须主动右键。
 - **追踪器可以在博士之墓中找到**——而博士之墓只生成在特兰泽洛的禁区生物群系，概率极低。
+
+<!-- lang:en -->
+# Tracer / 追踪器
+
+![tracer.png](assets/images/tracer.png)
+
+> **Type:** Key to Time related / Telepathic enhancement
+> **Source:** DOCTOR WHO
+> **Obtaining:** Doctor's Tomb  
+> **Related config:** `tracerScanRange`, `tracerTelepathicScanRange`, `tracerStructureSearchRadius`, etc.  
+> **Related item:** Key to Time
+
+---
+
+## Overview
+
+The **Tracer** is a detection device built specifically for **finding Key to Time fragments**.
+
+It has two ways to be used:
+
+| Mode | Slot | Function |
+|---|---|---|
+| **Held mode** | Main hand / off-hand | Automatically scans for nearby fragments. |
+| **Console mode** | TARDIS sonic port | Links with the Telepathic Circuit to become a long-range detection radar. |
+
+> 💡 **Core concept:** The Tracer scans for **anything related to the Key to Time** — fragments dropped on the ground, in item frames, carried by mobs, inside containers, and even **ancient structures**.
+
+---
+
+## Obtaining
+
+The Tracer can be found in the **Doctor's Tomb**.
+
+> 💡 The Doctor's Tomb only generates in Trenzalore's **Forbidden Zone** biome, and only at an extremely low chance.
+
+---
+
+## Held Mode
+
+### Auto Scanning
+
+While **holding the Tracer** (main hand or off-hand), it automatically scans for fragments within **45 blocks**.
+
+**How it works:**
+
+- When a nearby fragment is detected, it responds with a **subtle pulsing sound**.
+- **The closer the distance, the faster and higher-pitched the sound**.
+- Within **6 blocks**, **end rod particles** spawn above your head.
+
+**Detection coverage:**
+
+| Location | Detected in auto mode |
+|---|---|
+| Fragments dropped on the ground | Yes. |
+| Fragments in item frames | Yes. |
+| Fragments carried by mobs | Yes. |
+| Fragments in containers | **No**. |
+
+> This is a "radar"-style passive feedback — no active input needed; just walking around with it in hand lets you sense nearby fragments.
+
+### Right-click Scan
+
+**Right-click** the Tracer → performs a **directional scan** of the surroundings.
+
+**Scan range**: 45 blocks.
+
+**Scan priority** (nearest target is picked):
+
+| Location | Result message |
+|---|---|
+| **In a container** | `Fragment echo detected inside container \| X blocks` |
+| **In an item frame** | `Fragment signal found inside item frame \| X blocks` |
+| **Carried by a mob** | `Fragment signal carried by mob \| X blocks` |
+| **On the ground** | `Fragment signal found on the surface \| X blocks` |
+
+If there is **no fragment** in range → shows `No fragment trace found within scan range`.
+
+> 💡 Manual scanning detects **container contents**, while auto scanning does not. If you want fragments inside chests, you must right-click actively.
+
+---
+
+## Telepathic Circuit Extension
+
+After **inserting the Tracer into a TARDIS console's sonic port**, it links with the **Telepathic Circuit** and becomes a long-range detection tool.
+
+### Usage
+
+| Action | Effect |
+|---|---|
+| **Right-click the console** | Searches for and locks onto the nearest Key to Time fragment or ancient structure. |
+| **Sneak + Right-click the console** | Marks the current region's structure as "explored", skipping it. |
+
+### Search & Lock On
+
+After **right-clicking** the console, the Tracer performs a **very long-range scan**:
+
+| Item | Value |
+|---|---|
+| **Scan radius** | **5120 blocks** (equivalent to 320 chunks). |
+| **Scan targets** | Fragments (drops / item frames / mobs / containers) + **ancient structures**. |
+
+**Search flow:**
+
+1. First searches **live targets** — drops, item frames, mob-carried, containers.
+2. Finds the nearest fragment → **locks the flight path**, costing **300 fuel**.
+3. No fragment found → **asynchronously searches ancient structures**; on finding one, locks the flight path, costing **600 fuel**.
+
+**Feedback:**
+
+| Situation | Message |
+|---|---|
+| Fragment locked | Beacon sound plays + `Container signal locked` / `Surface signal locked`. |
+| Structure locked | `Ancient structure signal locked!` |
+| Nothing found nearby | `No ancient structure echo detected within X blocks`. |
+| All structures marked | `All ancient structures within search radius have been marked. Please move the TARDIS to another area.` |
+
+**Flight path features:**
+
+- The target position gets a **random offset of ±40 blocks** — you land near the target, not precisely inside the structure.
+- This avoids "the TARDIS getting stuck in a building".
+
+### Mark & Exclude
+
+**Sneak + Right-click** the console → the Tracer **marks the nearby structure as explored**.
+
+| Attribute | Value |
+|---|---|
+| **Search radius** | 5120 blocks. |
+| **Mark tolerance** | 128 blocks (avoids marking the same structure repeatedly). |
+| **Mark ownership** | Recorded per TARDIS. |
+
+**Purpose**: When you don't want to be "guided" to a structure you've already looted, mark it, and the Tracer will **skip** it from then on.
+
+**Feedback:**
+
+- Mark successful → `Ancient structure at coordinates X, Y, Z has been marked as explored.`
+- No markable structure nearby → `No markable ancient structure detected in the current area.`
+
+### Smart Retry for Structure Search
+
+The Tracer has a **chained retry** logic when searching for structures:
+
+| Situation | Handling |
+|---|---|
+| **Found structure is already blacklisted** | Uses that structure as the new center and continues searching for the next one. |
+| **Found structure is outside the original radius** | Treated as not found. |
+| **Retries exhausted (5)** | Shows `All ancient structures within search radius have been marked`. |
+
+> This logic ensures you won't be repeatedly guided back to the same pile of explored structures.
+
+---
+
+## Hidden Feature: Telepathic Circuit Healing
+
+When the console's sonic port has **no Tracer inserted**, the Telepathic Circuit offers a hidden feature:
+
+**Sneak + Empty-hand right-click the console** → heal yourself:
+
+| Effect | Value |
+|---|---|
+| **Health restore** | **8 HP** (4 hearts). |
+| **Hunger** | +4. |
+| **Saturation** | +0.5. |
+
+> This is a small perk DOCTOR M tucked into the console — sneak + right-click with an empty hand heals you with no consumable required.
+
+---
+
+## Fuel Cost Reference
+
+Locking onto a target with the Tracer consumes TARDIS fuel:
+
+| Target type | Fuel cost |
+|---|---|
+| **Fragment** (drop / item frame / mob / container) | **300**. |
+| **Ancient structure** | **600**. |
+
+> Structure searches cost twice as much as fragment searches — structures are usually farther away and more valuable.
+
+---
+
+## Structure Tags & Blacklist
+
+The ancient structures the Tracer searches for are controlled by datapack tags.
+
+### Structure Tag
+
+**Tag path**: `data/doctor_m/tags/worldgen/structure/ktt_fragment_structures.json`
+
+Contains KTT (Key to Time) related structures by default. You can **add or remove** structures via datapack so the Tracer searches for whatever targets you want.
+
+### Astral Map Blacklist
+
+**Blacklist path**: `data/doctor_m/tags/worldgen/structure/astral_map_blacklist.json`
+
+By default, KTT-related structures cannot be searched. You can add new structure IDs to the blacklist — **both tags and individual structure IDs can be nested**.
+
+> 💡 Tags decide "what the Tracer can find"; the blacklist decides "what the Tracer can't find". The two work together.
+
+---
+
+## Config Options
+
+Some values of the Tracer can be adjusted in `config/doctor_m.json`:
+
+| Key | Default | Description |
+|---|---|---|
+| `tracerScanRange` | 45.0 | Handheld auto-scan radius. |
+| `tracerContainerScanRange` | 45 | Right-click container scan radius. |
+| `tracerTelepathicScanRange` | 5120 | Telepathic Circuit long-range search radius. |
+| `tracerStructureSearchRadius` | 51200 | Structure search radius. |
+| `tracerBlacklistTolerance` | 128 | Blacklist tolerance radius. |
+| `tracerMaxChainAttempts` | 5 | Max structure search retries. |
+| `tracerFragmentFuelCost` | 300 | TARDIS fuel consumed to lock a fragment. |
+| `tracerStructureFuelCost` | 600 | TARDIS fuel consumed to lock a structure. |
+| `tracerLandingOffset` | 40 | TARDIS landing random offset. |
+| `tracerHealAmount` | 8.0 | Health restored by sneak + right-click with empty hand on the Telepathic Circuit. |
+| `tracerHealFood` | 4 | Hunger restored by sneak + right-click with empty hand on the Telepathic Circuit. |
+| `tracerHealSaturation` | 0.5 | Saturation restored by sneak + right-click with empty hand on the Telepathic Circuit. |
+
+---
+
+## Trivia
+
+- **The Tracer is the only item that can "lock a TARDIS flight path"** — you don't need to manually enter coordinates; it automatically guides the TARDIS to the vicinity of a fragment or structure.
+- **The 5120-block search range** is over 100 times the normal scan (45 blocks) — so you don't have to wander around when exploring a new area.
+- **The blacklist is per-TARDIS** — structures you mark with TARDIS A won't affect TARDIS B.
+- **The "mark" feature requires sneaking** — because a plain right-click is the search, so excluding structures must go through sneaking.
+- **Structures lock with a ±40-block random offset** — to prevent the TARDIS from crashing into a building, and to make you walk a bit after landing.
+- **The Telepathic Circuit healing requires an empty hand** — holding something won't trigger it; only an empty hand will.
+- **The Tracer's sounds are note block tones** — auto scanning uses "chime", manual scanning uses "pling". The two are different tones.
+- **Auto scanning doesn't detect containers** — if you want fragments in chests, you must right-click actively.
+- **The Tracer can be found in the Doctor's Tomb** — and the Doctor's Tomb only generates in Trenzalore's Forbidden Zone biome, at an extremely low chance.

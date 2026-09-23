@@ -874,3 +874,73 @@ body.wiki-drawer-open {
     font-style: italic;
     padding: 4px 8px;
 }
+
+/* ============================================================
+   语言切换器
+   ============================================================ */
+.wiki-lang-switch {
+    display: flex;
+    gap: 6px;
+    padding: 0 24px 16px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+}
+
+.wiki-lang-btn {
+    flex: 1;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+
+.wiki-lang-btn:hover {
+    color: #fff;
+    border-color: var(--accent);
+    background: rgba(88, 166, 255, 0.08);
+}
+
+.wiki-lang-btn.active {
+    color: #fff;
+    background: linear-gradient(135deg,
+        rgba(168, 85, 247, 0.25),
+        rgba(88, 166, 255, 0.25));
+    border-color: var(--accent);
+    box-shadow: 0 0 12px rgba(88, 166, 255, 0.3);
+}
+
+/* 多语言分区：给非当前语言的区块加一条区分线 */
+.wiki-lang-section {
+    position: relative;
+}
+
+.wiki-lang-section + .wiki-lang-section {
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px dashed var(--border-light);
+}
+
+/* 可选：给非当前语言的部分降一点透明度，视觉上让"当前语言"更突出 */
+.wiki-lang-section:not(.common):not([data-lang="zh-CN"]) {
+    /* 不影响功能，只是视觉轻一点 */
+}
+
+@media (max-width: 800px) {
+    .wiki-lang-switch {
+        padding: 0 16px 12px;
+    }
+    .wiki-lang-btn {
+        font-size: 0.75rem;
+        padding: 5px 8px;
+    }
+    .wiki-lang-section + .wiki-lang-section {
+        margin-top: 36px;
+        padding-top: 24px;
+    }
+}

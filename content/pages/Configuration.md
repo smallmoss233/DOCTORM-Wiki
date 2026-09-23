@@ -1,3 +1,4 @@
+<!-- lang:zh-CN -->
 # 配置系统 / Configuration
 
 ![Configuration.png](assets/images/Configuration.png)
@@ -299,3 +300,306 @@
 - **配置项会随着模组更新增加**——新版本可能会引入新的可配置项，旧配置文件会自动使用新项的默认值。
 - **配置界面无需 OP 权限**——任何玩家都能打开，但改的是本地配置。
 - **STP 与沉浸式传送门冲突**——装 IP 的玩家建议关闭 STP，避免渲染管线打架。
+
+<!-- lang:en -->
+# Configuration / 配置系统
+
+![Configuration.png](assets/images/Configuration.png)
+
+**DOCTOR M** ships with **nearly a hundred configurable options**, covering most of the mod's features. Damage values, ability parameters, fuel consumption, search ranges… just about every number you can think of can be tweaked.
+
+> 💡 **Config file location:** `config/doctor_m.json`  
+> 💡 **Config UI command:** `/doctor_m config`
+
+---
+
+## Opening the Config UI
+
+There are two ways to open the graphical config screen.
+
+### Option 1: In-game command
+
+```text
+/doctor_m config
+```
+
+**Any player** can use it — no OP permission required.
+
+### Option 2: Mod Menu
+
+If you have **Mod Menu** installed, find DOCTOR M in the mod list and click the **gear icon** on the right to open the config screen directly.
+
+> Mod Menu is recommended — no need to remember commands, and you can see mod info at a glance.
+
+---
+
+## UI Controls
+
+The config screen uses a **dark theme** and supports the following:
+
+| Control | Action |
+|---|---|
+| **Toggle button** | Click to switch on / off |
+| **Number stepper** | Click ◀ / ▶ to adjust the value |
+| **Shift + Click** | Step **×10** (fast adjust) |
+| **Ctrl + Click** | Step **×100** (large-jump adjust) |
+| **↻ button on each row** | Reset that entry to default |
+| **"Reset" at the bottom** | **Hold Shift** and click to reset all settings |
+| **"Save" at the bottom** | Write to the config file and apply immediately |
+| **"Cancel" at the bottom** | Discard changes and restore the last saved config |
+
+> ⚠️ **Settings take effect immediately after clicking "Save"** — most features don't require a game restart.
+
+---
+
+## Config Categories
+
+The following lists all configurable options grouped by module.
+
+> 💡 Options grow with mod updates. New versions may introduce new entries, and old config files will automatically use the new defaults.
+
+---
+
+### 🎬 UI / Rendering
+
+| Option | Default | Description |
+|---|---|---|
+| **Vortex title background** | On | Whether to display the vortex background image. |
+| **Seamless Teleport (STP)** | On | Whether to use loading-screen-free teleport when entering/exiting the TARDIS, using the Vortex Manipulator, or crossing dimensions with the Key to Time. |
+
+> ⚠️ **Players using Immersive Portals should disable STP** — the two rendering pipelines conflict.
+
+---
+
+### 🛡️ Defensive Gear
+
+#### TT Shield
+
+| Option | Default | Description |
+|---|---|---|
+| **Half side length** | 4.0 | Half side length of the shield cube (total side = 2 × this value). |
+
+#### Force Field Shield
+
+| Option | Default | Description |
+|---|---|---|
+| **Max energy** | 1500 | Maximum force field energy. |
+| **Drain per tick (active)** | 2 | Energy consumed per tick while the field is deployed. |
+| **Regen per tick** | 1 | Energy restored per tick while idle. |
+| **Push strength** | 0.25 | Constant push force applied to entities inside the field. |
+| **Release knockback radius** | 5.0 | Burst radius when releasing the right-click. |
+| **Release knockback strength** | 1.2 | Horizontal knockback of the burst. |
+| **Release upward launch** | 0.4 | Vertical launch of the burst. |
+| **Cooldown (ticks)** | 40 | Cooldown after release. |
+| **Environmental damage factor** | 0.1 | Fraction of environmental damage kept (10%). |
+| **Fully block non-environmental damage** | On | Whether to become fully immune to non-environmental damage. |
+
+#### Shield Generator
+
+| Option | Default | Description |
+|---|---|---|
+| **Max energy** | 1000 | Maximum shield energy. |
+| **Regen per tick** | 1 | Regen amount per tick. |
+| **Energy per damage point** | 5 | Energy consumed per point of damage absorbed. |
+
+---
+
+### ⚔️ Weapons
+
+#### Key to Time
+
+| Option | Default | Description |
+|---|---|---|
+| **Cooldown (ticks)** | 1 | Interval between percentage-based damage triggers. |
+| **Damage multiplier** | 2.0 | Damage strength. |
+| **Minimum damage (%)** | 15.0 | Minimum percentage of max health that will be dealt. |
+
+#### Eternal Crystal
+
+| Option | Default | Description |
+|---|---|---|
+| **Cooldown (ticks)** | 100 | Interval between percentage-based damage triggers. |
+| **Damage multiplier** | 0.5 | Damage strength. |
+| **Minimum damage (%)** | 2.5 | Minimum percentage of max health that will be dealt. |
+
+#### Tlipoca's Scythe
+
+| Option | Default | Description |
+|---|---|---|
+| **Cooldown (ticks)** | 30 | Interval between percentage-based damage triggers. |
+| **Damage multiplier** | 1.0 | Damage strength. |
+| **Minimum damage (%)** | 25.0 | Minimum percentage of max health that will be dealt. |
+| **Right-click slash damage** | 500.0 | Base damage of the Soul Harvest. |
+| **AoE radius** | 5.0 | Splash damage range. |
+| **Hunger restore base** | 1 | Hunger restored alongside the execution heal. |
+| **Saturation factor** | 0.5 | Saturation restored alongside the execution heal. |
+| **Execution lifesteal ratio** | 0.6 | Percentage of damage healed back on execution. |
+| **Normal lifesteal ratio** | 0.25 | Percentage of damage healed back on a normal hit. |
+| **Execution AoE ignores armor** | On | Whether execution splash damage ignores damage reduction. |
+
+#### STCS
+
+| Option | Default | Description |
+|---|---|---|
+| **Blocking minimum energy cost** | 1 | Minimum energy cost while the sword is locked. |
+| **Area damage radius** | 3.0 | AoE splash range. |
+
+---
+
+### 🚀 TARDIS
+
+#### Self-Destruct
+
+| Option | Default | Description |
+|---|---|---|
+| **Master switch** | On | Whether the enhanced self-destruct is enabled. |
+| **Max spread radius** | 80 | Maximum range of the blast wave. |
+| **Spread steps** | 20 | Number of steps in the spread animation. |
+| **Tick interval per step** | 40 | Tick gap between steps. |
+| **Final clear radius** | 100 | Final clear range. |
+| **Knockback radius** | 2 | Knockback range. |
+| **Knockback strength** | 0.5 | Knockback intensity. |
+
+---
+
+### 🌌 Space System
+
+#### Oxygen Tank
+
+| Option | Default | Description |
+|---|---|---|
+| **Max capacity** | 1200.0 | Normal oxygen tank capacity. |
+| **Transfer amount per use** | 100.0 | Amount transferred each time you refill the spacesuit. |
+| **Hunger threshold** | 6 | Below this value counts as "starving" (used for a food-related easter egg). |
+| **Achievement hold duration** | 100 | Ticks of holding required to trigger the achievement. |
+| **Advanced capacity multiplier** | 3.0 | Advanced oxygen tank capacity = normal × 3. |
+| **Super capacity multiplier** | 5.0 | Super oxygen tank capacity = normal × 5. |
+| **Jet thrust strength** | 0.5 | Thrust from the jetpack oxygen tank. |
+| **Jet inertia retention** | 0.72 | Inertia retention ratio of the jetpack tank. |
+| **Jet gravity compensation** | 0.12 | Gravity compensation of the jetpack tank. |
+| **Jet max horizontal speed** | 8.0 | Maximum horizontal speed of the jetpack tank. |
+| **Jet max vertical speed** | 6.0 | Maximum vertical speed of the jetpack tank. |
+
+#### Oxygen Refiller
+
+| Option | Default | Description |
+|---|---|---|
+| **Cooldown (seconds)** | 32 | Wait time between oxygen generation uses. |
+
+#### Spacesuit
+
+| Option | Default | Description |
+|---|---|---|
+| **Max oxygen** | 1200.0 | Maximum spacesuit oxygen capacity. |
+| **Underwater oxygen drain** | 0.5 | Oxygen consumed every 2 seconds underwater. |
+| **Space oxygen drain** | 1.0 | Oxygen consumed every 3 seconds in vacuum. |
+
+#### Oxygen Generator
+
+| Option | Default | Description |
+|---|---|---|
+| **Max supply radius** | 48 | Maximum oxygen supply radius. |
+| **Open space radius** | 3 | Effective radius for open space. |
+| **Cache expiry (ticks)** | 100 | Cache expiry time for the oxygen generator. |
+| **Minimum valid room volume** | 10 | Minimum valid room size. |
+
+#### Vacuum Eating
+
+| Option | Default | Description |
+|---|---|---|
+| **Oxygen cost per use** | 100.0 | Oxygen drained each time you eat in a vacuum. |
+| **Timeout (seconds)** | 10 | Timeout for the pending state. |
+
+---
+
+### 🔧 Gadgets
+
+#### Toymaker's Hammer
+
+| Option | Default | Description |
+|---|---|---|
+| **Copy chunk radius** | 20 | Chunk radius when copying the TARDIS. |
+| **Spawn offset (blocks)** | 2 | Spawn offset when copying the TARDIS. |
+| **Reach distance** | 5.0 | Reach distance of the hammer. |
+| **Block update flags** | 2 \| 16 | Block update flags. |
+| **Copy entities** | On | Whether to copy entities. |
+| **Copy block entities** | On | Whether to copy block entities. |
+
+#### Tracer / Telepathic Circuit
+
+| Option | Default | Description |
+|---|---|---|
+| **Held scan radius** | 45.0 | Auto-scan range while holding the tracer. |
+| **Right-click container scan radius** | 45 | Container detection range for the right-click scan. |
+| **Telepathic search radius** | 5120 | Remote search radius of the telepathic circuit. |
+| **Structure search radius** | 51200 | Structure search range. |
+| **Blacklist tolerance** | 128 | Structures within this distance are considered already marked. |
+| **Structure search retries** | 5 | Max retries when searching for the next structure. |
+| **Lock fragment fuel cost** | 300 | TARDIS fuel consumed to lock a fragment. |
+| **Lock structure fuel cost** | 600 | TARDIS fuel consumed to lock a structure. |
+| **Landing random offset** | 40 | TARDIS lands within ±N blocks of the target. |
+| **Heal amount** | 8.0 | Health restored by sneak + right-click with an empty hand on the telepathic circuit. |
+| **Heal hunger** | 4 | Hunger restored by sneak + right-click with an empty hand on the telepathic circuit. |
+| **Heal saturation** | 0.5 | Saturation restored by sneak + right-click with an empty hand on the telepathic circuit. |
+
+#### Vortex Manipulator
+
+| Option | Default | Description |
+|---|---|---|
+| **Max fuel** | 1500 | Maximum Vortex Manipulator fuel. |
+| **Max overheat** | 100 | Maximum Vortex Manipulator overheat. |
+| **Cooldown (ticks)** | 1200 | Normal cooldown; 1200 ticks = 60 seconds. |
+| **Damage recovery (ticks)** | 72000 | Recovery time after core meltdown; 72000 ticks = 3 in-game days. |
+| **Heat dissipation interval** | 80 | Dissipates heat every 80 ticks. |
+| **Heat dissipated per tick** | 1 | Overheat reduced per dissipation. |
+
+---
+
+## Tips & Tricks
+
+### Shift / Ctrl Speed Adjust
+
+Hold a modifier key while adjusting values:
+
+| Modifier | Step multiplier | Use case |
+|---|---|---|
+| **None** | ×1 | Fine tuning. |
+| **Shift** | ×10 | Quick adjust. |
+| **Ctrl** | ×100 | Huge jumps (e.g. 5120 → 512000). |
+
+> Especially handy for large values like fuel caps or search radii.
+
+### Reset Features
+
+| Action | Effect |
+|---|---|
+| **↻ on each row** | Reset just that entry. |
+| **"Reset" at the bottom (Shift required)** | Reset **all** settings to default. |
+
+> The "Reset" button requires **holding Shift to click** — to prevent accidental wipes.
+
+### Save vs Cancel
+
+| Button | Behavior |
+|---|---|
+| **Save** | Writes to `doctor_m.json` + takes effect immediately. |
+| **Cancel** | Discards changes and restores the last saved values. |
+
+> ⚠️ If you close the UI without saving, **your changes will be lost**.
+
+### Editing the Config Manually
+
+If you prefer editing the file directly, open `config/doctor_m.json`. All fields use **English key names** (e.g. `tracerScanRange`), and changes take effect after a **game restart**.
+
+---
+
+## Trivia
+
+- **The config file is plain JSON** — open it with any text editor; the syntax is simple.
+- **The config UI refreshes in real time** — change a value and the related feature uses the new value instantly.
+- **Shift / Ctrl speed adjust is unique to the config UI** — it doesn't affect anything else in-game.
+- **The tracer's "heal" is configurable too** — if the healing feels too strong, lower `tracerHealAmount`.
+- **"Reset" requiring Shift is intentional** — so players don't accidentally wipe a carefully tuned config.
+- **Options grow with mod updates** — new versions may introduce new entries, and old config files will automatically use the new defaults.
+- **The config UI needs no OP permission** — any player can open it, but it edits local settings.
+- **STP conflicts with Immersive Portals** — IP users should disable STP to avoid rendering pipeline clashes.

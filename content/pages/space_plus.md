@@ -1,3 +1,4 @@
+<!-- lang:zh-CN -->
 # 太空大改 2.0 / Space Overhaul 2.0
 
 > **类型：** 太空生存
@@ -313,3 +314,320 @@
 ## 冷知识
 
 - DOCTOR M 一切Mixin的起点都是从Mixin这个太空开始的😈
+
+<!-- lang:en -->
+# Space Overhaul 2.0 / 太空大改 2.0
+
+> **Type:** Space survival
+> **Related items:** Spacesuit, Oxygen Tank, Oxygen Charger, Underwater Oxygen Generator, Oxygenator, Respirator  
+> **Related config:** `oxygenTankMaxOxygen`, `spacesuitMaxOxygen`, `oxygenatorMaxRadius`, etc.  
+> **Related advancements:** This Really Isn't a Thermos..., You Ate This Thing?!
+
+---
+
+## Overview
+
+**DOCTOR M** gives AIT's space system a complete rewrite: **oxygen management**, **spacesuit**, **oxygen tanks**, **oxygen generation devices**, and **vacuum eating** are all consolidated into one unified system.
+
+> 💡 **Core idea:** AIT's original oxygen logic is fully taken over by DOCTOR M. All oxygen storage, consumption, and recovery go through the same `OxygenSystem` — different items just have different capacities.
+
+| Module | Function |
+|------------|---|
+| **Spacesuit enhancements** | The core gear for space exploration, with its own oxygen reserve. |
+| **Oxygen tanks** | Portable oxygen reserves used to refill the spacesuit. |
+| **Oxygen Charger** | A block that instantly refills oxygen gear. |
+| **Underwater Oxygen Generator** | A block that provides underwater breathing to nearby players. |
+| **Oxygenator enhancements** | A block that supplies oxygen to an entire enclosed room. |
+| **Vacuum eating penalty** | Eating in an oxygen-free environment consumes oxygen. |
+| **Respirator enhancements** | Slows down oxygen consumption. |
+
+---
+
+## Oxygen System
+
+### Spacesuit Oxygen
+
+![htf.png](assets/images/htf.png)
+
+The biggest change to the **spacesuit chestplate** in DOCTOR M is that automatic oxygen regeneration has been removed.
+
+| Attribute | Value |
+|---|---|
+| **Max capacity** | 1200 L. |
+| **Underwater drain** | 0.5 L every **2 seconds**. |
+| **Space drain** | 1 L every **3 seconds**. |
+
+**In an oxygen-free environment**, once the spacesuit runs out of oxygen → you gain the **Wither** effect.  
+**In an oxygenated environment**, the spacesuit stops draining and automatically removes the Wither effect.
+
+> Compared to vanilla AIT, DOCTOR M actually nerfed the spacesuit 😈
+
+### Screen HUD
+
+![guihud.png](assets/images/guihud.png)
+
+Compared to vanilla AIT, wearing a spacesuit helmet + chestplate now shows two much more useful lines in the top-left of the screen:
+
+| Line | Content |
+|---|---|
+| **Line 1** | Environment status (green "Oxygenated" / red "Deoxygenated"). |
+| **Line 2** | Current spacesuit oxygen (e.g. `842.3L / 1200L`). |
+
+**Environment detection** considers the following factors:
+
+| Factor | Result |
+|---|---|
+| **Normal dimensions** | Oxygenated by default. |
+| **Anoxic planets** | Deoxygenated. |
+| **TARDIS dimension** | Always oxygenated. |
+| **Oxygenator effect** | Temporarily provides an oxygenated environment. |
+| **Drowning / head stuck in a block** | **Forced to deoxygenated**. |
+| **Underwater** | Forced to deoxygenated. |
+
+> 💡 "Head stuck in a block" forces the environment to count as deoxygenated.
+
+### Oxygen Warnings
+
+When the spacesuit's oxygen is low, tiered warnings appear on the **action bar**:
+
+| Oxygen ratio | Warning interval |
+|---|---|
+| **< 50%** | Once every 30 seconds. |
+| **< 20%** | Once every 5 seconds. |
+| **< 5%** | Once every second. |
+| **= 0%** | Only once. |
+
+**When oxygen recovers**, warnings reset automatically — once it's back above 50%, everything goes quiet, and if it drops again later, warnings start over.
+
+---
+
+## Oxygen Tanks
+
+![oxygen_tank.png](assets/images/oxygen_tank.png)
+
+An **Oxygen Tank** is a portable oxygen reserve used to refill the spacesuit — a piece of content vanilla AIT's space gameplay was missing.
+
+### Four Models
+
+| Model | Capacity | Relative to base | Features |
+|---|---|---|---|
+| **Oxygen Tank** | 1200 L | ×1 | The base model. |
+| **Advanced Oxygen Tank** | **3600 L** | ×3 | Smaller, yet bigger capacity. |
+| **Super Oxygen Tank** | **18000 L** | ×15 | The most extravagant oxygen tank in space. |
+| **Jet Oxygen Tank** | 1200 L | ×1 | Can be used as a jetpack. |
+
+> Advanced oxygen tank capacity = normal × 3.  
+> Super oxygen tank capacity = advanced × 5 = normal × 15.
+
+### Usage
+
+**Hold the oxygen tank + right-click** → release:
+
+| Situation | Result |
+|---|---|
+| **Wearing spacesuit chestplate + short press** | Transfers oxygen from the tank to the spacesuit. |
+| **Wearing spacesuit chestplate + hold 5 seconds** | ⚠️ Attempt to eat the oxygen tank (see the easter egg below). |
+| **Not wearing the spacesuit** | Shows "Please put on the spacesuit chestplate first." |
+| **Oxygen tank empty** | Shows "Oxygen tank is empty." |
+| **Spacesuit full** | Shows "Spacesuit oxygen is full." |
+
+**Transfer amount per use**: 100 L (configurable).
+
+### 🥚 Easter Egg: Eating the Oxygen Tank
+
+If you're **extremely hungry** (hunger ≤ 6), **or** under a **Strength** effect, **or** under a **Hunger** effect, and **hold right-click for 5 seconds**, you will…
+
+**Swallow the whole can of compressed air like a compressed biscuit.**
+
+Effects:
+
+| Effect | Duration |
+|---|---|
+| **Resistance II** | 30 seconds. |
+| **Hunger II** | 30 seconds. |
+| **Weakness I** | 30 seconds. |
+| **Restore 10 hunger** | Immediate. |
+
+Also unlocks the achievement **"You Ate This Thing?!"**.
+
+> If you just hold for 5 seconds without meeting the conditions, you unlock a different achievement: **"This Really Isn't a Thermos..."**.
+
+### Jet Oxygen Tank
+
+The **Jet Oxygen Tank** is a special oxygen tank that consumes oxygen to propel you.
+
+| Attribute | Value |
+|---|---|
+| **Wind-up** | 0.5 seconds (10 ticks). |
+| **Thrust strength** | 0.5. |
+| **Inertia retention** | 72%. |
+| **Gravity compensation** | 0.12. |
+| **Max horizontal speed** | 8. |
+| **Max vertical speed** | 6. |
+| **Oxygen drain** | 1 L per tick. |
+
+**Controls**: Hold right-click to keep flying; release to stop.
+
+- While flying, flame + smoke particles are generated, and a blaze shoot sound plays every 0.5 seconds.
+- Releasing right-click plays a firework sound.
+- During the **wind-up phase** (first 10 ticks) you slow down and charge up, and only then does acceleration begin.
+
+> The jet oxygen tank burns precious oxygen as propellant — using one as an oxygen tank in space is itself a kind of extravagance.
+
+---
+
+## Oxygen Generation Devices
+
+### Oxygen Charger
+
+![oxygen_charger_front.png](assets/images/oxygen_charger_front.png)
+
+The **Oxygen Charger** is a block that instantly fills oxygen gear to full.
+
+| Attribute | Value |
+|---|---|
+| **Cooldown** | **32 seconds**. |
+| **Supported items** | Oxygen Tank, Advanced Oxygen Tank, Super Oxygen Tank, Jet Oxygen Tank, Spacesuit Chestplate. |
+
+**Usage**: Hold a chargeable oxygen item + right-click → **instantly fills**.
+
+Using it during cooldown shows the remaining seconds.
+
+### Underwater Oxygen Generator
+
+![underwater_oxygen_generator_front.png](assets/images/underwater_oxygen_generator_front.png)
+
+The **Underwater Oxygen Generator** has two operating modes.
+
+#### Underwater Mode
+
+When **at least 1 of the block's 6 sides is water**, it automatically grants **Water Breathing** to players within **5 blocks**.
+
+**Consumes no resources.**
+
+#### Land Mode
+
+When **no water** surrounds the block, you must **manually add water**:
+
+| Action | Effect |
+|---|---|
+| **Right-click with a water bucket** | Adds water and grants **4 charge quotas**. |
+| **Max quota** | 16. |
+| **Cost per charge** | 1 quota. |
+
+Charging in land mode:
+
+- **Full charge** (oxygen tank directly to full): costs **1 quota**.
+- **Partial charge** (refill 25%): also costs **1 quota**.
+
+> Underwater mode is completely free; land mode costs water. **Put it underwater if you can.**
+
+### Oxygenator Enhancements
+
+The **Oxygenator** no longer supplies oxygen to creatures outside the walls — its algorithm has been optimized!
+
+| Attribute | Value |
+|---|---|
+| **Max supply radius** | 48 blocks. |
+| **Open-space effective radius** | 3 blocks. |
+| **Minimum valid room volume** | 10 air blocks. |
+
+**How it works:**
+
+1. The oxygenator performs a **flood fill** over adjacent air blocks to find the entire **connected space**.
+2. If the space is **fully enclosed within a 48-block radius** → it's treated as a **room**, and all creatures inside are supplied with oxygen.
+3. If the space **extends past 48 blocks without being enclosed** → it's treated as **open space**, and only a small **3-block** radius around the oxygenator is supplied.
+
+**Multiple oxygenators can merge**: if two oxygenators' rooms **share air blocks**, they merge into one larger room and share the supply area.
+
+> Again, compared to vanilla AIT, the oxygenator got hit hard.
+
+---
+
+## Vacuum Eating
+
+Eating in an **oxygen-free environment** → **consumes spacesuit oxygen**.
+
+| Attribute | Value |
+|---|---|
+| **Oxygen cost per meal** | **100 L of oxygen**. |
+| **Detection window** | 10 seconds (from the start of eating). |
+
+> "Kid, who told you it was fine to open your visor and eat in space?!"
+
+**Trigger conditions**: You're in a deoxygenated environment + no Oxygenator effect + not in Creative mode + the item you're eating is **food or a drink**.
+
+The timer starts when the eating action begins, and oxygen is deducted when eating actually completes. If the action is interrupted for more than 10 seconds, no oxygen is deducted.
+
+---
+
+## Respirator
+
+The **Respirator** has been enhanced into a piece of equipment that **slows down oxygen consumption**.
+
+> The Respirator's implementation details are not covered in this document yet.
+
+---
+
+## Config Options
+
+Some values of the space system can be adjusted in `config/doctor_m.json`:
+
+### Oxygen Tanks
+
+| Key | Default | Description |
+|---|---|---|
+| `oxygenTankMaxOxygen` | 1200.0 | Normal oxygen tank capacity. |
+| `oxygenTankTransferRate` | 100.0 | Amount transferred per spacesuit refill. |
+| `oxygenTankFoodThreshold` | 6 | Hunger threshold (≤ this counts as extremely low). |
+| `oxygenTankHoldTicksForAchievement` | 100 | Hold ticks required to trigger the eating easter egg. |
+| `advancedOxygenTankCapacityMultiplier` | 3.0 | Advanced oxygen tank capacity multiplier. |
+| `superOxygenTankCapacityMultiplier` | 5.0 | Super oxygen tank capacity multiplier based on advanced. |
+| `jetOxygenTankThrustStrength` | 0.5 | Jet thrust strength. |
+| `jetOxygenTankInertia` | 0.72 | Jet inertia retention. |
+| `jetOxygenTankGravityCompensation` | 0.12 | Jet gravity compensation. |
+| `jetOxygenTankMaxSpeed` | 8.0 | Jet max horizontal speed. |
+| `jetOxygenTankMaxVerticalSpeed` | 6.0 | Jet max vertical speed. |
+
+### Oxygen Charger
+
+| Key | Default | Description |
+|---|---|---|
+| `oxygenChargerCooldownSeconds` | 32 | Cooldown after each charge. |
+
+### Spacesuit
+
+| Key | Default | Description |
+|---|---|---|
+| `spacesuitMaxOxygen` | 1200.0 | Spacesuit max oxygen capacity. |
+| `spacesuitOxygenConsumeUnderwater` | 0.5 | Oxygen consumed every 2 seconds underwater. |
+| `spacesuitOxygenConsumeSpace` | 1.0 | Oxygen consumed every 3 seconds in vacuum. |
+
+### Oxygenator
+
+| Key | Default | Description |
+|---|---|---|
+| `oxygenatorMaxRadius` | 48 | Max supply radius. |
+| `oxygenatorOpenSpaceRadius` | 3 | Open-space effective radius. |
+| `oxygenatorCacheExpireTicks` | 100 | Cache expiry time. |
+| `oxygenatorMinAirBlocks` | 10 | Minimum valid room volume. |
+
+### Vacuum Eating
+
+| Key | Default | Description |
+|---|---|---|
+| `vacuumEatingOxygenCost` | 100.0 | Oxygen drained per meal eaten in vacuum. |
+| `vacuumEatingPendingTimeoutSeconds` | 10 | Eating pending timeout. |
+
+## Related Advancements
+
+| Advancement | Title | Description |
+|---|---|---|
+| `advancement.doctor_m.not_thermos` | This Really Isn't a Thermos... | What are you doing?? Drinking the oxygen inside the oxygen tank?? |
+| `advancement.doctor_m.you_ate_this` | You Ate This Thing?! | People really do become incredibly strong when starving — like you. You twisted open the valve of the oxygen tank with your bare hands, treated the compressed air inside as a compressed biscuit, and swallowed it can and all. Your stomach is protesting, but your willpower won. |
+
+---
+
+## Trivia
+
+- The starting point of every Mixin in DOCTOR M was this Mixin about space 😈
