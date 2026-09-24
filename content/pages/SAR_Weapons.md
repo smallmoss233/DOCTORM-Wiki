@@ -1,23 +1,23 @@
 <!-- lang:zh-CN -->
-# STCS 系列 / STCS Weapons
+# SAR 系列 / SAR Weapons
 
 > **类型：** 能量-近战武器
 > **来源：** DOCTOR M  
-> **相关物品：** STC-07H“巨妖”、STC-08A“天图”、STC-09L“游侠”  
-> **相关配置：** `stcsMinEnergyCost`、`stcsAoeRadius`  
+> **相关物品：** SAR-07H“巨妖”、SAR-08A“天图”、SAR-09L“游侠”  
+> **相关配置：** `sarMinEnergyCost`、`sarAoeRadius`  
 > **完成度：** 🚧 模块系统将在 v2.2 实装
 
 ---
 
 ## 概述
 
-**STCS** 是 DOCTOR M 中一套**武器体系**。三把武器共享同一套底层框架——**能量槽、剑核心、剑封锁**——但各自的技能和战斗风格完全不同。
+**SAR系列** 是 DOCTOR M 中一套**武器体系**。三把武器共享同一套底层框架——**能量槽、剑核心、剑封锁**——但各自的技能和战斗风格完全不同。
 
-| 型号 | 代号 | 定位 | 特点 |
-|---|---|---|---|
-| **STC-07H** | 巨妖 | 重装型 | 最重、最慢，但防御和伤害最强。 |
-| **STC-08A** | 天图 | 标准型 | 各方面平衡，是三把中最通用的。 |
-| **STC-09L** | 游侠 | 突袭型 | 最轻、最快，靠机动性取胜。 |
+| 型号          | 代号 | 定位 | 特点 |
+|-------------|---|---|---|
+| **SAR-07H** | 巨妖 | 重装型 | 最重、最慢，但防御和伤害最强。 |
+| **SAR-08A** | 天图 | 标准型 | 各方面平衡，是三把中最通用的。 |
+| **SAR-09L** | 游侠 | 突袭型 | 最轻、最快，靠机动性取胜。 |
 
 > 🚧 **本条目尚未完成。** STCS 系列武器的**模块系统**将在 **v2.2** 中更新。当前版本只包含基础框架和三个可用的核心型号。
 
@@ -54,7 +54,7 @@
 动作栏信息包括：
 
 ```text
-§b[STCS] §f<武器名>
+§b[SAR] §f<武器名>
 §a●核心 §7●就绪
 ```
 
@@ -114,17 +114,17 @@
 
 ### AoE 伤害共享
 
-**用 STCS 攻击任何敌人时**，被击中的敌人周围 **3 格**内的其他生物会受到**等量伤害**。
+**用 SAR 攻击任何敌人时**，被击中的敌人周围 **3 格**内的其他生物会受到**等量伤害**。
 
 > 这意味着你打一个怪，旁边的怪也会跟着掉血——**聚怪后一把武器可以砍一片**。
-> 这其实是为了弥补 STCS 系列武器没有横扫加上的：P
+> 这其实是为了弥补 SAR 系列武器没有横扫加上的：P
 
 配置项：
 
-| 键 | 默认值 | 说明 |
-|---|---|---|
-| `stcsAoeRadius` | 3.0 | STCS 范围伤害半径。 |
-| `stcsMinEnergyCost` | 1 | 格挡最低能量消耗。 |
+| 键                  | 默认值 | 说明          |
+|--------------------|---|-------------|
+| `sarAoeRadius`     | 3.0 | SAR 范围伤害半径。 |
+| `sarMinEnergyCost` | 1 | 格挡最低能量消耗。   |
 
 ### 动态名称
 
@@ -138,10 +138,10 @@
 
 ### Tooltip
 
-STCS 武器的 Tooltip 会显示以下信息：
+SAR 武器的 Tooltip 会显示以下信息：
 
 ```text
-§b[STCS] §f<武器名>
+§b[SAR] §f<武器名>
 §7伤害：§c<数值>
 §7攻速：§e<数值>
 §7能量上限：§a<数值>
@@ -154,13 +154,13 @@ STCS 武器的 Tooltip 会显示以下信息：
 
 ---
 
-## STC-07H “巨妖” — 重装型
+## SAR-07H “巨妖” — 重装型
 
-![stch.png](assets/images/stch.png)
+![sarh.png](assets/images/sarh.png)
 
 **三把中最重、最慢，但防御和伤害最强的一把。**
 
-> §7STC-08A 支援型，更重，更慢，但强防御与伤害。
+> §7SAR-08A 支援型，更重，更慢，但强防御与伤害。
 
 ### 技能：横扫斩
 
@@ -185,13 +185,13 @@ STCS 武器的 Tooltip 会显示以下信息：
 
 ---
 
-## STC-08A “天图” — 标准型
+## SAR-08A “天图” — 标准型
 
-![stca.png](assets/images/stca.png)
+![sara.png](assets/images/sara.png)
 
 **各方面平衡，是三把中最通用的一把。**
 
-> §7STCS 系列标准型号 STC-08A，各方面平衡，是 STC-09L 和 STC-07H 使用的标准平台，备受好评。
+> §7SAR 系列标准型号 SAR-08A，各方面平衡，是 SAR-09L 和 SAR-07H 使用的标准平台，备受好评。
 
 ### 技能：冲击波
 
@@ -216,13 +216,13 @@ STCS 武器的 Tooltip 会显示以下信息：
 
 ---
 
-## STC-09L “游侠” — 突袭型
+## SAR-09L “游侠” — 突袭型
 
-![stcl.png](assets/images/stcl.png)
+![sarl.png](assets/images/sarl.png)
 
 **三把中最轻、最快，靠机动性取胜。**
 
-> §7STC-08A 突袭型，轻量而不失强度。使用时牢记：专注，计划，攻击。
+> §7SAR-08A 突袭型，轻量而不失强度。使用时牢记：专注，计划，攻击。
 
 ### 技能：瞬移突进
 
@@ -275,44 +275,46 @@ STCS 武器的 Tooltip 会显示以下信息：
 
 ## 冷知识
 
-- **STCS 是贡献者 TC-020 的创意哦~
+- **SAR 是贡献者 TC-020 的创意哦~
+- **SAR-07H~09L的代号实际上来自于R1Titanfall（游侠泰坦，天图泰坦，巨妖泰坦）**
+- **SAR系列的全称是STCS Armory Reborn，其是STC系列的重生**
 
 <!-- lang:en -->
-# STCS Series / STCS Weapons
+# SAR Series / SAR Weapons
 
 > **Type:** Energy-melee weapons
 > **Source:** DOCTOR M  
-> **Related items:** STC-07H "Kraken", STC-08A "Sky Chart", STC-09L "Ranger"  
-> **Related config:** `stcsMinEnergyCost`, `stcsAoeRadius`  
+> **Related items:** SAR-07H "Ogre", SAR-08A "Atlas", SAR-09L "Stryder"  
+> **Related config:** `sarMinEnergyCost`, `sarAoeRadius`  
 > **Completion:** 🚧 Module system arrives in v2.2
 
 ---
 
 ## Overview
 
-**STCS** is a **weapon system** in DOCTOR M. All three weapons share the same underlying framework — **energy bar, blade core, blade lock** — but each has a completely different skill set and combat style.
+**SAR** is a **weapon system** in DOCTOR M. All three weapons share the same underlying framework — **energy bar, sword core, sword block** — but each has a completely different skill set and combat style.
 
-| Model | Codename | Role | Features |
-|---|---|---|---|
-| **STC-07H** | Kraken | Heavy | Heaviest, slowest, but strongest defense and damage. |
-| **STC-08A** | Sky Chart | Standard | Balanced all around; the most versatile of the three. |
-| **STC-09L** | Ranger | Assault | Lightest, fastest; wins through mobility. |
+| Model       | Codename | Role | Features |
+|-------------|----------|---|---|
+| **SAR-07H** | Ogre     | Heavy | Heaviest, slowest, but strongest defense and damage. |
+| **SAR-08A** | Atlas    | Standard | Balanced all around; the most versatile of the three. |
+| **SAR-09L** | Strylder | Assault | Lightest, fastest; wins through mobility. |
 
-> 🚧 **This entry is not yet complete.** The STCS series' **module system** will be added in **v2.2**. The current version only includes the base framework and three usable core models.
+> 🚧 **This entry is not yet complete.** The SAR series' **module system** will be added in **v2.2**. The current version only includes the base framework and three usable core models.
 
 ---
 
 ## Base Stat Comparison
 
-| Attribute | Kraken | Sky Chart | Ranger |
-|---|---|---|---|
-| **Base attack damage** | 30 | 24 | 20 |
-| **Attack speed** | 1.2 | 2.0 | 2.8 |
-| **Max energy** | 10000 | 10000 | 10000 |
-| **Blade lock damage reduction** | **90%** | 85% | 80% |
+| Attribute | Ogre        | Atlas       | Stryder         |
+|---|-------------|-------------|-----------------|
+| **Base attack damage** | 30          | 24          | 20              |
+| **Attack speed** | 1.2         | 2.0         | 2.8             |
+| **Max energy** | 10000       | 10000       | 10000           |
+| **Blade lock damage reduction** | **90%**     | 85%         | 80%             |
 | **Block energy cost multiplier** | 10 / damage | 30 / damage | **50 / damage** |
 
-> 💡 **The lower the block energy cost multiplier, the more efficient blocking is.** Kraken spends only 10 energy per point of damage — the most energy-efficient of the three. Ranger spends 50 energy per point of damage — the most expensive to block with, so it demands real skill.
+> 💡 **The lower the block energy cost multiplier, the more efficient blocking is.** Ogre spends only 10 energy per point of damage — the most energy-efficient of the three. Stryder spends 50 energy per point of damage — the most expensive to block with, so it demands real skill.
 
 ---
 
@@ -333,7 +335,7 @@ The energy bar is shown in real time on the **action bar**: a green progress bar
 Action bar info includes:
 
 ```text
-§b[STCS] §f<weapon name>
+§b[SAR] §f<weapon name>
 §a●Core §7●Ready
 ```
 
@@ -359,7 +361,7 @@ Core / skill states show as:
 | **Energy drain** | 400 points per second. |
 | **Activation requirement** | At least **800** energy. |
 
-**While the core is active**, blade lock damage reduction is pushed straight to **100%** — you can be fully immune to damage for as long as the core lasts, as long as energy holds out.
+**While the core is active**, sword block damage reduction is pushed straight to **100%** — you can be fully immune to damage for as long as the core lasts, as long as energy holds out.
 
 **When energy runs out**, the core shuts off automatically and enters a **4-minute cooldown**. It can only be activated again after the cooldown ends.
 
@@ -368,12 +370,12 @@ Core / skill states show as:
 Trying to activate it without enough energy shows:
 
 ```text
-Not enough energy to sustain the blade core. At least 800 energy is required.
+Not enough energy to sustain the sword core. At least 800 energy is required.
 ```
 
 ### Blade Lock
 
-**Activates automatically while sneaking.** When you take damage, STCS **consumes energy to offset part or all of the damage**.
+**Activates automatically while sneaking.** When you take damage, SAR **consumes energy to offset part or all of the damage**.
 
 | Step | Description |
 |---|---|
@@ -393,34 +395,34 @@ Not enough energy to sustain the blade core. At least 800 energy is required.
 
 ### AoE Damage Sharing
 
-**When you attack any enemy with an STCS weapon**, other entities within **3 blocks** of the enemy hit take **equal damage**.
+**When you attack any enemy with an SAR weapon**, other entities within **3 blocks** of the enemy hit take **equal damage**.
 
 > This means hitting one mob also hurts the ones beside it — **gather mobs and one weapon clears the whole pack**.
-> This was actually added to make up for the STCS series lacking a sweep attack :P
+> This was actually added to make up for the SAR series lacking a sweep attack :P
 
 Config options:
 
-| Key | Default | Description |
-|---|---|---|
-| `stcsAoeRadius` | 3.0 | STCS area damage radius. |
-| `stcsMinEnergyCost` | 1 | Minimum block energy cost. |
+| Key                | Default | Description |
+|--------------------|---|---|
+| `sarAoeRadius`     | 3.0 | STCS area damage radius. |
+| `sarMinEnergyCost` | 1 | Minimum block energy cost. |
 
 ### Dynamic Names
 
 All three weapons have **dynamic color** cycles in their names:
 
-| Model | Color cycle |
-|---|---|
-| **Kraken** | Purple → Purple → Orange. |
-| **Sky Chart** | Purple → Purple → Blue. |
-| **Ranger** | Purple → Purple → Red. |
+| Model       | Color cycle |
+|-------------|---|
+| **Ogre**    | Purple → Purple → Orange. |
+| **Atlas**   | Purple → Purple → Blue. |
+| **Stryder** | Purple → Purple → Red. |
 
 ### Tooltip
 
-The STCS weapon tooltip shows the following info:
+The SAR weapon tooltip shows the following info:
 
 ```text
-§b[STCS] §f<weapon name>
+§b[SAR] §f<weapon name>
 §7Damage: §c<value>
 §7Attack speed: §e<value>
 §7Max energy: §a<value>
@@ -433,13 +435,13 @@ Module slots that haven't been implemented show as blank or default in the toolt
 
 ---
 
-## STC-07H "Kraken" — Heavy Type
+## SAR-07H "Ogre" — Heavy Type
 
-![stch.png](assets/images/stch.png)
+![sarh.png](assets/images/sarh.png)
 
 **The heaviest and slowest of the three, but strongest in defense and damage.**
 
-> §7STC-08A support type — heavier, slower, but strong defense and damage.
+> §7SAR-08A support type — heavier, slower, but strong defense and damage.
 
 ### Skill: Sweeping Slash
 
@@ -460,17 +462,17 @@ Module slots that haven't been implemented show as blank or default in the toolt
 - A ring of sweep particles is generated in **36 directions** around you.
 - Plays the player sweep attack sound.
 
-> Kraken's blade lock reduction is a hefty 90%, and paired with the core it's practically invincible. Ideal for head-on brawls and boss fights.
+> Ogre's sword block reduction is a hefty 90%, and paired with the core it's practically invincible. Ideal for head-on brawls and boss fights.
 
 ---
 
-## STC-08A "Sky Chart" — Standard Type
+## SAR-08A "Atlas" — Standard Type
 
-![stca.png](assets/images/stca.png)
+![sar.png](assets/images/sara.png)
 
 **Balanced all around; the most versatile of the three.**
 
-> §7STCS standard model STC-08A — balanced on all fronts, and the standard platform used by both the STC-09L and STC-07H. Highly acclaimed.
+> §7SAR standard model SAR-08A — balanced on all fronts, and the standard platform used by both the SAR-09L and SAR-07H. Highly acclaimed.
 
 ### Skill: Shockwave
 
@@ -491,17 +493,17 @@ Module slots that haven't been implemented show as blank or default in the toolt
 - Explosion + a large cloud of smoke particles appears around you.
 - Plays an explosion sound.
 
-> Sky Chart has the largest range (8 blocks) — the best choice for clearing and escaping. The damage is low, but it can shove a whole crowd of enemies away.
+> Atlas has the largest range (8 blocks) — the best choice for clearing and escaping. The damage is low, but it can shove a whole crowd of enemies away.
 
 ---
 
-## STC-09L "Ranger" — Assault Type
+## STC-09L "Stryder" — Assault Type
 
-![stcl.png](assets/images/stcl.png)
+![sarl.png](assets/images/sarl.png)
 
 **The lightest and fastest of the three, winning through mobility.**
 
-> §7STC-08A assault type — light yet still strong. Remember when using it: Focus, Plan, Attack.
+> §7SAR-08A assault type — light yet still strong. Remember when using it: Focus, Plan, Attack.
 
 ### Skill: Teleport Dash
 
@@ -522,7 +524,7 @@ Module slots that haven't been implemented show as blank or default in the toolt
 - Plays the enderman teleport sound.
 - **No fall damage**.
 
-> Ranger's core is **displacement**. With the core active, its cooldown is almost gone (1 second → 0), enabling chain blinking. Ideal for kiting and repositioning.
+> Stryder's core is **displacement**. With the core active, its cooldown is almost gone (1 second → 0), enabling chain blinking. Ideal for kiting and repositioning.
 
 ---
 
@@ -554,4 +556,6 @@ Details will be added once v2.2 lands.
 
 ## Trivia
 
-- **STCS is contributor TC-020's idea~**
+- **SAR is contributor TC-020's idea~**
+- **SAR's codename actually from R1Titanfall(Stryder Titan,Atlas Titan and Ogre Titan)**
+- **SAR's full name is STCS Armory Reborn,it's the reborn of original STCS.**
