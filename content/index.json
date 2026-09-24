@@ -33,7 +33,7 @@
         { "id": "t_h", "title": { "zh-CN": "玩具匠的锤子", "en": "Toymaker's Hammer" }, "file": "Toymakers-Hammer.md" },
         { "id": "vm", "title": { "zh-CN": "涡旋操纵器", "en": "Vortex Manipulator" }, "file": "Vortex-Manipulator.md" },
         { "id": "t_s", "title": { "zh-CN": "特利波卡的镰刀", "en": "Tlipoca's Scythe" }, "file": "Tlipoca_Scythe.md" },
-        { "id": "stcs", "title": { "zh-CN": "STCS系列武器", "en": "STCS Weapons" }, "file": "STCS_Weapons.md" }
+        { "id": "sar", "title": { "zh-CN": "SAR系列武器", "en": "SAR Weapons" }, "file": "SAR_Weapons.md" }
       ]
     },
     {
