@@ -13,6 +13,9 @@
 
 **SAR系列** 是 DOCTOR M 中一套**武器体系**。三把武器共享同一套底层框架——**能量槽、剑核心、剑封锁**——但各自的技能和战斗风格完全不同。
 
+
+- *SAR系列的Logo：*![sar_logo.png](assets/images/sar_logo.png)
+
 | 型号          | 代号 | 定位 | 特点 |
 |-------------|---|---|---|
 | **SAR-07H** | 巨妖 | 重装型 | 最重、最慢，但防御和伤害最强。 |
@@ -293,6 +296,8 @@ SAR 武器的 Tooltip 会显示以下信息：
 ## Overview
 
 **SAR** is a **weapon system** in DOCTOR M. All three weapons share the same underlying framework — **energy bar, sword core, sword block** — but each has a completely different skill set and combat style.
+
+* -SAR Series Logo：![sar_logo.png](assets/images/sar_logo.png)
 
 | Model       | Codename | Role | Features |
 |-------------|----------|---|---|
